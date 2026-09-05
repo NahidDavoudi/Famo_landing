@@ -1,0 +1,167 @@
+/* Page-specific styles for register / login - آموزشگاه فامو */
+
+* { font-family: 'Vazir', sans-serif; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.form-container > div { animation: fadeIn 0.5s ease; }
+
+.message-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-icon svg {
+    width: 3rem;
+    height: 3rem;
+}
+
+#messageContainer.success .message-icon svg {
+    color: #10b981;
+}
+
+#messageContainer.error .message-icon svg {
+    color: #ef4444;
+}
+
+.tab-btn.active {
+    background: linear-gradient(to right, #445D84, #5a779e) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(68, 93, 132, 0.3);
+}
+
+.tab-btn:not(.active) {
+    background: transparent !important;
+    color: #64748b !important;
+}
+
+/* استایل فیلدها */
+.input-group {
+    position: relative;
+    margin-bottom: 1.25rem;
+}
+
+.input-group .input-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6D8B9E;
+    pointer-events: none;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 0.875rem 3rem 0.875rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 0.75rem;
+    text-align: right;
+    background-color: #f9f7f3;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #445D84;
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(68, 93, 132, 0.1);
+}
+
+.input-group input:focus + .input-icon,
+.input-group select:focus + .input-icon {
+    color: #445D84;
+}
+
+.input-group.has-password input {
+    padding-left: 3rem;
+}
+
+.input-group .password-toggle {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6D8B9E;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+
+.input-group .password-toggle:hover {
+    color: #445D84;
+}
+
+/* استایل خطا */
+.input-group.error input,
+.input-group.error select {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+    animation: shake 0.4s ease;
+}
+
+.input-group.error .input-icon {
+    color: #ef4444;
+}
+
+.input-group .error-message {
+    display: none;
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.input-group.error .error-message {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* استایل موفقیت */
+.input-group.success input,
+.input-group.success select {
+    border-color: #10b981;
+}
+
+.input-group.success .input-icon {
+    color: #10b981;
+}
+
+/* استایل select */
+.input-group select {
+    appearance: none;
+    cursor: pointer;
+}
+
+.input-group .select-arrow {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6D8B9E;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.input-group select:focus + .input-icon ~ .select-arrow {
+    color: #445D84;
+}

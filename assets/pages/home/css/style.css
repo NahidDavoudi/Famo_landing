@@ -1,0 +1,291 @@
+/* Home page: custom styles only. Layout/colors via Tailwind (output.css). */
+
+/* Modern Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #445D84;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #3a5170;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Courses Swiper */
+.coursesSwiper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+.coursesSwiper .swiper-wrapper { width: 100%; }
+.coursesSwiper .swiper-slide {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+.coursesSwiper .swiper-slide > div {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+.coursesSwiper .swiper-button-prev,
+.coursesSwiper .swiper-button-next {
+    width: 40px;
+    height: 40px;
+}
+.coursesSwiper .swiper-button-prev { right: 10px !important; left: auto !important; }
+.coursesSwiper .swiper-button-next { left: 10px !important; right: auto !important; }
+
+@media (max-width: 768px) {
+    .coursesSwiper { padding: 0 10px; }
+    .coursesSwiper .swiper-button-prev,
+    .coursesSwiper .swiper-button-next { width: 35px; height: 35px; }
+    .coursesSwiper .swiper-button-prev { right: 5px !important; }
+    .coursesSwiper .swiper-button-next { left: 5px !important; }
+}
+@media (max-width: 480px) {
+    .coursesSwiper { padding: 0 5px; }
+    .coursesSwiper .swiper-button-prev,
+    .coursesSwiper .swiper-button-next { width: 30px; height: 30px; font-size: 14px; }
+}
+
+/* Swiper pagination & nav (RTL) */
+.swiper-pagination-bullet {
+    background-color: #445D84 !important;
+    width: 12px !important;
+    height: 12px !important;
+    opacity: 0.5 !important;
+    transition: all 0.3s ease;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1 !important;
+    background-color: #445D84 !important;
+    transform: scale(1.2);
+}
+.swiper-button-next, .swiper-button-prev {
+    color: #445D84 !important;
+    background-color: rgba(226, 217, 198, 0.9);
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10 !important;
+    cursor: pointer !important;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
+    background-color: #E2D9C6;
+    transform: scale(1.1);
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 22px !important;
+    font-weight: bold;
+    transform: rotate(180deg);
+}
+.swiper-button-prev { right: 15px !important; left: auto !important; }
+.swiper-button-next { left: 15px !important; right: auto !important; }
+
+.instructorsSwiper .swiper-button-prev {
+    position: absolute !important;
+    top: 50% !important;
+    right: 15px !important;
+    left: auto !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+}
+.instructorsSwiper .swiper-button-next {
+    position: absolute !important;
+    top: 50% !important;
+    left: 15px !important;
+    right: auto !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+}
+.instructorsSwiper .swiper-button-prev:hover { transform: translateY(-50%) scale(1.1) !important; }
+.instructorsSwiper .swiper-button-next:hover { transform: translateY(-50%) scale(1.1) !important; }
+
+.supportSwiper .swiper-button-prev {
+    position: absolute !important;
+    top: 50% !important;
+    right: 15px !important;
+    left: auto !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+}
+.supportSwiper .swiper-button-next {
+    position: absolute !important;
+    top: 50% !important;
+    left: 15px !important;
+    right: auto !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+}
+.supportSwiper .swiper-button-prev:hover { transform: translateY(-50%) scale(1.1) !important; }
+.supportSwiper .swiper-button-next:hover { transform: translateY(-50%) scale(1.1) !important; }
+
+.swiper-button-disabled {
+    opacity: 0.35 !important;
+    cursor: not-allowed !important;
+}
+
+/* FAQ accordion */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    display: block !important;
+}
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    transition: max-height 1s ease-in-out;
+}
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+/* Gradient / glass / hover (home-specific) */
+.gradient-bg {
+    background: linear-gradient(135deg, #445D84 0%, #3a5170 100%);
+}
+.gradient-bg-light {
+    background: linear-gradient(135deg, #E2D9C6 0%, #f0e8d8 100%);
+}
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.text-gradient {
+    background: linear-gradient(90deg, #445D84, #6D8B9E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Course cards (expand/collapse) */
+.course-card {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+.course-background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+.course-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 20;
+}
+.course-content-default {
+    position: relative;
+    z-index: 10;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+.course-content-expanded {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+.course-hint {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+@media (min-width: 640px) {
+    .course-hint { font-size: 0.875rem; }
+}
+.course-card.expanded .course-overlay { opacity: 1; }
+.course-card.expanded .course-content-default { opacity: 0; }
+.course-card.expanded .course-content-expanded {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.course-card.expanded .course-hint { opacity: 0; }
+.course-card * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Skeleton loader */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+.skeleton {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.skeleton-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.skeleton-course-card { position: relative; }
+.skeleton-course-wrapper { display: block; }
+.skeleton-instructor-card { min-height: 400px; }
+.skeleton-instructor-wrapper { display: block; }
+.skeleton-supporter-card { min-height: 300px; }
+.skeleton-supporter-wrapper { display: block; }
+.skeleton-course-wrapper.hide,
+.skeleton-instructor-wrapper.hide,
+.skeleton-supporter-wrapper.hide {
+    display: none !important;
+}

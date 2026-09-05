@@ -1,0 +1,10 @@
+
+RewriteEngine on
+
+RewriteOptions inherit
+RewriteCond %{HTTP_HOST} ^famo\.nadcoteam\.ir$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.famo\.nadcoteam\.ir$
+RewriteRule ^admin$ "http\:\/\/famo\.nadcoteam\.ir\/pages\/admin\.html" [R=301,L]
+RewriteCond %{HTTP_HOST} ^famo\.nadcoteam\.ir$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.famo\.nadcoteam\.ir$
+RewriteRule ^dashboard\ $ "http\:\/\/famo\.nadcoteam\.ir\/pages\/register\.html" [R=301,L]
