@@ -707,13 +707,14 @@
     </section>
 
     <!-- Footer -->
-    <footer class="gradient-bg text-white pt-12 px-4">
+    <footer class="gradient-bg text-white pt-12 pb-6 px-4">
         <div class="container mx-auto max-w-6xl">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10">
                 <!-- Logo & Description -->
                 <div>
-                    <div class="flex items-center space-x-3 space-x-reverse mb-6">
-                        <div class="bg-[#E2D9C6] w-12 h-12 rounded-full flex items-center justify-center">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-[#00296b] w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                            <img src="assets/images/logo.png" alt="logo" class="w-10 h-10 object-contain">
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold">آموزشگاه <span class="text-[#E2D9C6]">فامو</span></h3>
@@ -721,24 +722,27 @@
                         </div>
                     </div>
                     <p class="text-white/85 leading-relaxed mb-6">
-                        آموزشگاه فامو با بیش از ۵ سال سابقه درخشان در زمینه مشاوره و آموزش کنکور و تیزهوشان، همراه
+                        آموزشگاه فامو با بیش از 7 سال سابقه درخشان در زمینه مشاوره و آموزش کنکور و تیزهوشان، همراه
                         دانش‌آموزان در مسیر موفقیت تحصیلی است.
                     </p>
-                    <div class="flex space-x-4 space-x-reverse">
+                    <div class="flex gap-4">
                         <a href="#"
-                            class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110">
+                            class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110 shrink-0"
+                            aria-label="تلگرام">
                             <svg class="icon" aria-hidden="true">
                                 <use href="assets/icons/sprite.svg#icon-telegram" />
                             </svg>
                         </a>
                         <a href="#"
-                            class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110">
+                            class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110 shrink-0"
+                            aria-label="اینستاگرام">
                             <svg class="icon" aria-hidden="true">
                                 <use href="assets/icons/sprite.svg#icon-brand-instagram" />
                             </svg>
                         </a>
                         <a href="#"
-                            class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110">
+                            class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110 shrink-0"
+                            aria-label="واتساپ">
                             <svg class="icon" aria-hidden="true">
                                 <use href="assets/icons/sprite.svg#icon-brand-whatsapp" />
                             </svg>
@@ -813,17 +817,21 @@
             </div>
 
             <!-- Copyright -->
-            <div class="border-t border-white/20 pt-6 pb-6 text-center text-white/80">
-                <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="border-t border-white/20 pt-6 text-center text-white/80">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-2">
                     <p>© <span id="copyright-year">۱۴۰۳</span> تمامی حقوق برای آموزشگاه فامو محفوظ است.</p>
-                    <p class="mt-2 md:mt-0 text-[#E2D9C6]">مدیریت: دکتر محمد موسی زاده موسوی</p>
+                    <p class="text-[#E2D9C6]">مدیریت: دکتر محمد موسی زاده موسوی</p>
                 </div>
-                <p class="mt-4 text-sm">طراحی و توسعه توسط محمد حسین داودی </p>
-                <a href="https://t.me/NHDVDI" class="inline-flex items-center">
-                    <svg class="icon" aria-hidden="true">
-                        <use href="assets/icons/sprite.svg#icon-telegram" />
-                    </svg>
-                </a>
+                <p class="mt-4 text-sm">
+                    طراحی و توسعه توسط
+                    <a href="https://t.me/NHDVDI" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-1.5 text-[#E2D9C6] hover:text-white transition duration-300 font-medium">
+                        محمد حسین داودی
+                        <svg class="icon icon--sm" aria-hidden="true">
+                            <use href="assets/icons/sprite.svg#icon-telegram" />
+                        </svg>
+                    </a>
+                </p>
             </div>
         </div>
     </footer>
