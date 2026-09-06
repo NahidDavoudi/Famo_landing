@@ -61,12 +61,12 @@ function initMobileMenu() {
             e.stopPropagation();
             const isHidden = mobileMenu.classList.contains('hidden');
             mobileMenu.classList.toggle('hidden');
-            mobileMenuBtn.innerHTML = isHidden 
-                ? svgIcon('icon-x', 'icon--lg') 
+            mobileMenuBtn.innerHTML = isHidden
+                ? svgIcon('icon-x', 'icon--lg')
                 : svgIcon('icon-menu', 'icon--lg');
             mobileMenuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
         });
-        
+
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
@@ -91,10 +91,10 @@ if (document.readyState === 'loading') {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-        
+
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
             // Close mobile menu if open
@@ -102,7 +102,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 mobileMenu.classList.add('hidden');
                 if (mobileMenuBtn) mobileMenuBtn.innerHTML = svgIcon('icon-menu', 'icon--lg');
             }
-            
+
             window.scrollTo({
                 top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
@@ -115,7 +115,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 function showSkeletons(containerId, skeletonClass) {
     const container = document.getElementById(containerId);
     if (!container) return;
-    
+
     const skeletons = container.querySelectorAll(`.${skeletonClass}`);
     skeletons.forEach(skeleton => {
         skeleton.classList.add('show');
@@ -125,7 +125,7 @@ function showSkeletons(containerId, skeletonClass) {
 function hideSkeletons(containerId, skeletonClass) {
     const container = document.getElementById(containerId);
     if (!container) return;
-    
+
     const skeletons = container.querySelectorAll(`.${skeletonClass}`);
     skeletons.forEach(skeleton => {
         skeleton.classList.add('hide');
@@ -137,28 +137,28 @@ function hideSkeletons(containerId, skeletonClass) {
 async function loadCoursesFromAPI() {
     // Show skeletons before loading
     showSkeletons('coursesContainer', 'skeleton-course-wrapper');
-    
+
     try {
         const response = await fetch(`${PUBLIC_API_URL}?action=get_courses`);
         const result = await response.json();
-        
+
         const container = document.getElementById('coursesContainer');
         if (!container) return;
-        
+
         // Hide skeletons
         hideSkeletons('coursesContainer', 'skeleton-course-wrapper');
-        
+
         if (!result.success || !result.data) {
             console.error('Error loading courses:', result.error);
             container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500">خطا در بارگذاری دوره‌ها</p></div>';
             return;
         }
-        
+
         if (result.data.length === 0) {
             container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">دوره‌ای یافت نشد</p></div>';
             return;
         }
-        
+
         container.innerHTML = result.data.map(course => `
             <div class="swiper-slide">
                 <div class="course-card md:w-full h-48 sm:h-40 md:h-auto rounded-2xl flex items-center justify-center relative overflow-hidden min-h-[200px] cursor-pointer" 
@@ -202,10 +202,10 @@ async function loadCoursesFromAPI() {
                 </div>
             </div>
         `).join('');
-        
+
         // Attach click event listeners to course cards
         attachCourseCardListeners();
-        
+
         // Initialize or update Swiper
         if (!coursesSwiper) {
             coursesSwiper = new Swiper('.coursesSwiper', {
@@ -246,28 +246,28 @@ async function loadCoursesFromAPI() {
 async function loadInstructorsFromAPI() {
     // Show skeletons before loading
     showSkeletons('instructorsContainer', 'skeleton-instructor-wrapper');
-    
+
     try {
         const response = await fetch(`${PUBLIC_API_URL}?action=get_instructors`);
         const result = await response.json();
-        
+
         const container = document.getElementById('instructorsContainer');
         if (!container) return;
-        
+
         // Hide skeletons
         hideSkeletons('instructorsContainer', 'skeleton-instructor-wrapper');
-        
+
         if (!result.success || !result.data) {
             console.error('Error loading instructors:', result.error);
             container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">خطا در بارگذاری اساتید</p></div>';
             return;
         }
-        
+
         if (result.data.length === 0) {
             container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">استادی یافت نشد</p></div>';
             return;
         }
-        
+
         // Gradient colors for instructors (cycling)
         const gradients = [
             ['#445D84', '#5a779e'],
@@ -275,38 +275,41 @@ async function loadInstructorsFromAPI() {
             ['#6D8B9E', '#8aa5b8'],
             ['#445D84', '#6D8B9E']
         ];
-        
+
         container.innerHTML = result.data.map((instructor, index) => {
             const gradient = gradients[index % gradients.length];
             const initialLetter = instructor.initial_letter || instructor.name.charAt(0);
             const description = instructor.description || '';
-            
+
             return `
-                <div class="swiper-slide">
-                    <div class="instructor-card bg-gradient-to-b from-white to-[#f9f7f3] rounded-2xl overflow-hidden shadow-xl border border-[#E2D9C6] h-full hover-lift transition-all duration-300 cursor-pointer" 
-                         data-name="${instructor.name}" 
-                         data-title="${instructor.title}" 
-                         data-details="${description}">
-                        <div class="h flex items-center justify-center relative overflow-hidden" 
-                             style="background: linear-gradient(135deg, ${gradient[0]}, ${gradient[1]});">
-                            ${instructor.image_url ? `
-                                <img src="${instructor.image_url}" alt="${instructor.name}" class="w-full h-full object-fit">
-                            ` : `
-                                <div class="w-full h-full bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] flex items-center justify-center text-7xl font-bold relative z-10" 
-                                     style="color: ${gradient[0]};">
-                                    ${initialLetter}
-                                </div>
-                            `}
-                        </div>
-                        <div class="p-4 text-center">
-                            <h3 class="text-xl font-bold text-[#445D84] mb-2">${instructor.name}</h3>
-                            <p class="text-[#8B786D] font-medium mb-3">${instructor.title}</p>
-                        </div>
+        <div class="swiper-slide">
+            <div class="instructor-card bg-gradient-to-b from-white to-[#f9f7f3] rounded-2xl overflow-hidden shadow-xl border border-[#E2D9C6] h-full hover-lift transition-all duration-300 cursor-pointer" 
+                 data-name="${instructor.name}" 
+                 data-title="${instructor.title}" 
+                 data-details="${description}">
+                <div class="h-40 flex items-center justify-center relative overflow-hidden" 
+                     style="background: linear-gradient(135deg, ${gradient[0]}, ${gradient[1]});">
+                    <div class="absolute inset-0 animate-shimmer"></div>
+                    <div class="w-24 h-24 rounded-full bg-white border-4 border-[#E2D9C6] overflow-hidden shadow-lg relative z-10">
+                        ${instructor.image_url ? `
+                            <img src="${instructor.image_url}" alt="${instructor.name}" class="w-full h-full object-cover">
+                        ` : `
+                            <div class="w-full h-full bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] flex items-center justify-center text-3xl font-bold" 
+                                 style="color: ${gradient[0]};">
+                                ${initialLetter}
+                            </div>
+                        `}
                     </div>
                 </div>
-            `;
+                <div class="p-4 text-center">
+                    <h3 class="text-xl font-bold text-[#445D84] mb-2">${instructor.name}</h3>
+                    <p class="text-[#8B786D] font-medium mb-3">${instructor.title}</p>
+                </div>
+            </div>
+        </div>
+    `;
         }).join('');
-        
+
         // Initialize or update Swiper
         if (!instructorsSwiper) {
             instructorsSwiper = new Swiper('.instructorsSwiper', {
@@ -333,7 +336,7 @@ async function loadInstructorsFromAPI() {
         } else {
             instructorsSwiper.update();
         }
-        
+
         // Re-attach modal event listeners
         attachInstructorModalListeners();
     } catch (error) {
@@ -350,28 +353,28 @@ async function loadInstructorsFromAPI() {
 async function loadSupportersFromAPI() {
     // Show skeletons before loading
     showSkeletons('supportersContainer', 'skeleton-supporter-wrapper');
-    
+
     try {
         const response = await fetch(`${PUBLIC_API_URL}?action=get_supporters`);
         const result = await response.json();
-        
+
         const container = document.getElementById('supportersContainer');
         if (!container) return;
-        
+
         // Hide skeletons
         hideSkeletons('supportersContainer', 'skeleton-supporter-wrapper');
-        
+
         if (!result.success || !result.data) {
             console.error('Error loading supporters:', result.error);
             container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">خطا در بارگذاری پشتیبانان</p></div>';
             return;
         }
-        
+
         if (result.data.length === 0) {
             container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">پشتیبانی یافت نشد</p></div>';
             return;
         }
-        
+
         // Gradient colors for supporters (cycling)
         const gradients = [
             ['#445D84', '#5a779e'],
@@ -379,11 +382,11 @@ async function loadSupportersFromAPI() {
             ['#6D8B9E', '#8aa5b8'],
             ['#445D84', '#6D8B9E']
         ];
-        
+
         container.innerHTML = result.data.map((supporter, index) => {
             const gradient = gradients[index % gradients.length];
             const initialLetter = supporter.name.charAt(0);
-            
+
             return `
                 <div class="swiper-slide">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-xl border border-[#E2D9C6] h-full hover-lift transition-all duration-500">
@@ -408,7 +411,7 @@ async function loadSupportersFromAPI() {
                 </div>
             `;
         }).join('');
-        
+
         // Initialize or update Swiper
         if (!supportSwiper) {
             supportSwiper = new Swiper('.supportSwiper', {
@@ -448,24 +451,24 @@ async function loadSupportersFromAPI() {
 // Function to attach click event listeners to course cards
 function attachCourseCardListeners() {
     const courseCards = document.querySelectorAll('.course-card');
-    
+
     courseCards.forEach(card => {
         // Remove existing listeners by cloning
         const newCard = card.cloneNode(true);
         card.parentNode.replaceChild(newCard, card);
-        
-        newCard.addEventListener('click', function(e) {
+
+        newCard.addEventListener('click', function (e) {
             // Prevent event bubbling if clicking on Swiper navigation
             if (e.target.closest('.swiper-button-next') || e.target.closest('.swiper-button-prev') || e.target.closest('.swiper-pagination')) {
                 return;
             }
-            
+
             const isExpanded = this.getAttribute('data-expanded') === 'true';
             const overlay = this.querySelector('.course-overlay');
             const defaultContent = this.querySelector('.course-content-default');
             const expandedContent = this.querySelector('.course-content-expanded');
             const hint = this.querySelector('.course-hint');
-            
+
             if (isExpanded) {
                 // Collapse: return to default state
                 this.setAttribute('data-expanded', 'false');
@@ -500,7 +503,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSupportersFromAPI();
     // Re-initialize FAQ after content loads
     setTimeout(() => {
-        initFAQ();
     }, 500);
 });
 
@@ -508,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function animateCounter(elementId, finalValue) {
     const element = document.getElementById(elementId);
     if (!element) return;
-    
+
     const obj = { value: 0 };
     gsap.to(obj, {
         value: finalValue,
@@ -533,18 +535,18 @@ if (statsSection) {
                     duration: 0.8,
                     ease: "power2.out"
                 });
-                
+
                 setTimeout(() => {
-                    animateCounter('years-counter', 5);
+                    animateCounter('years-counter', 7);
                     animateCounter('students-counter', 200);
                     animateCounter('teachers-counter', 8);
                 }, 500);
-                
+
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
-    
+
     observer.observe(statsSection);
 }
 
@@ -565,7 +567,7 @@ const FAQ = {
                 if (State.isGSAPReady) {
                     gsap.set(answer, { maxHeight: 0 });
                 }
-                
+
                 question.addEventListener('click', () => {
                     this.toggle(newItem, answer);
                 });
@@ -650,15 +652,15 @@ const FAQ = {
         }
     }
 };
-
+// init FAQ was an old code that was not working 
 // Initialize FAQ when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(initFAQ, 100);
-    });
-} else {
-    setTimeout(initFAQ, 100);
-}
+// if (document.readyState === 'loading') {
+//     document.addEventListener('DOMContentLoaded', () => {
+//         setTimeout(initFAQ, 100);
+//     });
+// } else {
+//     setTimeout(initFAQ, 100);
+// }
 
 // Function to attach instructor modal listeners
 function attachInstructorModalListeners() {
@@ -666,22 +668,22 @@ function attachInstructorModalListeners() {
     const closeModalBtn = document.getElementById('closeModal');
     const modalContent = document.getElementById('modalContent');
     const instructorCards = document.querySelectorAll('.instructor-card');
-    
+
     if (!instructorModal || !modalContent) return;
-    
+
     instructorCards.forEach(card => {
         // Remove existing listeners to avoid duplicates
         const newCard = card.cloneNode(true);
         card.parentNode.replaceChild(newCard, card);
-        
+
         newCard.addEventListener('click', () => {
             const name = newCard.getAttribute('data-name');
             const title = newCard.getAttribute('data-title');
             const details = newCard.getAttribute('data-details');
-            
+
             // Extract first letter for avatar
             const firstLetter = name.charAt(0);
-            
+
             modalContent.innerHTML = `
                 <div class="flex flex-col items-center text-center">
                     <div class="w-40 h-40 rounded-full bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] flex items-center justify-center text-6xl text-[#445D84] font-bold mb-6 shadow-lg">
@@ -699,11 +701,11 @@ function attachInstructorModalListeners() {
                     </div>
                 </div>
             `;
-            
+
             if (instructorModal) {
                 instructorModal.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
-                
+
                 // Add event listener to close button inside modal
                 const closeModal2 = document.getElementById('closeModal2');
                 if (closeModal2) {
@@ -715,7 +717,7 @@ function attachInstructorModalListeners() {
             }
         });
     });
-    
+
     // Close modal handlers
     if (closeModalBtn && instructorModal) {
         closeModalBtn.addEventListener('click', () => {
@@ -723,7 +725,7 @@ function attachInstructorModalListeners() {
             document.body.style.overflow = 'auto';
         });
     }
-    
+
     if (instructorModal) {
         instructorModal.addEventListener('click', (e) => {
             if (e.target === instructorModal) {
@@ -732,7 +734,7 @@ function attachInstructorModalListeners() {
             }
         });
     }
-    
+
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && instructorModal && !instructorModal.classList.contains('hidden')) {
             instructorModal.classList.add('hidden');
@@ -753,15 +755,15 @@ const serviceCards = document.querySelectorAll('#services > div > div > div');
 serviceCards.forEach(card => {
     const icon = card.querySelector('div.w-20');
     if (icon) {
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
             gsap.to(icon, {
                 scale: 1.1,
                 duration: 0.3,
                 ease: "power2.out"
             });
         });
-        
-        card.addEventListener('mouseleave', function() {
+
+        card.addEventListener('mouseleave', function () {
             gsap.to(icon, {
                 scale: 1,
                 duration: 0.3,
@@ -776,11 +778,11 @@ function initScrollAnimations() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
         return;
     }
-    
+
     if (gsap.registerPlugin) {
         gsap.registerPlugin(ScrollTrigger);
     }
-    
+
     // Animate sections on scroll
     const sections = document.querySelectorAll('section[id]');
     sections.forEach((section) => {
@@ -797,62 +799,62 @@ function initScrollAnimations() {
             }
         });
     });
-    
+
     // Animate instructor cards on scroll (after they're loaded)
-    
+
     setTimeout(() => {
         const instructorCardsAnimate = document.querySelectorAll('.instructor-card');
         instructorCardsAnimate.forEach((card, index) => {
-        gsap.from(card, {
-            opacity: 0,
-            scale: 0.8,
-            rotationY: -15,
-            duration: 0.6,
-            delay: index * 0.1,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                toggleActions: "play none none none"
-            }
-        });
-    });
-    
-    // Animate support team cards
-    const supportCards = document.querySelectorAll('.supportSwiper .swiper-slide');
-    supportCards.forEach((card, index) => {
-        gsap.from(card, {
-            opacity: 0,
-            y: 30,
-            duration: 0.5,
-            delay: index * 0.1,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                toggleActions: "play none none none"
-            }
-        });
-    });
-    
-    // Animate swiper navigation buttons
-    const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
-    swiperButtons.forEach(btn => {
-        const swiper = btn.closest('.swiper');
-        if (swiper) {
-            gsap.from(btn, {
+            gsap.from(card, {
                 opacity: 0,
-                scale: 0,
-                duration: 0.5,
-                ease: "back.out(1.7)",
+                scale: 0.8,
+                rotationY: -15,
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: "power2.out",
                 scrollTrigger: {
-                    trigger: swiper,
-                    start: "top 80%",
+                    trigger: card,
+                    start: "top 85%",
                     toggleActions: "play none none none"
                 }
             });
-        }
-    });
+        });
+
+        // Animate support team cards
+        const supportCards = document.querySelectorAll('.supportSwiper .swiper-slide');
+        supportCards.forEach((card, index) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 30,
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+
+        // Animate swiper navigation buttons
+        const swiperButtons = document.querySelectorAll('.swiper-button-next, .swiper-button-prev');
+        swiperButtons.forEach(btn => {
+            const swiper = btn.closest('.swiper');
+            if (swiper) {
+                gsap.from(btn, {
+                    opacity: 0,
+                    scale: 0,
+                    duration: 0.5,
+                    ease: "back.out(1.7)",
+                    scrollTrigger: {
+                        trigger: swiper,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    }
+                });
+            }
+        });
     }, 1000); // Wait for data to load
 }
 
