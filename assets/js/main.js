@@ -658,15 +658,14 @@ const FAQ = {
         }
     }
 };
-// init FAQ was an old code that was not working 
 // Initialize FAQ when DOM is ready
-// if (document.readyState === 'loading') {
-//     document.addEventListener('DOMContentLoaded', () => {
-//         setTimeout(initFAQ, 100);
-//     });
-// } else {
-//     setTimeout(initFAQ, 100);
-// }
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initFAQ, 100);
+    });
+} else {
+    setTimeout(initFAQ, 100);
+}
 
 // Function to attach instructor modal listeners
 function attachInstructorModalListeners() {
