@@ -780,7 +780,7 @@ function initScrollAnimations() {
     }
 
     if (gsap.registerPlugin) {
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     }
 
     // Animate sections on scroll
