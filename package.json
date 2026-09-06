@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "npx @tailwindcss/cli -i ./assets/shared/css/input.css -o ./assets/shared/css/output.css",
-    "watch:css": "npx @tailwindcss/cli -i ./assets/shared/css/input.css -o ./assets/shared/css/output.css --watch"
+    "build:css": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css",
+    "watch": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --watch"
   },
   "keywords": [],
   "author": "",
