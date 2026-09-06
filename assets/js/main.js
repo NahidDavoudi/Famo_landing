@@ -212,6 +212,7 @@ async function loadCoursesFromAPI() {
                 slidesPerView: 1,
                 spaceBetween: 20,
                 loop: true,
+                grabCursor: true,
                 pagination: {
                     el: '.coursesSwiper .swiper-pagination',
                     clickable: true,
@@ -316,9 +317,12 @@ async function loadInstructorsFromAPI() {
                 slidesPerView: 1,
                 spaceBetween: 20,
                 loop: true,
+                grabCursor: true,
                 pagination: {
                     el: '.instructorsSwiper .swiper-pagination',
                     clickable: true,
+                    dynamicBullets: true,
+
                 },
                 navigation: {
                     nextEl: '.instructorsSwiper .swiper-button-next',
@@ -418,9 +422,11 @@ async function loadSupportersFromAPI() {
                 slidesPerView: 1,
                 spaceBetween: 20,
                 loop: true,
+                grabCursor: true,
                 pagination: {
                     el: '.supportSwiper .swiper-pagination',
                     clickable: true,
+                    dynamicBullets: true,
                 },
                 navigation: {
                     nextEl: '.supportSwiper .swiper-button-next',
