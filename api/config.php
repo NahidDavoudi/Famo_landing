@@ -1,12 +1,12 @@
 <?php
-
+require_once  '../vendor/autoload.php';
+use App\Env;
+Env::load();
 // --- Environment Variables (DB credentials) ---
-// این مقادیر باید در محیط سرور (مثلاً از طریق .env یا تنظیمات Apache/Nginx/PHP-FPM) ست شده باشن.
-// هرگز اطلاعات دیتابیس رو مستقیم توی این فایل ننویس.
-define('DB_HOST', getenv('DB_HOST') ?: '127.0.0.1');
-define('DB_NAME', getenv('DB_NAME') ?: '');
-define('DB_USER', getenv('DB_USER') ?: '');
-define('DB_PASS', getenv('DB_PASS') ?: '');
+define('DB_HOST', Env::get('DB_HOST'));
+define('DB_NAME', Env::get('DB_NAME'));
+define('DB_USER', Env::get('DB_USER'));
+define('DB_PASS', Env::get('DB_PASS'));
 
 // چک اولیه: اگر متغیرهای حیاتی ست نشده باشن، صریح خطا بده به جای ادامه‌ی خاموش
 if (empty(DB_NAME) || empty(DB_USER)) {
