@@ -190,5 +190,4 @@ async function loadSupporters() {
 document.addEventListener('DOMContentLoaded', () => {
     loadInstructors();
     loadSupporters();
-    initMobileMenu();
 });

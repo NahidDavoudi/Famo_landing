@@ -163,5 +163,4 @@ async function loadCourses() {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadCourses()
-    initMobileMenu();
 });
