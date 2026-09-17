@@ -36,7 +36,7 @@
                 <ul class="flex items-center space-x-4 xl:space-x-6 space-x-reverse text-white text-sm xl:text-base font-medium">
                     <li><a href="../index.php" class="hover:text-[#E2D9C6] transition py-2 px-3">خانه</a></li>
                     <li><a href="../pages/courses.php" class="hover:text-[#E2D9C6] transition py-2 px-3">دوره‌ها</a></li>
-                    <li><a href="../pages/team.php" class="hover:text-[#E2D9C6] transition py-2 px-3">اساتید</a></li>
+                    <li><a href="../teams/index.php" class="hover:text-[#E2D9C6] transition py-2 px-3">اساتید</a></li>
                     <li><a href="index.php" class="text-[#E2D9C6] font-bold py-2 px-3">وبلاگ</a></li>
                     <li><a href="../index.php#faq-contact" class="hover:text-[#E2D9C6] transition py-2 px-3">تماس با ما</a></li>
                 </ul>
@@ -60,7 +60,7 @@
             <ul class="flex flex-col space-y-3 py-3">
                 <li><a href="../index.php" class="block text-white hover:text-[#E2D9C6] transition py-2 px-3 rounded-lg font-medium">خانه</a></li>
                 <li><a href="../pages/courses.php" class="block text-white hover:text-[#E2D9C6] transition py-2 px-3 rounded-lg font-medium">دوره‌ها</a></li>
-                <li><a href="../pages/team.php" class="block text-white hover:text-[#E2D9C6] transition py-2 px-3 rounded-lg font-medium">اساتید</a></li>
+                <li><a href="../teams/index.php" class="block text-white hover:text-[#E2D9C6] transition py-2 px-3 rounded-lg font-medium">اساتید</a></li>
                 <li><a href="index.php" class="block text-[#E2D9C6] py-2 px-3 rounded-lg font-bold">وبلاگ</a></li>
                 <li><a href="../index.php#faq-contact" class="block text-white hover:text-[#E2D9C6] transition py-2 px-3 rounded-lg font-medium">تماس با ما</a></li>
                 <li><a href="http://dashboard.famoacademy.ir/" class="block bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] text-center py-3 rounded-full font-bold transition">ثبت‌نام آنلاین</a></li>

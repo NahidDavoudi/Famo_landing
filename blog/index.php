@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="pages/team.php"
+                        <a href="teams/index.php"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-school" />
@@ -132,11 +132,11 @@
                     ما</a></li>
                 <li><a href="pages/courses.php"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">دوره‌ها</a></li>
-                <li><a href="pages/team.php"
+                <li><a href="teams/index.php"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3rounded-lg">اساتید</a></li>
                 <li><a href="blog/index.php"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3rounded-lg">وبلاگ</a></li>
-                <li><a href="pages/team.php#support"
+                <li><a href="teams/index.php#support"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3rounded-lg">پشتیبانان</a></li>
                 <li><a href="#services"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3rounded-lg">خدمات
@@ -232,7 +232,7 @@
                         </svg>
                         دوره‌ها
                     </a></li>
-                    <li><a href="pages/team.php"
+                    <li><a href="teams/index.php"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
                         <svg class="icon icon--sm ml-2" aria-hidden="true">
                             <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />

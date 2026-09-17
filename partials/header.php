@@ -97,7 +97,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/courses.php"
+                        <a href="<?php echo $base; ?>courses/index.php"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-book" />
@@ -106,7 +106,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/team.php"
+                        <a href="<?php echo $base; ?>team/index.php"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-school" />
@@ -115,7 +115,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../blog/index.php"
+                        <a href="<?php echo $base; ?>blog/index.php"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-clipboard" />
@@ -171,13 +171,13 @@
                 <li><a href="#about"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">درباره
                     ما</a></li>
-                <li><a href="../pages/courses.php"
+                <li><a href="<?php echo $base; ?>courses/index.php"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">دوره‌ها</a></li>
-                <li><a href="../pages/team.php"
+                <li><a href="<?php echo $base; ?>team/index.php"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">اساتید</a></li>
-                <li><a href="../blog/index.php"
+                <li><a href="<?php echo $base; ?>blog/index.php"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">وبلاگ</a></li>
-                <li><a href="../pages/team.php#support"
+                <li><a href="<?php echo $base; ?>team/index.php#support"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">پشتیبانان</a></li>
                 <li><a href="#services"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">خدمات
@@ -185,7 +185,7 @@
                 <li><a href="#faq-contact"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">سوالات
                         و تماس</a></li>
-                <li><a href="../pages/register.php"
+                <li><a href="<?php echo $base; ?>pages/register.php"
                         class="block bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] text-center py-3 rounded-full font-bold hover:shadow-lg transition duration-300">ثبت
                     نام</a></li>
             </ul>

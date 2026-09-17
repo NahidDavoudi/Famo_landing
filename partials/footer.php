@@ -60,7 +60,7 @@
                         </svg>
                         دوره‌ها
                     </a></li>
-                    <li><a href="../pages/team.php"
+                    <li><a href="../teams/index.php"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
                         <svg class="icon icon--sm ml-2" aria-hidden="true">
                             <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
