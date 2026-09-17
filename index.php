@@ -19,20 +19,20 @@
                         است.
                     </p>
                     <div class="flex flex-row justify-center items-center gap-5">
-                        <button href="pages/register.php"
+                        <a href="pages/register.php"
                             class="bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center">
                             <svg class="icon ml-2" aria-hidden="true">
                                 <use href="assets/icons/sprite.svg#icon-school" />
                             </svg>
                             رزرو نوبت
-                        </button>
-                        <button href="#courses"
+                        </a>
+                        <a href="#courses"
                             class="bg-transparent border-2 border-[#E2D9C6] text-[#E2D9C6] px-4 py-3 rounded-full font-bold hover:bg-[#E2D9C6] hover:text-[#445D84] transition-all duration-300 inline-flex items-center">
                             <svg class="icon ml-2" aria-hidden="true">
                                 <use href="assets/icons/sprite.svg#icon-book" />
                             </svg>
                             مشاهده دوره‌ها
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <!-- Illustration & Stats -->

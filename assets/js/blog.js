@@ -67,13 +67,7 @@ function renderPostCard(post) {
     return `
         <article class="bg-white rounded-2xl overflow-hidden shadow-lg border border-[#E2D9C6] hover-lift transition-all duration-300 hover:shadow-2xl group">
             <a href="${postPath(post.slug)}" class="block">
-                <div class="relative h-44 overflow-hidden">
-                    ${cover}
-                    <a href="${catPath(post.category)}"
-                        class="absolute top-3 right-3 bg-white/95 text-[#445D84] text-xs font-bold px-3 py-1 rounded-full shadow-md hover:bg-[#E2D9C6] transition">
-                        ${post.category}
-                    </a>
-                </div>
+                
                 <div class="p-5">
                     <div class="flex items-center gap-4 text-xs text-gray-500 mb-3">
                         <span class="flex items-center gap-1">
