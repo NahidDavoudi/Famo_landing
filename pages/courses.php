@@ -75,9 +75,8 @@
 </section>
 
 <!-- Footer -->
-<footer class="gradient-bg text-white py-8 text-center text-sm">
-    <p>© ۱۴۰۵ تمامی حقوق برای آموزشگاه فامو بابل محفوظ است.</p>
-</footer>
+    <?php include '../partials/footer.php'?>
+
 
 <script src="<?php echo $base; ?>assets/js/courses.js"></script>
 </body>

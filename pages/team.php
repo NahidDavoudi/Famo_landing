@@ -115,10 +115,8 @@
         </div>
     </div>
 </section>
-
-<footer class="gradient-bg text-white py-8 text-center text-sm">
-    <p>© ۱۴۰۵ تمامی حقوق برای آموزشگاه فامو بابل محفوظ است.</p>
-</footer>
+<!-- footer -->
+    <?php include '../partials/footer.php'?>
 
 <script src="<?php echo $base; ?>assets/js/team.js"></script>
 </body>

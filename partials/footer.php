@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <p class="text-white/85 leading-relaxed mb-6">
-                    آموزشگاه فامو با بیش از 7 سال سابقه درخشان در زمینه مشاوره و آموز컨کور و تیزهوشان، همراه
+                    آموزشگاه فامو با بیش از 7 سال سابقه درخشان در زمینه مشاوره و کنکور و تیزهوشان، همراه
                     دانش‌آموزان در مسیر موفقیت تحصیلی است.
                 </p>
                 <div class="flex gap-4">
@@ -53,14 +53,14 @@
                         </svg>
                         خانه
                     </a></li>
-                    <li><a href="pages/courses.html"
+                    <li><a href="../pages/courses.php"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
                         <svg class="icon icon--sm ml-2" aria-hidden="true">
                             <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
                         </svg>
                         دوره‌ها
                     </a></li>
-                    <li><a href="pages/team.html"
+                    <li><a href="../pages/team.php"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
                         <svg class="icon icon--sm ml-2" aria-hidden="true">
                             <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
