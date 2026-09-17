@@ -559,3 +559,19 @@
     direction: ltr;
     unicode-bidi: embed;
 }
+
+#nahid {
+    text-decoration: underline;
+}
+
+#nahid :hover {
+    color: #f1f1f1;
+}
+
+#mobileMenuBtn {
+    cursor: pointer;
+}
+
+/* #mobileMenuBtn button:hover {
+    cursor: pointer;
+} */
