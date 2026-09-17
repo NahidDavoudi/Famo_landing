@@ -161,4 +161,7 @@ async function loadCourses() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', loadCourses);
+document.addEventListener('DOMContentLoaded', () => {
+    loadCourses()
+    initMobileMenu();
+});

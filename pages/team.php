@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اساتید و_team поддержка | آموزشگاه فامو بابل</title>
+    <title>اساتید | آموزشگاه فامو بابل</title>
     <meta name="description"
         content="معرفی اساتید برجسته کنکور، رتبه‌های برتر المپیاد و تخصص مشاوران و پشتیبانان آموزشی موسسه فامو در بابل.">
     <link rel="stylesheet" href="<?php echo $base; ?>assets/css/output.css">

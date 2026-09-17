@@ -127,8 +127,9 @@
     </div>
 </footer>
 
-    <script src="<?php echo $base; ?>assets/js/gsap.min.js"></script>
-    <script src="<?php echo $base; ?>assets/js/ScrollTrigger.min.js"></script>
-    <script src="<?php echo $base; ?>assets/js/ScrollToPlugin.js"></script>
-    <script src="<?php echo $base; ?>assets/js/swiper.min.js"></script>
-    <script src="<?php echo $base; ?>assets/js/swiper-bundle.min.js"></script>
+        <script src="<?php echo $base; ?>assets/js/gsap.min.js"></script>
+        <script src="<?php echo $base; ?>assets/js/ScrollTrigger.min.js"></script>
+        <script src="<?php echo $base; ?>assets/js/ScrollToPlugin.js"></script>
+        <script src="<?php echo $base; ?>assets/js/swiper.min.js"></script>
+        <script src="<?php echo $base; ?>assets/js/swiper-bundle.min.js"></script>
+        
