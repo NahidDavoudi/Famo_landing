@@ -115,12 +115,9 @@
             </div>
             <p class="mt-4 text-sm">
                 طراحی و توسعه توسط
-                <a href="https://t.me/NHDVDI" target="_blank" rel="noopener"
-                    class="inline-flex items-center gap-1.5 text-[#E2D9C6] hover:text-white transition duration-300 font-medium">
+                <a href="https://mhdavoudi.ir" target="_blank" rel="noopener"
+                    class="inline-flex items-center gap-1.5 text-[#E2D9C6] underline hover:text-white transition duration-300 font-medium" id="nahid">
                     محمد حسین داودی
-                    <svg class="icon icon--sm" aria-hidden="true">
-                        <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-telegram" />
-                    </svg>
                 </a>
             </p>
         </div>

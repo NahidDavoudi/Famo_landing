@@ -68,7 +68,7 @@
             <div class="flex items-center gap-4">
                 <div class="bg-[#445D84] w-12 h-12 rounded-full flex items-center justify-center shrink-0">
                     <a href="<?php echo $base?>index.php">
-                        <img src="<?php echo $base; ?>assets/images/logo.png" alt="logo" class="w-10 h-10 object-contain">
+                        <img src="<?php echo $base; ?>assets/images/logo.png" alt="logo" class="w-12 h-12 object-contain">
                     </a>
                 </div>
                 <div>
@@ -157,7 +157,7 @@
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn"
-                class="lg:hidden text-white text-2xl hover:text-[#E2D9C6] transition duration-300"
+                class="lg:hidden text-white text-2xl hover:text-[#E2D9C6] hover:cursor-pointer transition duration-300"
                 aria-label="باز کردن منوی موبایل" aria-expanded="false">
                 <svg class="icon icon--lg" aria-hidden="true">
                     <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-menu" />
