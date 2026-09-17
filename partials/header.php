@@ -67,7 +67,9 @@
             <!-- Logo -->
             <div class="flex items-center gap-4">
                 <div class="bg-[#445D84] w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                    <img src="<?php echo $base; ?>assets/images/logo.png" alt="logo" class="w-10 h-10 object-contain">
+                    <a href="<?php echo $base?>index.php">
+                        <img src="<?php echo $base; ?>assets/images/logo.png" alt="logo" class="w-10 h-10 object-contain">
+                    </a>
                 </div>
                 <div>
                     <h1 class="text-white text-xl font-bold">گروه آموزشی <span class="text-[#E2D9C6]">فامو</span></h1>

@@ -1,64 +1,6 @@
-<?php $base="" ?>
+<?php $base=''?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHPK2145Z"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-4NHPK2145Z');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آموزشگاه فامو | مشاوره تخصصی کنکور و تیزهوشان در بابل</title>
-    <meta name="description" content="آموزشگاه فامو بابل - مشاوره تخصصی کنکور و تیزهوشان با اساتید برجسته">
-    <meta name="keywords"
-        content="موسسه فامو، موسسه آموزشی فامو،کنکور, تیزهوشان, بابل, آموزشگاه, فامو, دوره کنکور, مشاوره تحصیلی">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "EducationalOrganization",
-        "name": "آموزشگاه فامو",
-        "alternateName": "Famo Academy",
-        "description": "آموزشگاه فامو نهاد آموزشی پیشرو در بابل با هفت سال سابقه در مشاوره تخصصی، آموزش مفهومی و آمادگی کنکور و تیزهوشان برای مقاطع راهنمایی و دبیرستان.",
-        "url": "https://famoacademy.ir",
-        "logo": "https://famoacademy.ir/assets/images/logo.png",
-        "image": "https://famoacademy.ir/assets/images/logo.png",
-        "email": "info@famoacademy.ir",
-        "telephone": "+98-11-32221234",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "بابل",
-            "addressRegion": "مازندران",
-            "addressCountry": "IR",
-            "streetAddress": "میدان باغ فردوس، جنب بیمارستان بابل کلینیک، مدرسه بهارستان"
-        },
-        "founder": {
-            "@type": "Person",
-            "name": "دکتر محمد موسی زاده موسوی"
-        },
-        "areaServed": {
-            "@type": "City",
-            "name": "بابل"
-        }
-    }
-    </script>
-    <script src="assets/js/animation.js"></script>
-
-    <!-- Font Vazir -->
-    <link rel="stylesheet" href="assets/css/output.css">
-    <link rel="stylesheet" href="assets/css/icons.css">
-    <link rel="stylesheet" href="assets/css/swiper.min.css">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/font.css">
-</head>
 
 <body class="font-family text-gray-800">
     <!-- Header -->
@@ -203,7 +145,7 @@
             </div>
 
             <div class="text-center mt-10">
-                <a href="pages/courses.php"
+                <a href="courses/index.php"
                     class="inline-flex items-center bg-[#445D84] text-white px-6 py-3 rounded-full font-bold hover:bg-[#344868] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#445D84] focus-visible:ring-offset-2">
                     مشاهده همه دوره‌ها و جزئیات کامل
                     <svg class="icon icon--sm mr-2" aria-hidden="true">
@@ -214,9 +156,89 @@
         </div>
     </section>
 
+
     <!-- Team Section -->
     <section id="team">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#445D84] mb-3 sm:mb-4">کادر حرفه ای آموزشگاه فامو
+                </h2>
+                <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">جمعی از اساتید و دانشجویان برتر و متخصص شهرستان بابل</p>
+            </div>
 
+            <!-- Course Cards - Swiper Carousel -->
+            <div class="swiper instructorsSwiper relative pb-12">
+                <div class="swiper-wrapper" id="instructorsContainer">
+                    <!-- Skeleton Loaders -->
+                    <div class="swiper-slide skeleton-instructor-wrapper">
+                        <div
+                            class="skeleton-instructor-card md:w-full h-48 sm:h-40 md:h-auto rounded-2xl flex items-center justify-center relative overflow-hidden min-h-[200px]">
+                            <div
+                                class="skeleton skeleton-pulse absolute inset-0 bg-gradient-to-r from-gray-300 to-gray-200">
+                            </div>
+                            <div class="relative z-10 text-center p-4">
+                                <div class="skeleton skeleton-pulse w-16 h-16 rounded-full bg-white/30 mx-auto mb-4">
+                                </div>
+                                <div class="skeleton skeleton-pulse h-6 w-32 bg-white/30 rounded mx-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide skeleton-instructor-wrapper">
+                        <div
+                            class="skeleton-instructor-card md:w-full h-48 sm:h-40 md:h-auto rounded-2xl flex items-center justify-center relative overflow-hidden min-h-[200px]">
+                            <div
+                                class="skeleton skeleton-pulse absolute inset-0 bg-gradient-to-r from-gray-300 to-gray-200">
+                            </div>
+                            <div class="relative z-10 text-center p-4">
+                                <div class="skeleton skeleton-pulse w-16 h-16 rounded-full bg-white/30 mx-auto mb-4">
+                                </div>
+                                <div class="skeleton skeleton-pulse h-6 w-32 bg-white/30 rounded mx-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide skeleton-instructor-wrapper">
+                        <div
+                            class="skeleton-instructor-card md:w-full h-48 sm:h-40 md:h-auto rounded-2xl flex items-center justify-center relative overflow-hidden min-h-[200px]">
+                            <div
+                                class="skeleton skeleton-pulse absolute inset-0 bg-gradient-to-r from-gray-300 to-gray-200">
+                            </div>
+                            <div class="relative z-10 text-center p-4">
+                                <div class="skeleton skeleton-pulse w-16 h-16 rounded-full bg-white/30 mx-auto mb-4">
+                                </div>
+                                <div class="skeleton skeleton-pulse h-6 w-32 bg-white/30 rounded mx-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide skeleton-instructor-wrapper">
+                        <div
+                            class="skeleton-instructor-card md:w-full h-48 sm:h-40 md:h-auto rounded-2xl flex items-center justify-center relative overflow-hidden min-h-[200px]">
+                            <div
+                                class="skeleton skeleton-pulse absolute inset-0 bg-gradient-to-r from-gray-300 to-gray-200">
+                            </div>
+                            <div class="relative z-10 text-center p-4">
+                                <div class="skeleton skeleton-pulse w-16 h-16 rounded-full bg-white/30 mx-auto mb-4">
+                                </div>
+                                <div class="skeleton skeleton-pulse h-6 w-32 bg-white/30 rounded mx-auto"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Swiper Navigation -->
+
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="team/index.php"
+                    class="inline-flex items-center bg-[#445D84] text-white px-6 py-3 rounded-full font-bold hover:bg-[#344868] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#445D84] focus-visible:ring-offset-2">
+                    مشاهده کادر آموزشگاه فامو
+                    <svg class="icon icon--sm mr-2" aria-hidden="true">
+                        <use href="assets/icons/sprite.svg#icon-chevron-left" />
+                    </svg>
+                </a>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
