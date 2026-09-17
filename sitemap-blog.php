@@ -1,4 +1,5 @@
 <?php
+<?php $base = ""; ?>
 /**
  * sitemap-blog.php
  * XML Sitemap داینامیک برای پست‌های وبلاگ و دسته‌بندی‌ها
