@@ -1,3 +1,4 @@
+<?php $base='../'?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 

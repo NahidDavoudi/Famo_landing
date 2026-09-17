@@ -90,7 +90,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#about"
+                        <a href="<?php echo $base; ?>#about"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-help-circle" />
@@ -126,7 +126,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#services"
+                        <a href="<?php echo $base; ?>#services"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-star" />
@@ -135,7 +135,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#faq-contact"
+                        <a href="<?php echo $base; ?>#faq-contact"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-help-circle" />
@@ -168,9 +168,9 @@
         <!-- Mobile Navigation -->
         <div id="mobileMenu" class="hidden lg:hidden mt-4 pt-4 border-t border-white/20 animate-fade-in-up">
             <ul class="flex flex-col space-y-4">
-                <li><a href="#home"
+                <li><a href="<?php echo $base; ?>#home"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">خانه</a></li>
-                <li><a href="#about"
+                <li><a href="<?php echo $base; ?>#about"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">درباره
                     ما</a></li>
                 <li><a href="<?php echo $base; ?>courses/index.php"
@@ -179,12 +179,10 @@
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">اساتید</a></li>
                 <li><a href="<?php echo $base; ?>blog/index.php"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">وبلاگ</a></li>
-                <li><a href="<?php echo $base; ?>team/index.php#support"
-                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">پشتیبانان</a></li>
-                <li><a href="#services"
+                <li><a href="<?php echo $base; ?>#services"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">خدمات
                         ویژه</a></li>
-                <li><a href="#faq-contact"
+                <li><a href="<?php echo $base; ?>#faq-contact"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">سوالات
                         و تماس</a></li>
                 <li><a href="<?php echo $base; ?>pages/register.php"

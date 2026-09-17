@@ -7,7 +7,7 @@
 <!-- Header -->
 <?php include '../partials/header.php' ?>
 <!-- Blog Index -->
-<section class="pt-24 pb-12 gradient-bg text-white text-center">
+<section class="pt-36 pb-12 gradient-bg text-white text-center">
     <h1 class="text-3xl sm:text-4xl font-bold mb-4 text-white">وبلاگ ها و مقالات آموزشگاه فامو</h1>
     <div class="pt-10 lg:pt-20 container mx-auto px-4">
         <p class="text-white/80 max-w-2xl mx-auto text-base sm:text-lg">برنامه‌ریزی، کادر مجرب، آزمون‌های استاندارد
@@ -15,6 +15,12 @@
     </div>
 </section>
 
+<!-- Category Badges -->
+<section class="py-8 px-4">
+    <div class="swiper" >
+        <div class="flex gap-2" id="categoryFilters"></div>
+    </div>
+</section>
 <!-- Detailed Courses List -->
 <section class="py-16 px-4">
     <div class="container mx-auto max-w-6xl space-y-12" id="postsContainer">
