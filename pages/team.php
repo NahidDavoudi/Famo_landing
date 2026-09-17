@@ -16,27 +16,7 @@
 <body class="font-family text-gray-800 bg-[#f9f7f3]">
 
 <!-- Header -->
-<header class="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 py-2 sm:py-4">
-    <div
-        class="bg-[#445D84] bg-opacity-95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl border border-white/20 px-3 sm:px-6 py-3 sm:py-4 max-w-7xl mx-auto flex justify-between items-center">
-        <a href="../index.html" class="flex items-center gap-3">
-            <img src="<?php echo $base; ?>assets/images/logo.png" alt="لوغو فامو" class="w-10 h-10 object-contain">
-            <span class="text-white text-xl font-bold">گروه آموزشی <span class="text-[#E2D9C6]">فامو</span></span>
-        </a>
-        <nav class="hidden lg:block">
-            <ul class="flex items-center space-x-4 space-x-reverse text-white text-sm">
-                <li><a href="../index.html" class="hover:text-[#E2D9C6] transition py-2 px-3">خانه</a></li>
-                <li><a href="courses.html" class="hover:text-[#E2D9C6] transition py-2 px-3">دوره‌ها</a></li>
-                <li><a href="team.html" class="text-[#E2D9C6] font-bold py-2 px3">اساتید و تیم پشتیبانی</a></li>
-                <li><a href="../blog/index.html" class="hover:text-[#E2D9C6] transition py-2 px-3">وبلاگ</a></li>
-                <li><a href="../index.html#faq-contact" class="hover:text-[#E2D9C6] transition py-2 px-3">تماس با
-                    ما</a></li>
-            </ul>
-        </nav>
-        <a href="http://dashboard.famoacademy.ir/"
-            class="bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] px-5 py-2.5 rounded-full font-bold text-sm">ثبت‌نام
-            آنلاین</a>
-</header>
+    <?php include '../partials/header.php' ?>
 
 <section class="pt-36 pb-12 gradient-bg text-white text-center">
     <div class="container mx-auto px-4">

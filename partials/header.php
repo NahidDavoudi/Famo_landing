@@ -97,7 +97,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="pages/courses.php"
+                        <a href="../pages/courses.php"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-book" />
@@ -106,7 +106,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="pages/team.php"
+                        <a href="../pages/team.php"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-school" />
@@ -115,7 +115,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="blog/index.php"
+                        <a href="../blog/index.php"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-clipboard" />
