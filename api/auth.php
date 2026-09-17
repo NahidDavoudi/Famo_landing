@@ -94,7 +94,7 @@ try {
                     'status' => 'success',
                     'title' => 'ثبت‌نام موفق',
                     'message' => 'حساب شما ایجاد شد',
-                    'redirect' => 'dashboard.html'
+                    'redirect' => 'dashboard.php'
                 ]);
                 
             } catch (Exception $e) {
@@ -153,7 +153,7 @@ try {
                 'status' => 'success',
                 'title' => 'ورود موفق',
                 'message' => 'خوش آمدید ' . $user['name'],
-                'redirect' => 'dashboard.html'
+                'redirect' => 'dashboard.php'
             ]);
             break;
 

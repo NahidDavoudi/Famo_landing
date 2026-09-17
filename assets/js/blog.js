@@ -1,4 +1,4 @@
-// blog.js - Blog module (blog/index.html, blog/category.html, blog/post.html)
+// blog.js - Blog module (blog/index.php, blog/category.php, blog/post.php)
 import { formatJalaliLong } from './jalali.js';
 
 const PUBLIC_API_URL = '../api/blog.php';
@@ -40,11 +40,11 @@ function getParam(name) {
 }
 
 function catPath(category) {
-    return `category.html?category=${encodeURIComponent(category)}`;
+    return `category.php?category=${encodeURIComponent(category)}`;
 }
 
 function postPath(slug) {
-    return `post.html?slug=${encodeURIComponent(slug)}`;
+    return `post.php?slug=${encodeURIComponent(slug)}`;
 }
 
 function showSkeletons() {
@@ -135,8 +135,8 @@ function renderCategoryBadges(activeCategory = null) {
     if (!holder) return;
 
     const all = activeCategory
-        ? `<a href="index.html" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]">همه</a>`
-        : `<a href="index.html" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-[#445D84] text-white border-[#445D84]">همه</a>`;
+        ? `<a href="index.php" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]">همه</a>`
+        : `<a href="index.php" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-[#445D84] text-white border-[#445D84]">همه</a>`;
 
     const items = BLOG_CATEGORIES.map(cat => {
         const active = cat.name === activeCategory;
@@ -184,7 +184,7 @@ async function loadPostList(action, params, baseUrl) {
 function initBlogIndex() {
     const page = Math.max(1, parseInt(getParam('page') || '1', 10));
     renderCategoryBadges(null);
-    loadPostList('get_posts', { page }, 'index.html');
+    loadPostList('get_posts', { page }, 'index.php');
 }
 
 function initBlogCategory() {
@@ -231,7 +231,7 @@ function initBlogPost() {
                         <p class="text-6xl mb-4 font-bold text-[#E2D9C6]">۴۰۴</p>
                         <h1 class="text-2xl font-bold text-[#445D84] mb-3">پست یافت نشد</h1>
                         <p class="text-gray-600 mb-6">ممکن است این پست منتشر نشده یا آدرس آن تغییر کرده باشد.</p>
-                        <a href="index.html" class="inline-flex items-center gap-2 bg-[#445D84] text-white px-6 py-3 rounded-full font-bold hover:bg-[#344868] transition">
+                        <a href="index.php" class="inline-flex items-center gap-2 bg-[#445D84] text-white px-6 py-3 rounded-full font-bold hover:bg-[#344868] transition">
                             ${svgIcon('icon-arrow-right', 'icon--sm')} بازگشت به وبلاگ
                         </a>
                     </div>`;
@@ -258,9 +258,9 @@ function renderPost(post) {
 
     container.innerHTML = `
         <nav class="text-sm text-gray-500 mb-6 flex flex-wrap items-center gap-2">
-            <a href="../index.html" class="hover:text-[#445D84] transition flex items-center gap-1">${svgIcon('icon-home', 'icon--sm')} خانه</a>
+            <a href="../index.php" class="hover:text-[#445D84] transition flex items-center gap-1">${svgIcon('icon-home', 'icon--sm')} خانه</a>
             <span class="text-[#E2D9C6]">/</span>
-            <a href="index.html" class="hover:text-[#445D84] transition">وبلاگ</a>
+            <a href="index.php" class="hover:text-[#445D84] transition">وبلاگ</a>
             <span class="text-[#E2D9C6]">/</span>
             <a href="${catPath(post.category)}" class="hover:text-[#445D84] transition">${post.category}</a>
             <span class="text-[#E2D9C6]">/</span>
@@ -286,7 +286,7 @@ function renderPost(post) {
                      id="postContent"></div>
 
                 <div class="mt-10 pt-6 border-t border-[#E2D9C6] flex items-center justify-between flex-wrap gap-3">
-                    <a href="index.html" class="inline-flex items-center gap-2 bg-[#445D84] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#344868] transition">
+                    <a href="index.php" class="inline-flex items-center gap-2 bg-[#445D84] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#344868] transition">
                         ${svgIcon('icon-arrow-right', 'icon--sm')} همه مطالب
                     </a>
                     <div class="flex items-center gap-2 text-sm text-gray-500">

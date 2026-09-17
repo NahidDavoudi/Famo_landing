@@ -77,7 +77,7 @@
                         است.
                     </p>
                     <div class="flex flex-row justify-center items-center gap-5">
-                        <button href="pages/register.html"
+                        <button href="pages/register.php"
                             class="bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center">
                             <svg class="icon ml-2" aria-hidden="true">
                                 <use href="assets/icons/sprite.svg#icon-school" />
@@ -203,7 +203,7 @@
             </div>
 
             <div class="text-center mt-10">
-                <a href="pages/courses.html"
+                <a href="pages/courses.php"
                     class="inline-flex items-center bg-[#445D84] text-white px-6 py-3 rounded-full font-bold hover:bg-[#344868] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#445D84] focus-visible:ring-offset-2">
                     مشاهده همه دوره‌ها و جزئیات کامل
                     <svg class="icon icon--sm mr-2" aria-hidden="true">
@@ -496,7 +496,6 @@
     <!-- Footer -->
     <?php include 'partials/footer.php'?>
 
-    <!-- Scripts -->
     <!-- Scripts -->
     <script src="assets/js/gsap.min.js"></script>
     <script src="assets/js/ScrollTrigger.min.js"></script>

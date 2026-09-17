@@ -172,7 +172,7 @@
 
             <!-- Back Link -->
             <div class="text-center mt-3 pt-6">
-                <a href="../index.html" class="text-gray-600 font-medium hover:text-[#445D84] transition duration-300">
+                <a href="../index.php" class="text-gray-600 font-medium hover:text-[#445D84] transition duration-300">
                     <svg class="icon icon--sm inline-block ml-2" aria-hidden="true">
                         <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
                     </svg> بازگشت به صفحه اصلی
@@ -184,7 +184,7 @@
         <div
             class="hidden lg:flex flex-1 bg-gradient-to-br from-[#11223C] to-[#05387e] text-white justify-center items-center text-center p-10">
             <div class="branding-content">
-                <a href="../index.html" class="inline-block mb-3">
+                <a href="../index.php" class="inline-block mb-3">
                     <img src="<?php echo $base; ?>assets/images/logo.png" alt="لوگوی آموزشگاه فامو" class="h-16 mx-auto">
                 </a>
                 <h2 class="text-3xl font-bold mb-5 text-white">آینده تحصیلی خود را با فامو بسازید</h2>

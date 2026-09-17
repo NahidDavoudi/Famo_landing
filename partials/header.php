@@ -79,7 +79,7 @@
             <nav class="hidden lg:block">
                 <ul class="flex items-center space-x-4 xl:space-x-6 space-x-reverse">
                     <li>
-                        <a href="#home"
+                        <a href="<?php echo $base?>#home"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
                             <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-home" />

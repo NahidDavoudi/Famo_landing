@@ -2,6 +2,71 @@
 const PUBLIC_API_URL = '../api/public.php';
 const SPRITE_PATH = '../assets/icons/sprite.svg';
 
+
+// Mobile Menu Toggle - Global variables for menu elements
+let mobileMenuBtn = null;
+let mobileMenu = null;
+
+function initMobileMenu() {
+    mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.innerHTML = isHidden
+                ? svgIcon('icon-x', 'icon--lg')
+                : svgIcon('icon-menu', 'icon--lg');
+            mobileMenuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.innerHTML = svgIcon('icon-menu', 'icon--lg');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    }
+}
+
+// Initialize mobile menu when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+} else {
+    initMobileMenu();
+}
+
+// Smooth Scrolling for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            // Close mobile menu if open
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
+                if (mobileMenuBtn) mobileMenuBtn.innerHTML = svgIcon('icon-menu', 'icon--lg');
+            }
+
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+
 function svgIcon(name, cls = '') {
     const c = cls ? ` ${cls}` : '';
     return `<svg class="icon${c}" aria-hidden="true"><use href="${SPRITE_PATH}#${name}"/></svg>`;

@@ -10,18 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const formMessageTitle = document.getElementById('formMessageTitle');
     const formMessage = document.getElementById('formMessage');
     const redirectButton = document.getElementById('redirectButton');
-    
+
     // Bot link elements
     const showBotLinkBtn = document.getElementById('showBotLinkBtn');
     const backToRegisterBtn = document.getElementById('backToRegisterBtn');
     const botLinkStep1 = document.getElementById('botLinkStep1');
     const botLinkStep2 = document.getElementById('botLinkStep2');
-    
+
     // Grade/Field handling
     const gradeSelect = document.querySelector('#formRegister select[name="grade"]');
     const fieldContainer = document.getElementById('fieldContainer');
     const fieldSelect = document.querySelector('#formRegister select[name="field"]');
-    
+
     // Handle grade change - hide field for grades 7-9
     if (gradeSelect) {
         gradeSelect.addEventListener('change', () => {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         botLinkContainer.style.display = 'none';
         messageContainer.style.display = 'none';
     }
-    
+
     // Show bot link form
     if (showBotLinkBtn) {
         showBotLinkBtn.addEventListener('click', () => {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             botLinkStep2.style.display = 'none';
         });
     }
-    
+
     // Back to register
     if (backToRegisterBtn) {
         backToRegisterBtn.addEventListener('click', () => {
@@ -73,14 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
         messageContainer.className = type;
         formMessageTitle.textContent = title;
         formMessage.textContent = message;
-        
+
         if (redirectUrl) {
             redirectButton.style.display = 'inline-block';
             redirectButton.href = redirectUrl;
         } else {
             redirectButton.style.display = 'none';
         }
-        
+
         loginFormContainer.style.display = 'none';
         registerFormContainer.style.display = 'none';
         botLinkContainer.style.display = 'none';
@@ -106,12 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalText = button.innerHTML;
         button.disabled = true;
         button.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i> صبر کنید...';
-        
+
         try {
             const formData = new FormData(form);
-            const response = await fetch('../api/auth.php', { 
-                method: 'POST', 
-                body: formData 
+            const response = await fetch('../api/auth.php', {
+                method: 'POST',
+                body: formData
             });
 
             if (!response.ok) {
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (successCallback) {
                     successCallback(data);
                 } else {
-                    const redirectUrl = data.redirect || 'dashboard.html';
+                    const redirectUrl = data.redirect || 'dashboard.php';
                     showMessage('success', data.title || 'موفق', data.message, redirectUrl);
                     setTimeout(() => window.location.href = redirectUrl, 1500);
                 }
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         handleSubmit(e.target);
     });
-    
+
     // Bot link - Step 1: Send verification code
     const formBotLink = document.getElementById('formBotLink');
     if (formBotLink) {
@@ -164,18 +164,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const originalText = button.innerHTML;
             button.disabled = true;
             button.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i> در حال ارسال...';
-            
+
             try {
                 const formData = new FormData(e.target);
                 formData.append('action', 'send_verify_code');
-                
+
                 const response = await fetch('../api/auth.php', {
                     method: 'POST',
                     body: formData
                 });
-                
+
                 const data = await response.json();
-                
+
                 if (data.status === 'success') {
                     // Show step 2
                     botLinkStep1.style.display = 'none';
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // Bot link - Step 2: Verify code
     const formVerifyCode = document.getElementById('formVerifyCode');
     if (formVerifyCode) {
@@ -201,20 +201,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const originalText = button.innerHTML;
             button.disabled = true;
             button.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i> در حال تایید...';
-            
+
             try {
                 const formData = new FormData(e.target);
                 formData.append('action', 'verify_code');
-                
+
                 const response = await fetch('../api/auth.php', {
                     method: 'POST',
                     body: formData
                 });
-                
+
                 const data = await response.json();
-                
+
                 if (data.status === 'success') {
-                    const redirectUrl = data.redirect || 'dashboard.html';
+                    const redirectUrl = data.redirect || 'dashboard.php';
                     showMessage('success', data.title || 'موفق', data.message, redirectUrl);
                     setTimeout(() => window.location.href = redirectUrl, 1500);
                 } else {
