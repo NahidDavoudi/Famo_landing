@@ -128,18 +128,47 @@ function renderCategoryBadges(activeCategory = null) {
     const holder = document.getElementById('categoryFilters');
     if (!holder) return;
 
-    const all = activeCategory
-        ? `<a href="index.php" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]">همه</a>`
-        : `<a href="index.php" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-[#445D84] text-white border-[#445D84]">همه</a>`;
+    const isIndexPage = document.body.dataset.page === 'blog-index';
+
+    const all = isIndexPage
+        ? `<button type="button" data-category="" class="swiper-slide px-4 py-2 rounded-full text-sm font-bold border transition ${activeCategory ? 'bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]' : 'bg-[#445D84] text-white border-[#445D84]'}">همه</button>`
+        : activeCategory
+            ? `<a href="index.php" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]">همه</a>`
+            : `<a href="index.php" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-[#445D84] text-white border-[#445D84]">همه</a>`;
 
     const items = BLOG_CATEGORIES.map(cat => {
         const active = cat.name === activeCategory;
+        if (isIndexPage) {
+            return `<button type="button" data-category="${cat.name}"
+                class="swiper-slide px-4 py-2 rounded-full text-sm font-bold border transition ${active ? 'bg-[#445D84] text-white border-[#445D84]' : 'bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]'}">
+                ${cat.name}</button>`;
+        }
         return `<a href="${catPath(cat.name)}"
             class="px-4 py-2 rounded-full text-sm font-bold border transition ${active ? 'bg-[#445D84] text-white border-[#445D84]' : 'bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]'}">
             ${cat.name}</a>`;
     }).join('');
 
     holder.innerHTML = all + items;
+
+    if (isIndexPage) {
+        holder.querySelectorAll('button[data-category]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+                filterPostsByCategory(category);
+            });
+        });
+
+        // Initialize Swiper for category badges
+        if (window.Swiper && !holder.swiperInitialized) {
+            new Swiper('.categorySwiper', {
+                slidesPerView: 'auto',
+                spaceBetween: 8,
+                freeMode: true,
+                grabCursor: true,
+            });
+            holder.swiperInitialized = true;
+        }
+    }
 }
 
 // ---------- Loaders ----------
@@ -177,8 +206,26 @@ async function loadPostList(action, params, baseUrl) {
 
 function initBlogIndex() {
     const page = Math.max(1, parseInt(getParam('page') || '1', 10));
-    renderCategoryBadges(null);
-    loadPostList('get_posts', { page }, 'index.php');
+    const category = getParam('category') || '';
+    renderCategoryBadges(category);
+    loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page } : { page }, 'index.php');
+}
+
+// Filter posts by category on blog index (AJAX)
+function filterPostsByCategory(category) {
+    const container = document.getElementById('postsContainer');
+    if (!container) return;
+
+    // Update URL without reload
+    const url = category ? `index.php?category=${encodeURIComponent(category)}` : 'index.php';
+    history.pushState({ category }, '', url);
+
+    // Update active badge
+    renderCategoryBadges(category);
+
+    // Load posts
+    const page = 1;
+    loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page } : { page }, 'index.php');
 }
 
 function initBlogCategory() {
@@ -351,3 +398,12 @@ const pageType = document.body.dataset.page;
 if (pageType === 'blog-index') initBlogIndex();
 else if (pageType === 'blog-category') initBlogCategory();
 else if (pageType === 'blog-post') initBlogPost();
+
+// Handle browser back/forward for category filter on blog index
+window.addEventListener('popstate', (event) => {
+    if (document.body.dataset.page === 'blog-index' && event.state && event.state.category !== undefined) {
+        const category = event.state.category || '';
+        renderCategoryBadges(category);
+        loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page: 1 } : { page: 1 }, 'index.php');
+    }
+});

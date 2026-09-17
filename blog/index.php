@@ -17,12 +17,12 @@
 
 <!-- Category Badges -->
 <section class="py-8 px-4">
-    <div class="swiper" >
-        <div class="flex gap-2" id="categoryFilters"></div>
+    <div class="swiper categorySwiper">
+        <div class="swiper-wrapper" id="categoryFilters"></div>
     </div>
 </section>
 <!-- Detailed Courses List -->
-<section class="py-16 px-4">
+<section class="py-8 px-4">
     <div class="container mx-auto max-w-6xl space-y-12" id="postsContainer">
         <!-- Skeleton loaders shown until the API responds -->
         <div
