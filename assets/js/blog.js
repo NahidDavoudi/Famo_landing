@@ -170,13 +170,14 @@ function renderCategoryBadges(activeCategory = null) {
             : `<a href="index.php" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-[#445D84] text-white border-[#445D84]">همه</a>`;
 
     const items = BLOG_CATEGORIES.map(cat => {
-        const active = cat.name === activeCategory;
+        const active = cat.slug === activeCategory || cat.name === activeCategory;
+        const categoryValue = cat.slug || cat.name;
         if (isIndexPage) {
-            return `<button type="button" data-category="${cat.name}"
+            return `<button type="button" data-category="${categoryValue}"
                 class="swiper-slide px-4 py-2 rounded-full text-sm font-bold border transition ${active ? 'bg-[#445D84] text-white border-[#445D84]' : 'bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]'}">
                 ${cat.name}</button>`;
         }
-        return `<a href="${catPath(cat.name)}"
+        return `<a href="${catPath(categoryValue)}"
             class="px-4 py-2 rounded-full text-sm font-bold border transition ${active ? 'bg-[#445D84] text-white border-[#445D84]' : 'bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]'}">
             ${cat.name}</a>`;
     }).join('');

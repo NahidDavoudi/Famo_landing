@@ -34,10 +34,12 @@ switch ($action) {
             )->fetchColumn();
 
             $stmt = $pdo->prepare("
-                SELECT id, title, slug, category, excerpt, cover_image, published_at, views
-                FROM blog_posts
-                WHERE is_published = 1
-                ORDER BY published_at DESC, id DESC
+                SELECT bp.id, bp.title, bp.slug, bp.category, bc.name AS category_name, bc.slug AS category_slug, bc.icon AS category_icon, bc.color AS category_color,
+                       bp.excerpt, bp.cover_image, bp.published_at, bp.views
+                FROM blog_posts bp
+                LEFT JOIN blog_categories bc ON bp.category_id = bc.id
+                WHERE bp.is_published = 1
+                ORDER BY bp.published_at DESC, bp.id DESC
                 LIMIT :limit OFFSET :offset
             ");
             $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
@@ -64,29 +66,40 @@ switch ($action) {
     // ==================== Get Posts By Category ====================
     case 'get_posts_by_category':
         try {
-            $category = trim($_GET['category'] ?? '');
-            if ($category === '') {
+            $categorySlug = trim($_GET['category'] ?? '');
+            if ($categorySlug === '') {
                 blogJSONResponse(['success' => false, 'error' => 'دسته‌بندی نامعتبر است'], 400);
             }
+
+            // Resolve category by slug or name
+            $catStmt = $pdo->prepare("SELECT id FROM blog_categories WHERE slug = ? OR name = ? LIMIT 1");
+            $catStmt->execute([$categorySlug, $categorySlug]);
+            $category = $catStmt->fetch();
+            if (!$category) {
+                blogJSONResponse(['success' => false, 'error' => 'دسته‌بندی یافت نشد'], 404);
+            }
+            $categoryId = $category['id'];
 
             $page = max(1, intval($_GET['page'] ?? 1));
             $perPage = min(12, max(1, intval($_GET['per_page'] ?? 9)));
             $offset = ($page - 1) * $perPage;
 
             $countStmt = $pdo->prepare(
-                "SELECT COUNT(*) FROM blog_posts WHERE is_published = 1 AND category = ?"
+                "SELECT COUNT(*) FROM blog_posts WHERE is_published = 1 AND category_id = ?"
             );
-            $countStmt->execute([$category]);
+            $countStmt->execute([$categoryId]);
             $total = (int)$countStmt->fetchColumn();
 
             $stmt = $pdo->prepare("
-                SELECT id, title, slug, category, excerpt, cover_image, published_at, views
-                FROM blog_posts
-                WHERE is_published = 1 AND category = ?
-                ORDER BY published_at DESC, id DESC
+                SELECT bp.id, bp.title, bp.slug, bp.category, bc.name AS category_name, bc.slug AS category_slug, bc.icon AS category_icon, bc.color AS category_color,
+                       bp.excerpt, bp.cover_image, bp.published_at, bp.views
+                FROM blog_posts bp
+                LEFT JOIN blog_categories bc ON bp.category_id = bc.id
+                WHERE bp.is_published = 1 AND bp.category_id = :cat_id
+                ORDER BY bp.published_at DESC, bp.id DESC
                 LIMIT :limit OFFSET :offset
             ");
-            $stmt->bindValue(1, $category, PDO::PARAM_STR);
+            $stmt->bindValue(':cat_id', $categoryId, PDO::PARAM_INT);
             $stmt->bindValue(':limit', $perPage, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
@@ -95,7 +108,7 @@ switch ($action) {
             blogJSONResponse([
                 'success' => true,
                 'data' => $posts,
-                'category' => $category,
+                'category' => $categorySlug,
                 'pagination' => [
                     'page' => $page,
                     'per_page' => $perPage,
@@ -118,10 +131,12 @@ switch ($action) {
             }
 
             $stmt = $pdo->prepare("
-                SELECT id, title, slug, category, excerpt, content, cover_image,
-                       meta_description, published_at, views
-                FROM blog_posts
-                WHERE slug = ? AND is_published = 1
+                SELECT bp.id, bp.title, bp.slug, bp.category, bc.name AS category_name, bc.slug AS category_slug, bc.icon AS category_icon, bc.color AS category_color,
+                       bp.excerpt, bp.content, bp.cover_image,
+                       bp.meta_description, bp.published_at, bp.views
+                FROM blog_posts bp
+                LEFT JOIN blog_categories bc ON bp.category_id = bc.id
+                WHERE bp.slug = ? AND bp.is_published = 1
                 LIMIT 1
             ");
             $stmt->execute([$slug]);
@@ -147,11 +162,13 @@ switch ($action) {
     case 'get_categories':
         try {
             $categories = $pdo->query("
-                SELECT category AS name, COUNT(*) AS count
-                FROM blog_posts
-                WHERE is_published = 1
-                GROUP BY category
-                ORDER BY count DESC, category ASC
+                SELECT bc.id, bc.name, bc.slug, bc.icon, bc.color, bc.description, bc.sort_order,
+                       COUNT(bp.id) AS post_count
+                FROM blog_categories bc
+                LEFT JOIN blog_posts bp ON bp.category_id = bc.id AND bp.is_published = 1
+                WHERE bc.is_active = 1
+                GROUP BY bc.id, bc.name, bc.slug, bc.icon, bc.color, bc.description, bc.sort_order
+                ORDER BY bc.sort_order ASC, bc.name ASC
             ")->fetchAll();
 
             blogJSONResponse(['success' => true, 'data' => $categories]);
