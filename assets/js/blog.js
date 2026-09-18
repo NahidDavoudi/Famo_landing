@@ -1,20 +1,14 @@
 // blog.js - Blog module (blog/index.php, blog/category.php, blog/post.php)
 import { formatJalaliLong } from './jalali.js';
 
-console.log('[blog.js] Module loaded, BLOG_CATEGORIES:', BLOG_CATEGORIES);
-
 const PUBLIC_API_URL = '../api/blog.php';
 const SPRITE_PATH = '../assets/icons/sprite.svg';
 const SITE_URL = 'https://famoacademy.ir';
 
-// The 5 site categories (static nav). Order matters for display.
-const BLOG_CATEGORIES = [
-    { name: 'کنکور', icon: 'icon-school' },
-    { name: 'تیزهوشان', icon: 'icon-star' },
-    { name: 'مشاوره تحصیلی', icon: 'icon-help-circle' },
-    { name: 'روش مطالعه', icon: 'icon-book' },
-    { name: 'اخبار فامو', icon: 'icon-clipboard' },
-];
+// Categories loaded from API
+let BLOG_CATEGORIES = [];
+
+console.log('[blog.js] Module loaded');
 
 // ---------- Helpers ----------
 function svgIcon(name, cls = '') {
@@ -43,6 +37,39 @@ function getParam(name) {
 
 function catPath(category) {
     return `category.php?category=${encodeURIComponent(category)}`;
+}
+
+// ---------- Load Categories ----------
+async function loadCategories() {
+    try {
+        const response = await fetch(`${PUBLIC_API_URL}?action=get_categories`);
+        const result = await response.json();
+        if (result.success && result.data) {
+            BLOG_CATEGORIES = result.data.map(c => ({
+                id: c.id,
+                name: c.name,
+                slug: c.slug,
+                icon: c.icon || 'icon-file',
+                color: c.color || '#445D84',
+                description: c.description,
+                postCount: c.post_count
+            }));
+            console.log('[blog.js] Categories loaded:', BLOG_CATEGORIES);
+            return true;
+        }
+    } catch (error) {
+        console.error('[blog.js] Error loading categories:', error);
+    }
+    // Fallback to hardcoded categories if API fails
+    BLOG_CATEGORIES = [
+        { name: 'کنکور', icon: 'icon-school', color: '#445D84' },
+        { name: 'تیزهوشان', icon: 'icon-star', color: '#8B786D' },
+        { name: 'مشاوره تحصیلی', icon: 'icon-help-circle', color: '#E2D9C6' },
+        { name: 'روش مطالعه', icon: 'icon-book', color: '#445D84' },
+        { name: 'اخبار فامو', icon: 'icon-clipboard', color: '#8B786D' },
+    ];
+    console.warn('[blog.js] Using fallback categories');
+    return false;
 }
 
 function postPath(slug) {
@@ -210,8 +237,9 @@ async function loadPostList(action, params, baseUrl) {
     }
 }
 
-function initBlogIndex() {
+async function initBlogIndex() {
     console.log('[blog.js] initBlogIndex called');
+    await loadCategories();
     const page = Math.max(1, parseInt(getParam('page') || '1', 10));
     const category = getParam('category') || '';
     renderCategoryBadges(category);
@@ -235,7 +263,8 @@ function filterPostsByCategory(category) {
     loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page } : { page }, 'index.php');
 }
 
-function initBlogCategory() {
+async function initBlogCategory() {
+    await loadCategories();
     const category = getParam('category') || '';
 
     // Update page title + description for the active category
@@ -424,3 +453,47 @@ window.addEventListener('popstate', (event) => {
         loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page: 1 } : { page: 1 }, 'index.php');
     }
 });
+
+// Mobile Menu Toggle
+function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.innerHTML = isHidden
+                ? svgIcon('icon-x', 'icon--lg')
+                : svgIcon('icon-menu', 'icon--lg');
+            mobileMenuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.innerHTML = svgIcon('icon-menu', 'icon--lg');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    }
+}
+
+// Initialize mobile menu when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+} else {
+    initMobileMenu();
+}
+
+// Set current Persian year in footer
+const copyrightYear = document.getElementById('copyright-year');
+if (copyrightYear) {
+    try {
+        copyrightYear.textContent = new Date().toLocaleDateString('fa-IR', { year: 'numeric' });
+    } catch (e) { }
+}

@@ -50,29 +50,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
+<!-- Footer -->
     <?php include '../partials/footer.php' ?>
 
 
-    <script>
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                const isHidden = mobileMenu.classList.contains('hidden');
-                mobileMenu.classList.toggle('hidden');
-                mobileMenuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-            });
-        }
-        const copyrightYear = document.getElementById('copyright-year');
-        if (copyrightYear) {
-            try {
-                copyrightYear.textContent = new Date().toLocaleDateString('fa-IR', { year: 'numeric' });
-            } catch (e) { }
-        }
-    </script>
-
     <script type="module" src="../assets/js/blog.js"></script>
 </body>
-
 </html>

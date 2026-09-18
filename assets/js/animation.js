@@ -79,7 +79,7 @@ class PageTransitions {
 class ScrollAnimations {
     static init() {
         // Initialize ScrollTrigger
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
             this.setupScrollAnimations();
         }
@@ -100,14 +100,19 @@ class ScrollAnimations {
     }
 
     static smoothScrollTo(element) {
-        gsap.to(window, {
-            duration: AnimationConfig.durations.slow,
-            scrollTo: {
-                y: element,
-                offsetY: 80 // Offset for fixed header
-            },
-            ease: AnimationConfig.easings.smoothInOut
-        });
+        if (typeof ScrollToPlugin !== 'undefined') {
+            gsap.to(window, {
+                duration: AnimationConfig.durations.slow,
+                scrollTo: {
+                    y: element,
+                    offsetY: 80
+                },
+                ease: AnimationConfig.easings.smoothInOut
+            });
+        } else {
+            // Fallback: native smooth scroll
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 
     static setupScrollAnimations() {
