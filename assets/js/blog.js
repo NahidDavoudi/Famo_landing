@@ -1,6 +1,8 @@
 // blog.js - Blog module (blog/index.php, blog/category.php, blog/post.php)
 import { formatJalaliLong } from './jalali.js';
 
+console.log('[blog.js] Module loaded, BLOG_CATEGORIES:', BLOG_CATEGORIES);
+
 const PUBLIC_API_URL = '../api/blog.php';
 const SPRITE_PATH = '../assets/icons/sprite.svg';
 const SITE_URL = 'https://famoacademy.ir';
@@ -125,8 +127,12 @@ function renderPagination(pagination, baseUrl) {
 }
 
 function renderCategoryBadges(activeCategory = null) {
+    console.log('[blog.js] renderCategoryBadges called with:', activeCategory);
     const holder = document.getElementById('categoryFilters');
-    if (!holder) return;
+    if (!holder) {
+        console.error('[blog.js] categoryFilters element not found');
+        return;
+    }
 
     const isIndexPage = document.body.dataset.page === 'blog-index';
 
@@ -205,6 +211,7 @@ async function loadPostList(action, params, baseUrl) {
 }
 
 function initBlogIndex() {
+    console.log('[blog.js] initBlogIndex called');
     const page = Math.max(1, parseInt(getParam('page') || '1', 10));
     const category = getParam('category') || '';
     renderCategoryBadges(category);
@@ -394,10 +401,20 @@ function updatePostSEO(post) {
 }
 
 // ---------- Init ----------
+console.log('[blog.js] pageType:', document.body.dataset.page);
 const pageType = document.body.dataset.page;
-if (pageType === 'blog-index') initBlogIndex();
-else if (pageType === 'blog-category') initBlogCategory();
-else if (pageType === 'blog-post') initBlogPost();
+if (pageType === 'blog-index') {
+    console.log('[blog.js] Initializing blog-index');
+    initBlogIndex();
+} else if (pageType === 'blog-category') {
+    console.log('[blog.js] Initializing blog-category');
+    initBlogCategory();
+} else if (pageType === 'blog-post') {
+    console.log('[blog.js] Initializing blog-post');
+    initBlogPost();
+} else {
+    console.warn('[blog.js] Unknown pageType:', pageType);
+}
 
 // Handle browser back/forward for category filter on blog index
 window.addEventListener('popstate', (event) => {
