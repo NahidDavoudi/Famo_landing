@@ -154,55 +154,31 @@ function renderPagination(pagination, baseUrl) {
 }
 
 function renderCategoryBadges(activeCategory = null) {
-    console.log('[blog.js] renderCategoryBadges called with:', activeCategory);
     const holder = document.getElementById('categoryFilters');
-    if (!holder) {
-        console.error('[blog.js] categoryFilters element not found');
-        return;
-    }
+    if (!holder) return;
 
     const isIndexPage = document.body.dataset.page === 'blog-index';
+    const base = 'shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold border transition';
+    const on = 'bg-[#445D84] text-white border-[#445D84]';
+    const off = 'bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]';
 
     const all = isIndexPage
-        ? `<button type="button" data-category="" class="swiper-slide px-4 py-2 rounded-full text-sm font-bold border transition ${activeCategory ? 'bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]' : 'bg-[#445D84] text-white border-[#445D84]'}">همه</button>`
-        : activeCategory
-            ? `<a href="index.php" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]">همه</a>`
-            : `<a href="index.php" class="px-4 py-2 rounded-full text-sm font-bold border transition bg-[#445D84] text-white border-[#445D84]">همه</a>`;
+        ? `<button type="button" data-category="" class="${base} ${activeCategory ? off : on}">همه</button>`
+        : `<a href="index.php" class="${base} ${activeCategory ? off : on}">همه</a>`;
 
-    const items = BLOG_CATEGORIES.map(cat => {
+    holder.innerHTML = all + BLOG_CATEGORIES.map(cat => {
         const active = cat.slug === activeCategory || cat.name === activeCategory;
-        const categoryValue = cat.slug || cat.name;
-        if (isIndexPage) {
-            return `<button type="button" data-category="${categoryValue}"
-                class="swiper-slide px-4 py-2 rounded-full text-sm font-bold border transition ${active ? 'bg-[#445D84] text-white border-[#445D84]' : 'bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]'}">
-                ${cat.name}</button>`;
-        }
-        return `<a href="${catPath(categoryValue)}"
-            class="px-4 py-2 rounded-full text-sm font-bold border transition ${active ? 'bg-[#445D84] text-white border-[#445D84]' : 'bg-white text-gray-600 border-[#E2D9C6] hover:bg-[#E2D9C6]'}">
-            ${cat.name}</a>`;
+        const v = cat.slug || cat.name;
+        const cls = `${base} ${active ? on : off}`;
+        return isIndexPage
+            ? `<button type="button" data-category="${v}" class="${cls}">${cat.name}</button>`
+            : `<a href="${catPath(v)}" class="${cls}">${cat.name}</a>`;
     }).join('');
 
-    holder.innerHTML = all + items;
-
-    if (isIndexPage) {
-        holder.querySelectorAll('button[data-category]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const category = btn.dataset.category;
-                filterPostsByCategory(category);
-            });
-        });
-
-        // Initialize Swiper for category badges
-        if (window.Swiper && !holder.swiperInitialized) {
-            new Swiper('.categorySwiper', {
-                slidesPerView: 'auto',
-                spaceBetween: 8,
-                freeMode: true,
-                grabCursor: true,
-            });
-            holder.swiperInitialized = true;
-        }
-    }
+    if (!isIndexPage) return;
+    holder.querySelectorAll('button[data-category]').forEach(btn => {
+        btn.addEventListener('click', () => filterPostsByCategory(btn.dataset.category));
+    });
 }
 
 // ---------- Loaders ----------

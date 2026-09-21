@@ -32,67 +32,7 @@
         <h2 class="text-2xl font-bold text-[#445D84] mb-8 border-r-4 border-[#445D84] pr-3">اساتید تخصصی کنکور و
             تیزهوشان</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="instructorsContainer">
-            <!-- Instructor 1: Amir Reza Mousavadeh -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-[#E2D9C6] hover-lift transition-all duration-300">
-                <div class="w-24 h-24 bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <img src="/assets/images/staff/amirreza-mousazadeh.webp" alt="امیررضا موسازاده موسوی" class="w-16 h-16 rounded-full object-cover">
-                </div>
-                <h3 class="text-xl font-bold text-[#445D84] mb-2">امیررضا موسازاده موسوی</h3>
-                <p class="text-gray-600 text-sm mb-1">دانشجوی پزشکی - Conquer Specialist</p>
-                <p class="text-gray-600 text-xs mb-3">مدیریت داخلی، پشتیبانی، تحلیل آزمون</p>
-                <ul class="text-gray-500 text-xs space-y-1">
-                    <li><i class="icon icon--sm mr-1"></i> المپیاد نانو کشوری</li>
-                    <li><i class="icon icon--sm mr-1"></i> تیزهوشان شهیدبهشتی سمپادی</li>
-                    <li><i class="icon icon--sm mr-1"></i> ۱۲۰۰ منطقه دو</li>
-                </ul>
-                <a href="https://linkedin.com/in/amirreza-mousazadeh" target="_blank" class="text-[#445D84] text-sm font-medium hover:underline">لینکدین</a>
-            </div>
-
-            <!-- Instructor 2 -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-[#E2D9C6] hover-lift transition-all duration-300">
-                <div class="w-24 h-24 bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <img src="/assets/images/staff/prof-01.webp" alt="استاد birinci" class="w-16 h-16 rounded-full object-cover">
-                </div>
-                <h3 class="text-xl font-bold text-[#445D84] mb-2">دکتر محمد جعفری</h3>
-                <p class="text-gray-600 text-sm mb-1">استاد شیمی کنکور</p>
-                <p class="text-gray-600 text-xs mb-3">دکترای علومchemic، ۸ سال تدریس</p>
-                <ul class="text-gray-500 text-xs space-y-1">
-                    <li><i class="icon icon--sm mr-1"></i> مدرک دکتری</li>
-                    <li><i class="icon icon--sm mr-1"></i> ۸۰+ مقبول کنکور</li>
-                </ul>
-                <a href="#" target="_blank" class="text-[#445D84] text-sm font-medium">لینکدین</a>
-            </div>
-
-            <!-- Instructor 3 -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-[#E2D9C6] hover-lift transition-all duration-300">
-                <div class="w-24 h-24 bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <img src="/assets/images/staff/prof-02.webp" alt="استاد دومی" class="w-16 h-16 rounded-full object-cover">
-                </div>
-                <h3 class="text-xl font-bold text-[#445D84] mb-2">دکتر الیه احمدی</h3>
-                <p class="text-gray-600 text-sm mb-1">استاد فیزیک تیزهوشان</p>
-                <p class="text-gray-600 text-xs mb-3">مربی گلف، ۵ سال تدریس</p>
-                <ul class="text-gray-500 text-xs space-y-1">
-                    <li><i class="icon icon--sm mr-1"></i> مربی گرف</li>
-                    <li><i class="icon icon--sm mr-1"></i> ۵۰+ مقبول</li>
-                </ul>
-                <a href="#" target="_blank" class="text-[#445D84] text-sm font-medium">لینکدین</a>
-            </div>
-
-            <!-- Instructor 4 -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg border border-[#E2D9C6] hover-lift transition-all duration-300">
-                <div class="w-24 h-24 bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <img src="/assets/images/staff/prof-03.webp" alt="استاد سومی" class="w-16 h-16 rounded-full object-cover">
-                </div>
-                <h3 class="text-xl font-bold text-[#445D84] mb-2">دکتر هادی کروبی</h3>
-                <p class="text-gray-600 text-sm mb-1">استاد ریاضی دبیرستان</p>
-                <p class="text-gray-600 text-xs mb-3">گالری المپیاد، ۷ سال تدریس</p>
-                <ul class="text-gray-500 text-xs space-y-1">
-                    <li><i class="icon icon--sm mr-1"></i> المپیادplate</li>
-                    <li><i class="icon icon--sm mr-1"></i> ۷۰+ مقبول</li>
-                </ul>
-                <a href="#" target="_blank" class="text-[#445D84] text-sm font-medium">لینکدین</a>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="instructorsContainer">          
         </div>
     </div>
 </section>

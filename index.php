@@ -1,7 +1,13 @@
-<?php $base=''?>
+<?php $base=''; $page_title='آموزشگاه فامو | مشاوره کنکور و تیزهوشان بابل'; $meta_description='آموزشگاه فامو بابل - مشاوره تخصصی کنکور و تیزهوشان'; ?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $page_title; ?></title>
+    <meta name="description" content="<?php echo $meta_description; ?>">
+    <?php include 'partials/head-common.php'; ?>
+</head>
 <body class="font-family text-gray-800">
     <!-- Header -->
    <?php include 'partials/header.php' ?>

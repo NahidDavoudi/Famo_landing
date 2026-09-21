@@ -17,8 +17,8 @@
 
 <!-- Category Badges -->
 <section class="py-8 px-4">
-    <div class="swiper categorySwiper">
-        <div class="swiper-wrapper" id="categoryFilters"></div>
+    <div class="container mx-auto max-w-6xl">
+        <div id="categoryFilters" class="flex flex-wrap justify-center gap-2"></div>
     </div>
 </section>
 <!-- Detailed Courses List -->
