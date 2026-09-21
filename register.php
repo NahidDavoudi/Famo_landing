@@ -1,15 +1,14 @@
+<?php $base = '../'; ?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ورود و ثبت نام | آموزشگاه فامو</title>
     <meta name="robots" content="noindex, nofollow">
-
-    <link rel="stylesheet" href="../assets/css/output.css">
-    <link rel="stylesheet" href="../assets/css/icons.css">
-    <link rel="stylesheet" href="../assets/css/register.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/output.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/icons.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/register.css">
 </head>
 
 <body class="bg-[#11223C]/60 bg-blur flex items-center justify-center min-h-screen py-5">
@@ -24,12 +23,12 @@
             <!-- Tabs -->
             <div class="flex justify-center mb-8 bg-[#f9f7f3] rounded-full p-1">
                 <button id="loginTab"
-                    class="tab-btn active flex-1 py-3 px-6 rounded-full font-semibold transition-all duration-300">
-                    ورود
+                    class="tab-btn active flex-1 py-3 px-6 rounded-full font-semibold transition-all duration-300">وارد
+                    شدن
                 </button>
                 <button id="registerTab"
-                    class="tab-btn flex-1 py-3 px-6 rounded-full font-semibold transition-all duration-300">
-                    ثبت نام
+                    class="tab-btn flex-1 py-3 px-6 rounded-full font-semibold transition-all duration-300">ثبت
+                    نام
                 </button>
             </div>
 
@@ -45,7 +44,7 @@
                                 pattern="09[0-9]{9}" data-error-required="لطفاً شماره موبایل را وارد کنید"
                                 data-error-pattern="شماره موبایل باید با 09 شروع شود و 11 رقم باشد">
                             <svg class="icon icon--md input-icon" aria-hidden="true">
-                                <use href="../assets/icons/sprite.svg#icon-phone" />
+                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-phone" />
                             </svg>
                             <span class="error-message"></span>
                         </div>
@@ -54,19 +53,19 @@
                                 minlength="4" data-error-required="لطفاً رمز عبور را وارد کنید"
                                 data-error-minlength="رمز عبور باید حداقل ۴ کاراکتر باشد">
                             <svg class="icon icon--md input-icon" aria-hidden="true">
-                                <use href="../assets/icons/sprite.svg#icon-lock" />
+                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-lock" />
                             </svg>
                             <button type="button" class="password-toggle"
                                 onclick="togglePasswordVisibility('loginPassword', this)" title="نمایش رمز عبور">
-                                <img src="../assets/svg/eye-closed.svg" alt="" class="password-toggle-icon w-5 h-5"
-                                    width="20" height="20">
+                                <img src="<?php echo $base; ?>assets/svg/eye-closed.svg" alt=""
+                                    class="password-toggle-icon w-5 h-5" width="20" height="20">
                             </button>
                             <span class="error-message"></span>
                         </div>
                         <button type="submit"
                             class="w-full py-3 rounded-xl bg-gradient-to-r from-[#445D84] to-[#5a779e] text-white font-semibold text-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
                             <svg class="icon icon--sm inline-block ml-2" aria-hidden="true">
-                                <use href="../assets/icons/sprite.svg#icon-login" />
+                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-login" />
                             </svg> ورود
                         </button>
                     </form>
@@ -82,7 +81,7 @@
                             <input type="text" name="full_name" id="registerFullName" placeholder="نام و نام خانوادگی"
                                 data-error-required="لطفاً نام و نام خانوادگی را وارد کنید">
                             <svg class="icon icon--md input-icon" aria-hidden="true">
-                                <use href="../assets/icons/sprite.svg#icon-user" />
+                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-user" />
                             </svg>
                             <span class="error-message"></span>
                         </div>
@@ -92,7 +91,7 @@
                                 pattern="09[0-9]{9}" data-error-required="لطفاً شماره موبایل را وارد کنید"
                                 data-error-pattern="شماره موبایل باید با 09 شروع شود و 11 رقم باشد">
                             <svg class="icon icon--md input-icon" aria-hidden="true">
-                                <use href="../assets/icons/sprite.svg#icon-phone" />
+                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-phone" />
                             </svg>
                             <span class="error-message"></span>
                         </div>
@@ -103,12 +102,12 @@
                                 data-error-required="لطفاً رمز عبور را وارد کنید"
                                 data-error-minlength="رمز عبور باید حداقل ۴ کاراکتر باشد">
                             <svg class="icon icon--md input-icon" aria-hidden="true">
-                                <use href="../assets/icons/sprite.svg#icon-lock" />
+                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-lock" />
                             </svg>
                             <button type="button" class="password-toggle"
                                 onclick="togglePasswordVisibility('registerPassword', this)" title="نمایش رمز عبور">
-                                <img src="../assets/svg/eye-closed.svg" alt="" class="password-toggle-icon w-5 h-5"
-                                    width="20" height="20">
+                                <img src="<?php echo $base; ?>assets/svg/eye-closed.svg" alt=""
+                                    class="password-toggle-icon w-5 h-5" width="20" height="20">
                             </button>
                             <span class="error-message"></span>
                         </div>
@@ -126,10 +125,10 @@
                                     <option value="12">دوازدهم</option>
                                 </select>
                                 <svg class="icon icon--md input-icon" aria-hidden="true">
-                                    <use href="../assets/icons/sprite.svg#icon-school" />
+                                    <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-school" />
                                 </svg>
                                 <svg class="icon icon--sm select-arrow" aria-hidden="true">
-                                    <use href="../assets/icons/sprite.svg#icon-chevron-down" />
+                                    <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-down" />
                                 </svg>
                                 <span class="error-message"></span>
                             </div>
@@ -142,10 +141,10 @@
                                     <option value="انسانی">انسانی</option>
                                 </select>
                                 <svg class="icon icon--md input-icon" aria-hidden="true">
-                                    <use href="../assets/icons/sprite.svg#icon-book" />
+                                    <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-book" />
                                 </svg>
                                 <svg class="icon icon--sm select-arrow" aria-hidden="true">
-                                    <use href="../assets/icons/sprite.svg#icon-chevron-down" />
+                                    <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-down" />
                                 </svg>
                                 <span class="error-message"></span>
                             </div>
@@ -154,124 +153,28 @@
                         <button type="submit"
                             class="w-full py-3 rounded-xl bg-gradient-to-r from-[#445D84] to-[#5a779e] text-white font-semibold text-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] mt-4">
                             <svg class="icon icon--sm inline-block ml-2" aria-hidden="true">
-                                <use href="../assets/icons/sprite.svg#icon-user-plus" />
+                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-user-plus" />
                             </svg> ثبت نام
                         </button>
                     </form>
-
-                    <!-- Link to Bot Users -->
-                    <div class="mt-6 text-center" style="display: none;">
-                        <p class="text-gray-500 text-sm mb-2">قبلاً از ربات تلگرام ثبت‌نام کرده‌اید؟</p>
-                        <button id="showBotLinkBtn" class="text-[#445D84] font-semibold hover:underline">
-                            <svg class="icon icon--sm inline-block ml-1" aria-hidden="true">
-                                <use href="../assets/icons/sprite.svg#icon-telegram" />
-                            </svg> اتصال حساب ربات به سایت
-                        </button>
-                    </div>
                 </div>
 
-                <!-- Bot Account Link Form -->
-                <div id="botLinkContainer" style="display: none;">
-                    <div class="text-center mb-6">
-                        <svg class="icon inline-block mb-3" style="width: 3rem; height: 3rem; color: #0088cc;"
-                            aria-hidden="true">
-                            <use href="../assets/icons/sprite.svg#icon-telegram" />
-                        </svg>
-                        <h3 class="text-xl font-bold text-[#445D84] mb-2">اتصال حساب ربات</h3>
-                        <p class="text-gray-600 text-sm">شماره موبایلی که در ربات ثبت کرده‌اید را وارد کنید</p>
-                    </div>
-
-                    <!-- Step 1: Phone -->
-                    <div id="botLinkStep1">
-                        <form id="formBotLink" novalidate>
-                            <div class="input-group">
-                                <input type="tel" name="phone" id="botLinkPhone" placeholder="شماره موبایل (09...)"
-                                    pattern="09[0-9]{9}" data-error-required="لطفاً شماره موبایل را وارد کنید"
-                                    data-error-pattern="شماره موبایل باید با 09 شروع شود و 11 رقم باشد">
-                                <svg class="icon icon--md input-icon" aria-hidden="true">
-                                    <use href="../assets/icons/sprite.svg#icon-phone" />
-                                </svg>
-                                <span class="error-message"></span>
-                            </div>
-                            <button type="submit"
-                                class="w-full py-3 rounded-xl bg-[#445D84] text-white font-semibold text-lg hover:bg-[#5a779e] transition-all duration-300">
-                                <svg class="icon icon--sm inline-block ml-2" aria-hidden="true">
-                                    <use href="../assets/icons/sprite.svg#icon-send" />
-                                </svg> ارسال کد تایید به تلگرام
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- Step 2: Verify Code -->
-                    <div id="botLinkStep2" style="display: none;">
-                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 text-center">
-                            <svg class="icon icon--lg inline-block text-blue-500 mb-2" aria-hidden="true">
-                                <use href="../assets/icons/sprite.svg#icon-check-circle" />
-                            </svg>
-                            <p class="text-blue-700 text-sm">کد تایید به تلگرام شما ارسال شد</p>
-                        </div>
-                        <form id="formVerifyCode" novalidate>
-                            <div class="input-group">
-                                <input type="text" name="code" id="verifyCode" placeholder="کد ۵ رقمی" maxlength="5"
-                                    pattern="[0-9]{5}" class="text-center text-2xl tracking-widest"
-                                    data-error-required="لطفاً کد تایید را وارد کنید"
-                                    data-error-pattern="کد تایید باید ۵ رقم باشد">
-                                <svg class="icon icon--md input-icon" aria-hidden="true">
-                                    <use href="../assets/icons/sprite.svg#icon-key" />
-                                </svg>
-                                <span class="error-message"></span>
-                            </div>
-                            <div class="input-group has-password">
-                                <input type="password" id="botPassword" name="password"
-                                    placeholder="رمز عبور جدید برای سایت" minlength="4"
-                                    data-error-required="لطفاً رمز عبور را وارد کنید"
-                                    data-error-minlength="رمز عبور باید حداقل ۴ کاراکتر باشد">
-                                <svg class="icon icon--md input-icon" aria-hidden="true">
-                                    <use href="../assets/icons/sprite.svg#icon-lock" />
-                                </svg>
-                                <button type="button" class="password-toggle"
-                                    onclick="togglePasswordVisibility('botPassword', this)" title="نمایش رمز عبور">
-                                    <img src="../assets/svg/eye-closed.svg" alt="" class="password-toggle-icon w-5 h-5"
-                                        width="20" height="20">
-                                </button>
-                                <span class="error-message"></span>
-                            </div>
-                            <button type="submit"
-                                class="w-full py-3 rounded-xl bg-gradient-to-r from-[#445D84] to-[#5a779e] text-white font-semibold text-lg hover:shadow-xl transition-all duration-300">
-                                <svg class="icon icon--sm inline-block ml-2" aria-hidden="true">
-                                    <use href="../assets/icons/sprite.svg#icon-check" />
-                                </svg> تایید و فعال‌سازی حساب
-                            </button>
-                        </form>
-                    </div>
-
-                    <div class="mt-4 text-center">
-                        <button id="backToRegisterBtn" class="text-gray-500 hover:text-[#445D84]">
-                            <svg class="icon icon--sm inline-block ml-1" aria-hidden="true">
-                                <use href="../assets/icons/sprite.svg#icon-chevron-right" />
-                            </svg> بازگشت به ثبت‌نام
-                        </button>
-                    </div>
+                <!-- Link to Bot Users -->
+                <div class="mt-6 text-center" style="display: none;">
+                    <p class="text-gray-500 text-sm mb-2">قبلاً از ربات تلگرام ثبت‌نام کرده‌اید؟</p>
+                    <button id="showBotLinkBtn" class="text-[#445D84] font-semibold hover:underline">
+                        <svg class="icon icon--sm inline-block ml-1" aria-hidden="true">
+                            <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-telegram" />
+                        </svg> اتصال حساب ربات به سایت
+                    </button>
                 </div>
-
-                <!-- Message Container -->
-                <div id="messageContainer" style="display: none;" class="text-center p-5">
-                    <div class="message-icon"></div>
-                    <h3 id="formMessageTitle" class="text-xl font-bold mb-3 text-[#445D84]"></h3>
-                    <p id="formMessage" class="text-gray-600 mb-5"></p>
-                    <a href="dashboard.html" id="redirectButton" style="display:none;"
-                        class="inline-block w-full py-3 rounded-xl bg-gradient-to-r from-[#445D84] to-[#5a779e] text-white font-semibold text-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] text-center">
-                        ورود به داشبورد
-                    </a>
-                </div>
-
             </div>
 
             <!-- Back Link -->
             <div class="text-center mt-3 pt-6">
-                <a href="../index.html" class="text-gray-600 font-medium hover:text-[#445D84] transition duration-300">
+                <a href="../index.php" class="text-gray-600 font-medium hover:text-[#445D84] transition duration-300">
                     <svg class="icon icon--sm inline-block ml-2" aria-hidden="true">
-                        <use href="../assets/icons/sprite.svg#icon-chevron-left" />
+                        <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
                     </svg> بازگشت به صفحه اصلی
                 </a>
             </div>
@@ -281,11 +184,11 @@
         <div
             class="hidden lg:flex flex-1 bg-gradient-to-br from-[#11223C] to-[#05387e] text-white justify-center items-center text-center p-10">
             <div class="branding-content">
-                <a href="../index.html" class="inline-block mb-3">
-                    <img src="../assets/images/logo.png" alt="لوگوی آموزشگاه فامو" class="h-16 mx-auto">
+                <a href="../index.php" class="inline-block mb-3">
+                    <img src="<?php echo $base; ?>assets/images/logo.png" alt="لوگوی آموزشگاه فامو" class="h-16 mx-auto">
                 </a>
                 <h2 class="text-3xl font-bold mb-5 text-white">آینده تحصیلی خود را با فامو بسازید</h2>
-                <p class="text-lg text-white/90">با پیوستن به جمع دانش‌آموزان ما، قدم در راه موفقیت بگذارید.</p>
+                <p class="text-lg text-white/90">با پیوستن به جمع دانش‌آموزان ما، قدم در راهuccess بگذارید.</p>
             </div>
         </div>
     </div>
@@ -382,7 +285,6 @@
                     validateField(this);
                 }
             });
-
             // Clear error on input
             input.addEventListener('input', function () {
                 const inputGroup = this.closest('.input-group');
@@ -418,19 +320,17 @@
                             const isError = messageContainer.classList.contains('error');
 
                             if (isSuccess) {
-                                messageIcon.innerHTML = '<svg class="icon" style="width: 3rem; height: 3rem;" aria-hidden="true"><use href="../assets/icons/sprite.svg#icon-check-circle"/></svg>';
+                                messageIcon.innerHTML = '<svg class="icon" style="width: 3rem; height: 3rem;" aria-hidden="true"><use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-check-circle"/></svg>';
                             } else if (isError) {
-                                messageIcon.innerHTML = '<svg class="icon" style="width: 3rem; height: 3rem;" aria-hidden="true"><use href="../assets/icons/sprite.svg#icon-alert-circle"/></svg>';
+                                messageIcon.innerHTML = '<svg class="icon" style="width: 3rem; height: 3rem;" aria-hidden="true"><use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-alert-circle"/></svg>';
                             }
                         }
                     });
                 });
-
                 observer.observe(messageContainer, { attributes: true });
             }
         });
     </script>
-    <script src="../assets/pages/register/js/auth.js"></script>
+    <script src="<?php echo $base; ?>assets/pages/register/js/auth.js"></script>
 </body>
-
 </html>

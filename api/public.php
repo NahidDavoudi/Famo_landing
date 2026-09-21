@@ -17,50 +17,88 @@ function jsonResponse($data, $status = 200) {
     exit;
 }
 
+// Groups child rows (features / social links) by their parent's id,
+// so we do 2 queries total instead of N+1.
+function groupByParent(array $rows, string $parentKeyName): array {
+    $grouped = [];
+    foreach ($rows as $row) {
+        $grouped[$row[$parentKeyName]][] = $row;
+    }
+    return $grouped;
+}
+
 // ===================== Router =====================
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
-    
+
     // ==================== Get Courses ====================
     case 'get_courses':
         try {
-            $stmt = $pdo->query("
-                SELECT id, name, icon, gradient_color_from, gradient_color_to, 
-                       background_image_url, description, price, display_order
-                FROM courses 
+            $courses = $pdo->query("
+                SELECT id, name, category, badge_label, icon, gradient_color_from, gradient_color_to,
+                       background_image_url, description, full_description, target_grades, format,
+                       price, display_order
+                FROM courses
                 ORDER BY display_order ASC, id ASC
-            ");
-            $courses = $stmt->fetchAll();
+            ")->fetchAll();
+
+            $features = $pdo->query("
+                SELECT course_id, feature_text
+                FROM course_features
+                ORDER BY course_id ASC, display_order ASC, id ASC
+            ")->fetchAll();
+            $featuresByCourse = groupByParent($features, 'course_id');
+
+            foreach ($courses as &$course) {
+                $course['features'] = array_map(
+                    fn($f) => $f['feature_text'],
+                    $featuresByCourse[$course['id']] ?? []
+                );
+            }
+            unset($course);
+
             jsonResponse(['success' => true, 'data' => $courses]);
         } catch (Exception $e) {
             error_log("Error in get_courses: " . $e->getMessage());
             jsonResponse(['success' => false, 'error' => 'خطا در دریافت دوره‌ها'], 500);
         }
         break;
-    
+
     // ==================== Get Instructors ====================
     case 'get_instructors':
         try {
-            $stmt = $pdo->query("
-                SELECT id, name, title, description, image_url, initial_letter, display_order
-                FROM instructors 
+            $instructors = $pdo->query("
+                SELECT id, name, title, description, full_bio, image_url, initial_letter, display_order
+                FROM instructors
                 ORDER BY display_order ASC, id ASC
-            ");
-            $instructors = $stmt->fetchAll();
+            ")->fetchAll();
+
+            $links = $pdo->query("
+                SELECT instructor_id, platform, url
+                FROM instructor_social_links
+                ORDER BY instructor_id ASC, display_order ASC, id ASC
+            ")->fetchAll();
+            $linksByInstructor = groupByParent($links, 'instructor_id');
+
+            foreach ($instructors as &$instructor) {
+                $instructor['social_links'] = $linksByInstructor[$instructor['id']] ?? [];
+            }
+            unset($instructor);
+
             jsonResponse(['success' => true, 'data' => $instructors]);
         } catch (Exception $e) {
             error_log("Error in get_instructors: " . $e->getMessage());
             jsonResponse(['success' => false, 'error' => 'خطا در دریافت اساتید'], 500);
         }
         break;
-    
+
     // ==================== Get Supporters ====================
     case 'get_supporters':
         try {
             $stmt = $pdo->query("
                 SELECT id, name, grade, field, chat_id
-                FROM supporters 
+                FROM supporters
                 ORDER BY grade ASC, field ASC, name ASC
             ");
             $supporters = $stmt->fetchAll();
@@ -70,9 +108,8 @@ switch ($action) {
             jsonResponse(['success' => false, 'error' => 'خطا در دریافت پشتیبان‌ها'], 500);
         }
         break;
-    
+
     default:
         jsonResponse(['success' => false, 'error' => 'Action not found'], 404);
         break;
 }
-

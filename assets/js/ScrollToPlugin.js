@@ -124,7 +124,7 @@ var gsap,
   }
 };
 
-export var ScrollToPlugin = {
+var ScrollToPlugin = {
   version: "3.14.2",
   name: "scrollTo",
   rawVars: 1,
@@ -278,4 +278,4 @@ ScrollToPlugin.config = function (vars) {
 };
 
 _getGSAP() && gsap.registerPlugin(ScrollToPlugin);
-export { ScrollToPlugin as default };
+window.ScrollToPlugin = ScrollToPlugin;
