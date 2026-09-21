@@ -164,6 +164,16 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 10 !important;
     cursor: pointer !important;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+@media (max-width: 640px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 44px !important;
+        height: 44px !important;
+    }
 }
 
 .swiper-button-next:hover,
@@ -180,19 +190,19 @@
 }
 
 .swiper-button-prev {
-    right: 15px !important;
+    right: 22px !important;
     left: auto !important;
 }
 
 .swiper-button-next {
-    left: 15px !important;
+    left: 22px !important;
     right: auto !important;
 }
 
 .instructorsSwiper .swiper-button-prev {
     position: absolute !important;
     top: 50% !important;
-    right: 15px !important;
+    right: 22px !important;
     left: auto !important;
     transform: translateY(-50%) !important;
     margin-top: 0 !important;
@@ -201,7 +211,7 @@
 .instructorsSwiper .swiper-button-next {
     position: absolute !important;
     top: 50% !important;
-    left: 15px !important;
+    left: 22px !important;
     right: auto !important;
     transform: translateY(-50%) !important;
     margin-top: 0 !important;
@@ -218,7 +228,7 @@
 .supportSwiper .swiper-button-prev {
     position: absolute !important;
     top: 50% !important;
-    right: 15px !important;
+    right: 22px !important;
     left: auto !important;
     transform: translateY(-50%) !important;
     margin-top: 0 !important;
@@ -227,7 +237,7 @@
 .supportSwiper .swiper-button-next {
     position: absolute !important;
     top: 50% !important;
-    left: 15px !important;
+    left: 22px !important;
     right: auto !important;
     transform: translateY(-50%) !important;
     margin-top: 0 !important;
@@ -261,6 +271,17 @@
 
 .faq-item.active .faq-icon {
     transform: rotate(180deg);
+}
+
+.faq-question:focus-visible {
+    outline: 2px solid #445D84;
+    outline-offset: 2px;
+    border-radius: 0.75rem;
+}
+
+.course-card:focus-visible {
+    outline: 2px solid #E2D9C6;
+    outline-offset: 3px;
 }
 
 /* Gradient / glass / hover (home-specific) */
@@ -419,6 +440,25 @@
     position: relative;
 }
 
+/* Lock aspect ratios so API content replacing skeletons causes no layout shift */
+.skeleton-course-card,
+.course-card {
+    aspect-ratio: 16/9;
+    min-height: 200px;
+}
+
+@media (min-width: 768px) {
+    .skeleton-course-card,
+    .course-card {
+        aspect-ratio: 21/9;
+    }
+}
+
+.skeleton-instructor-card,
+.instructor-card {
+    min-height: 400px;
+}
+
 .skeleton-course-wrapper {
     display: block;
 }
@@ -570,6 +610,16 @@
 
 #mobileMenuBtn {
     cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+    .animate-float, .animate-shimmer {
+        animation: none !important;
+    }
 }
 
 /* #mobileMenuBtn button:hover {

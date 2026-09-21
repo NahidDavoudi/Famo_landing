@@ -7,10 +7,7 @@
     <title>اساتید | آموزشگاه فامو بابل</title>
     <meta name="description"
         content="معرفی اساتید برجسته کنکور، رتبه‌های برتر المپیاد و تخصص مشاوران و پشتیبانان آموزشی موسسه فامو در بابل.">
-    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/output.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/icons.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/style.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/font.css">
+    <?php include '../partials/head-common.php'; ?>
 </head>
 
 <body class="font-family text-gray-800 bg-[#f9f7f3]">
@@ -18,7 +15,7 @@
 <!-- Header -->
     <?php include '../partials/header.php' ?>
 
-<section class="pt-36 pb-12 gradient-bg text-white text-center">
+<section class="pt-28 sm:pt-32 pb-12 gradient-bg text-white text-center">
     <div class="container mx-auto px-4">
         <h1 class="text-3xl sm:text-4xl font-bold mb-4">کادر آموزشی و مشاوران فامو بابل</h1>
         <p class="text-white/80 max-w-2xl mx-auto">همراهی اساتید مجرب و پشتیبانان رتبه برتر کنکور در تمامی مراحل

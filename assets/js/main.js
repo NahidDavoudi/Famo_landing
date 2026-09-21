@@ -161,9 +161,10 @@ async function loadCoursesFromAPI() {
 
         container.innerHTML = result.data.map(course => `
             <div class="swiper-slide">
-                <div class="course-card md:w-full h-48 sm:h-40 md:h-auto rounded-2xl flex items-center justify-center relative overflow-hidden min-h-[200px] cursor-pointer" 
+                <div class="course-card md:w-full h-48 sm:h-40 md:h-auto rounded-2xl flex items-center justify-center relative overflow-hidden min-h-[200px] cursor-pointer"
+                     tabindex="0" role="button" aria-expanded="false" aria-controls="course-desc-${course.id}"
                      data-expanded="false"
-                     data-course-id="${course.id}">
+                     data-course-id="${course.id}" aria-label="${course.name} - برای دیدن جزئیات Enter بزنید">
                     <!-- Background -->
                     <div class="course-background absolute inset-0" 
                          style="background: linear-gradient(135deg, ${course.gradient_color_from}, ${course.gradient_color_to});">
@@ -182,7 +183,7 @@ async function loadCoursesFromAPI() {
                     </div>
                     
                     <!-- Expanded Content (Description and Price) -->
-                    <div class="course-content-expanded absolute inset-0 z-30 flex flex-col items-center justify-center p-6 opacity-0 transform translate-y-4 transition-all duration-500">
+                    <div class="course-content-expanded absolute inset-0 z-30 flex flex-col items-center justify-center p-6 opacity-0 transform translate-y-4 transition-all duration-500" id="course-desc-${course.id}">
                         <div class="text-white text-center">
                             ${course.description ? `
                                 <p class="text-sm sm:text-base mb-4 leading-relaxed">${course.description}</p>
@@ -478,6 +479,7 @@ function attachCourseCardListeners() {
             if (isExpanded) {
                 // Collapse: return to default state
                 this.setAttribute('data-expanded', 'false');
+                this.setAttribute('aria-expanded', 'false');
                 this.classList.remove('expanded');
                 if (overlay) overlay.style.opacity = '0';
                 if (defaultContent) defaultContent.style.opacity = '1';
@@ -489,6 +491,7 @@ function attachCourseCardListeners() {
             } else {
                 // Expand: show description and price
                 this.setAttribute('data-expanded', 'true');
+                this.setAttribute('aria-expanded', 'true');
                 this.classList.add('expanded');
                 if (overlay) overlay.style.opacity = '1';
                 if (defaultContent) defaultContent.style.opacity = '0';
@@ -497,6 +500,13 @@ function attachCourseCardListeners() {
                     expandedContent.style.transform = 'translateY(0)';
                 }
                 if (hint) hint.style.opacity = '0';
+            }
+        });
+
+        newCard.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
             }
         });
     });
@@ -513,9 +523,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Stats Counter Animation with GSAP
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function animateCounter(elementId, finalValue) {
     const element = document.getElementById(elementId);
     if (!element) return;
+    if (prefersReducedMotion || typeof gsap === 'undefined') {
+        element.textContent = finalValue;
+        return;
+    }
 
     const obj = { value: 0 };
     gsap.to(obj, {
@@ -577,6 +592,12 @@ const FAQ = {
                 question.addEventListener('click', () => {
                     this.toggle(newItem, answer);
                 });
+                question.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.toggle(newItem, answer);
+                    }
+                });
             }
         });
     },
@@ -598,6 +619,8 @@ const FAQ = {
 
     open(item, answer, icon) {
         item.classList.add('active');
+        const q = item.querySelector('.faq-question');
+        if (q) q.setAttribute('aria-expanded', 'true');
 
         if (State.isGSAPReady) {
             gsap.to(answer, {
@@ -630,6 +653,8 @@ const FAQ = {
         const icon = item.querySelector('.faq-icon');
 
         item.classList.remove('active');
+        const q = item.querySelector('.faq-question');
+        if (q) q.setAttribute('aria-expanded', 'false');
 
         if (State.isGSAPReady) {
             const currentHeight = answer.scrollHeight;
@@ -780,6 +805,7 @@ serviceCards.forEach(card => {
 
 // ScrollTrigger animations for sections - Initialize when GSAP is ready
 function initScrollAnimations() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
         return;
     }

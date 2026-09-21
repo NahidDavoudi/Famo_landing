@@ -25,10 +25,7 @@
     }
     </script>
 
-    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/output.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/icons.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/style.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>assets/css/font.css">
+    <?php include '../partials/head-common.php'; ?>
 </head>
 
 <body class="font-family text-gray-800 bg-[#f9f7f3]">
@@ -37,7 +34,7 @@
     <?php include '../partials/header.php' ?>
 
 <!-- Page Title Banner -->
-<section class="pt-24 pb-12 gradient-bg text-white text-center">
+<section class="pt-28 sm:pt-32 pb-12 gradient-bg text-white text-center">
     <h1 class="text-3xl sm:text-4xl font-bold mb-4 text-white">دوره‌های تخصصی کنکور و تیزهوشان بابل</h1>
     <img src="<?php echo $base; ?>assets/images/courses_banner.png" alt="دوره‌های تخصصی کنکور و تیزهوشان بابل"
         class="w-full h-full object-cover">

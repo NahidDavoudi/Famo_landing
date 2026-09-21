@@ -20,21 +20,21 @@
                 <div class="flex gap-4">
                     <a href="https://t.me/famoacademy"
                         class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110 shrink-0"
-                        aria-label="تلگرام">
+                        aria-label="فامو در تلگرام">
                         <svg class="icon" aria-hidden="true">
                             <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-telegram" />
                         </svg>
                     </a>
                     <a href="#"
                         class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110 shrink-0"
-                        aria-label="اینستاگرام">
+                        aria-label="فامو در اینستاگرام">
                         <svg class="icon" aria-hidden="true">
                             <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-brand-instagram" />
                         </svg>
                     </a>
-                    <a href="#"
+                    <a href="https://wa.me/989014402300"
                         class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110 shrink-0"
-                        aria-label="واتساپ">
+                        aria-label="فامو در واتساپ">
                         <svg class="icon" aria-hidden="true">
                             <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-brand-whatsapp" />
                         </svg>
@@ -53,14 +53,14 @@
                         </svg>
                         خانه
                     </a></li>
-                    <li><a href="../pages/courses.php"
+                    <li><a href="<?php echo $base; ?>courses/index.php"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
                         <svg class="icon icon--sm ml-2" aria-hidden="true">
                             <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
                         </svg>
                         دوره‌ها
                     </a></li>
-                    <li><a href="../teams/index.php"
+                    <li><a href="<?php echo $base; ?>team/index.php"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
                         <svg class="icon icon--sm ml-2" aria-hidden="true">
                             <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
@@ -123,10 +123,4 @@
         </div>
     </div>
 </footer>
-
-        <script src="<?php echo $base; ?>assets/js/gsap.min.js"></script>
-        <script src="<?php echo $base; ?>assets/js/ScrollTrigger.min.js"></script>
-        <script src="<?php echo $base; ?>assets/js/ScrollToPlugin.js"></script>
-        <script src="<?php echo $base; ?>assets/js/swiper.min.js"></script>
-        <script src="<?php echo $base; ?>assets/js/swiper-bundle.min.js"></script>
         

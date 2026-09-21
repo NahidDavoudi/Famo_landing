@@ -87,7 +87,7 @@ function hideSkeletons() {
 // ---------- Rendering ----------
 function renderPostCard(post) {
     const cover = post.cover_image
-        ? `<img src="${post.cover_image}" alt="${post.title} | آموزشگاه فامو"
+        ? `<img src="${post.cover_image}" alt="تصویر شاخص: ${post.title}" loading="lazy"
                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">`
         : `<div class="absolute inset-0 gradient-bg flex items-center justify-center">
                ${svgIcon(categoryIcon(post.category), 'icon--3xl text-white/70')}
@@ -304,7 +304,7 @@ function initBlogPost() {
 function renderPost(post) {
     const container = document.getElementById('postContainer');
     const cover = post.cover_image
-        ? `<img src="${post.cover_image}" alt="${post.title}" class="w-full h-56 sm:h-80 object-cover rounded-2xl shadow-lg border border-[#E2D9C6]">
+        ? `<img src="${post.cover_image}" alt="تصویر شاخص: ${post.title}" loading="lazy" class="w-full h-56 sm:h-80 object-cover rounded-2xl shadow-lg border border-[#E2D9C6]">
            <span class="absolute top-4 right-4 bg-white/95 text-[#445D84] text-sm font-bold px-4 py-1.5 rounded-full shadow-md">${post.category}</span>`
         : `<div class="w-full h-56 sm:h-80 gradient-bg rounded-2xl shadow-lg flex items-center justify-center">
                ${svgIcon(categoryIcon(post.category), 'icon--3xl text-white/70')}

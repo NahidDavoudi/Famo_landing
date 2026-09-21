@@ -17,10 +17,7 @@
     <!-- Structured Data - updated dynamically per post by blog.js -->
     <script type="application/ld+json" id="blogPostingSchema"></script>
 
-    <link rel="stylesheet" href="../assets/css/output.css">
-    <link rel="stylesheet" href="../assets/css/icons.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/font.css">
+    <?php include '../partials/head-common.php'; ?>
 </head>
 
 <body class="font-family text-gray-800 bg-[#f9f7f3] min-h-screen flex flex-col" data-page="blog-post">

@@ -34,23 +34,26 @@
 
             <!-- Form Container -->
             <div class="form-container relative overflow-hidden">
+                <div id="formErrorSummary" class="hidden mb-4 rounded-xl border-2 border-red-400 bg-red-50 p-4 text-red-700" role="alert" tabindex="-1"></div>
                 <!-- Login Form -->
                 <div id="loginFormContainer">
                     <p class="text-center text-gray-600 mb-6">برای ورود، اطلاعات خود را وارد کنید.</p>
                     <form id="formLogin" novalidate>
                         <input type="hidden" name="action" value="login">
                         <div class="input-group">
+                            <label for="loginPhone" class="sr-only">شماره موبایل</label>
                             <input type="tel" name="phone" id="loginPhone" placeholder="شماره موبایل"
-                                pattern="09[0-9]{9}" data-error-required="لطفاً شماره موبایل را وارد کنید"
+                                pattern="09[0-9]{9}" aria-describedby="loginPhoneErr" data-error-required="لطفاً شماره موبایل را وارد کنید"
                                 data-error-pattern="شماره موبایل باید با 09 شروع شود و 11 رقم باشد">
                             <svg class="icon icon--md input-icon" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-phone" />
                             </svg>
-                            <span class="error-message"></span>
+                            <span class="error-message" id="loginPhoneErr" aria-live="polite"></span>
                         </div>
                         <div class="input-group has-password">
+                            <label for="loginPassword" class="sr-only">رمز عبور</label>
                             <input type="password" id="loginPassword" name="password" placeholder="رمز عبور"
-                                minlength="4" data-error-required="لطفاً رمز عبور را وارد کنید"
+                                minlength="4" aria-describedby="loginPassErr" data-error-required="لطفاً رمز عبور را وارد کنید"
                                 data-error-minlength="رمز عبور باید حداقل ۴ کاراکتر باشد">
                             <svg class="icon icon--md input-icon" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-lock" />
@@ -60,7 +63,7 @@
                                 <img src="<?php echo $base; ?>assets/svg/eye-closed.svg" alt=""
                                     class="password-toggle-icon w-5 h-5" width="20" height="20">
                             </button>
-                            <span class="error-message"></span>
+                            <span class="error-message" id="loginPassErr" aria-live="polite"></span>
                         </div>
                         <button type="submit"
                             class="w-full py-3 rounded-xl bg-gradient-to-r from-[#445D84] to-[#5a779e] text-white font-semibold text-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
@@ -72,33 +75,37 @@
                 </div>
 
                 <!-- Register Form -->
-                <div id="registerFormContainer" style="display: none;">
+                <div id="registerFormContainer" class="hidden">
                     <p class="text-center text-gray-600 mb-6">برای ثبت‌نام، اطلاعات خود را وارد کنید.</p>
                     <form id="formRegister" novalidate>
                         <input type="hidden" name="action" value="register">
 
                         <div class="input-group">
+                            <label for="registerFullName" class="sr-only">نام و نام خانوادگی</label>
                             <input type="text" name="full_name" id="registerFullName" placeholder="نام و نام خانوادگی"
-                                data-error-required="لطفاً نام و نام خانوادگی را وارد کنید">
+                                aria-describedby="regNameErr" data-error-required="لطفاً نام و نام خانوادگی را وارد کنید">
                             <svg class="icon icon--md input-icon" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-user" />
                             </svg>
-                            <span class="error-message"></span>
+                            <span class="error-message" id="regNameErr" aria-live="polite"></span>
                         </div>
 
                         <div class="input-group">
+                            <label for="registerPhone" class="sr-only">شماره موبایل</label>
                             <input type="tel" name="phone" id="registerPhone" placeholder="شماره موبایل (09...)"
-                                pattern="09[0-9]{9}" data-error-required="لطفاً شماره موبایل را وارد کنید"
+                                pattern="09[0-9]{9}" aria-describedby="regPhoneErr" data-error-required="لطفاً شماره موبایل را وارد کنید"
                                 data-error-pattern="شماره موبایل باید با 09 شروع شود و 11 رقم باشد">
                             <svg class="icon icon--md input-icon" aria-hidden="true">
                                 <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-phone" />
                             </svg>
-                            <span class="error-message"></span>
+                            <span class="error-message" id="regPhoneErr" aria-live="polite"></span>
                         </div>
 
                         <div class="input-group has-password">
+                            <label for="registerPassword" class="sr-only">رمز عبور</label>
                             <input type="password" id="registerPassword" name="password"
                                 placeholder="رمز عبور (حداقل ۴ کاراکتر)" minlength="4"
+                                aria-describedby="regPassErr"
                                 data-error-required="لطفاً رمز عبور را وارد کنید"
                                 data-error-minlength="رمز عبور باید حداقل ۴ کاراکتر باشد">
                             <svg class="icon icon--md input-icon" aria-hidden="true">
@@ -109,12 +116,14 @@
                                 <img src="<?php echo $base; ?>assets/svg/eye-closed.svg" alt=""
                                     class="password-toggle-icon w-5 h-5" width="20" height="20">
                             </button>
-                            <span class="error-message"></span>
+                            <span class="error-message" id="regPassErr" aria-live="polite"></span>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4 mb-1">
                             <div class="input-group">
+                                <label for="registerGrade" class="sr-only">پایه تحصیلی</label>
                                 <select name="grade" id="registerGrade"
+                                    aria-describedby="regGradeErr"
                                     data-error-required="لطفاً پایه تحصیلی را انتخاب کنید">
                                     <option value="" disabled selected>پایه</option>
                                     <option value="7">هفتم</option>
@@ -130,10 +139,12 @@
                                 <svg class="icon icon--sm select-arrow" aria-hidden="true">
                                     <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-down" />
                                 </svg>
-                                <span class="error-message"></span>
+                                <span class="error-message" id="regGradeErr" aria-live="polite"></span>
                             </div>
                             <div class="input-group" id="fieldContainer">
+                                <label for="registerField" class="sr-only">رشته تحصیلی</label>
                                 <select name="field" id="registerField"
+                                    aria-describedby="regFieldErr"
                                     data-error-required="لطفاً رشته تحصیلی را انتخاب کنید">
                                     <option value="" disabled selected>رشته</option>
                                     <option value="تجربی">تجربی</option>
@@ -146,7 +157,7 @@
                                 <svg class="icon icon--sm select-arrow" aria-hidden="true">
                                     <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-down" />
                                 </svg>
-                                <span class="error-message"></span>
+                                <span class="error-message" id="regFieldErr" aria-live="polite"></span>
                             </div>
                         </div>
 
@@ -160,7 +171,7 @@
                 </div>
 
                 <!-- Link to Bot Users -->
-                <div class="mt-6 text-center" style="display: none;">
+                <div class="mt-6 text-center hidden">
                     <p class="text-gray-500 text-sm mb-2">قبلاً از ربات تلگرام ثبت‌نام کرده‌اید؟</p>
                     <button id="showBotLinkBtn" class="text-[#445D84] font-semibold hover:underline">
                         <svg class="icon icon--sm inline-block ml-1" aria-hidden="true">
@@ -270,9 +281,25 @@
                 }
             });
 
-            // Focus on first invalid field
-            if (firstInvalidField) {
-                firstInvalidField.focus();
+            // Show error summary and move focus for screen reader / keyboard users
+            const summary = document.getElementById('formErrorSummary');
+            if (!isFormValid && firstInvalidField) {
+                if (summary) {
+                    const invalid = Array.from(form.querySelectorAll('.input-group.error input, .input-group.error select'));
+                    const items = invalid.map(el => {
+                        const msg = el.closest('.input-group').querySelector('.error-message').textContent;
+                        const id = el.id ? ` href="#${el.id}"` : '';
+                        return `<li><a${id} class="underline font-semibold">${msg}</a></li>`;
+                    }).join('');
+                    summary.innerHTML = `<p class="font-bold mb-2">${invalid.length} مورد نیاز به اصلاح است:</p><ul class="list-disc pr-5 space-y-1">${items}</ul>`;
+                    summary.classList.remove('hidden');
+                    summary.focus();
+                } else {
+                    firstInvalidField.focus();
+                }
+            } else if (summary) {
+                summary.classList.add('hidden');
+                summary.innerHTML = '';
             }
 
             return isFormValid;

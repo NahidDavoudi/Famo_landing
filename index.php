@@ -24,16 +24,16 @@
                         آموزشگاه فامو با تیمی از اساتید مجرب و مشاوران حرفه‌ای، همراه دانش‌آموزان در مسیر موفقیت تحصیلی
                         است.
                     </p>
-                    <div class="flex flex-row justify-center items-center gap-5">
-                        <a href="pages/register.php"
-                            class="bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center">
+                    <div class="flex flex-row justify-center items-center gap-3 sm:gap-5">
+                        <a href="register.php"
+                            class="bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center min-h-[44px]">
                             <svg class="icon ml-2" aria-hidden="true">
                                 <use href="assets/icons/sprite.svg#icon-school" />
                             </svg>
                             رزرو نوبت
                         </a>
                         <a href="#courses"
-                            class="bg-transparent border-2 border-[#E2D9C6] text-[#E2D9C6] px-4 py-3 rounded-full font-bold hover:bg-[#E2D9C6] hover:text-[#445D84] transition-all duration-300 inline-flex items-center">
+                            class="bg-transparent border-2 border-[#E2D9C6] text-[#E2D9C6] px-4 py-3 rounded-full font-bold hover:bg-[#E2D9C6] hover:text-[#445D84] transition-all duration-300 inline-flex items-center min-h-[44px]">
                             <svg class="icon ml-2" aria-hidden="true">
                                 <use href="assets/icons/sprite.svg#icon-book" />
                             </svg>
@@ -57,15 +57,15 @@
                             <div class="grid grid-cols-3 gap-3 text-center divide-x divide-x-reverse divide-white/10">
                                                             <!-- SEO fallback values (search engines read these immediately) -->
                                                             <div class="px-1">
-                                                                <div class="text-2xl font-bold mb-1 text-white">7</div>
+                                                                <div class="text-2xl font-bold mb-1 text-white" id="years-counter">7</div>
                                                                 <div class="text-white/70 text-xs">سال تجربه</div>
                                                             </div>
                                                             <div class="px-1">
-                                                                <div class="text-2xl font-bold mb-1 text-white">500+</div>
+                                                                <div class="text-2xl font-bold mb-1 text-white" id="students-counter">500+</div>
                                                                 <div class="text-white/70 text-xs">قبولی کنکور</div>
                                                             </div>
                                                             <div class="px-1">
-                                                                <div class="text-2xl font-bold mb-1 text-white">15</div>
+                                                                <div class="text-2xl font-bold mb-1 text-white" id="teachers-counter">15</div>
                                                                 <div class="text-white/70 text-xs">استاد برتر</div>
                                                             </div>
                                                         </div>
@@ -367,7 +367,7 @@
                         <!-- FAQ Item 1 -->
                         <div
                             class="faq-item bg-gradient-to-r from-white to-[#f9f7f3] rounded-xl shadow-md border border-[#E2D9C6] overflow-hidden hover-lift">
-                            <div class="faq-question cursor-pointer p-5 flex justify-between items-center">
+                            <div class="faq-question cursor-pointer p-5 flex justify-between items-center" tabindex="0" role="button" aria-expanded="false">
                                 <h3 class="text-lg font-bold text-[#445D84]">آیا دوره‌ها به صورت حضوری برگزار می‌شوند؟
                                 </h3>
                                 <span class="faq-icon text-[#8B786D] transform transition-transform duration-300">
@@ -386,7 +386,7 @@
                         <!-- FAQ Item 2 -->
                         <div
                             class="faq-item bg-gradient-to-r from-white to-[#f9f7f3] rounded-xl shadow-md border border-[#E2D9C6] overflow-hidden hover-lift">
-                            <div class="faq-question cursor-pointer p-5 flex justify-between items-center">
+                            <div class="faq-question cursor-pointer p-5 flex justify-between items-center" tabindex="0" role="button" aria-expanded="false">
                                 <h3 class="text-lg font-bold text-[#445D84]">هزینه دوره‌ها چقدر است و آیا امکان پرداخت
                                     اقساطی وجود دارد؟</h3>
                                 <span class="faq-icon text-[#8B786D] transform transition-transform duration-300">
@@ -405,7 +405,7 @@
                         <!-- FAQ Item 3 -->
                         <div
                             class="faq-item bg-gradient-to-r from-white to-[#f9f7f3] rounded-xl shadow-md border border-[#E2D9C6] overflow-hidden hover-lift">
-                            <div class="faq-question cursor-pointer p-5 flex justify-between items-center">
+                            <div class="faq-question cursor-pointer p-5 flex justify-between items-center" tabindex="0" role="button" aria-expanded="false">
                                 <h3 class="text-lg font-bold text-[#445D84]">پشتیبانی درسی به چه صورت است؟</h3>
                                 <span class="faq-icon text-[#8B786D] transform transition-transform duration-300">
                                     <svg class="icon icon--sm" aria-hidden="true">
@@ -423,7 +423,7 @@
                         <!-- FAQ Item 4 -->
                         <div
                             class="faq-item bg-gradient-to-r from-white to-[#f9f7f3] rounded-xl shadow-md border border-[#E2D9C6] overflow-hidden hover-lift">
-                            <div class="faq-question cursor-pointer p-5 flex justify-between items-center">
+                            <div class="faq-question cursor-pointer p-5 flex justify-between items-center" tabindex="0" role="button" aria-expanded="false">
                                 <h3 class="text-lg font-bold text-[#445D84]">چگونه می‌توانم برای مشاوره رایگان ثبت‌نام
                                     کنم؟</h3>
                                 <span class="faq-icon text-[#8B786D] transform transition-transform duration-300">

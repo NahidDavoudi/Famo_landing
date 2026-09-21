@@ -1,5 +1,8 @@
 /* Page-specific styles for register / login - آموزشگاه فامو */
 
+/* Fallback: Tailwind provides .hidden, but keep form usable even if purge drops it */
+.hidden { display: none !important; }
+
 * { font-family: 'Vazir', sans-serif; }
 
 @keyframes fadeIn {

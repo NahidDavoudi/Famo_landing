@@ -1,13 +1,19 @@
 <?php $base = '../'; ?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وبلاگ | آموزشگاه فامو بابل</title>
+    <meta name="description" content="مطالب آموزشی وبلاگ آموزشگاه فامو بابل">
+    <?php include '../partials/head-common.php'; ?>
+</head>
 <body class="font-family text-gray-800" data-page="blog-index">
 
 <!-- Header -->
 <?php include '../partials/header.php' ?>
 <!-- Blog Index -->
-<section class="pt-36 pb-12 gradient-bg text-white text-center">
+<section class="pt-28 sm:pt-32 pb-12 gradient-bg text-white text-center">
     <h1 class="text-3xl sm:text-4xl font-bold mb-4 text-white">وبلاگ ها و مقالات آموزشگاه فامو</h1>
     <div class="pt-10 lg:pt-20 container mx-auto px-4">
         <p class="text-white/80 max-w-2xl mx-auto text-base sm:text-lg">برنامه‌ریزی، کادر مجرب، آزمون‌های استاندارد

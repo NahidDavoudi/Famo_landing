@@ -1,4 +1,4 @@
-<!-- Header fragment: parent page owns <!DOCTYPE><html><head><body> and includes partials/head-common.php. Requires $base. -->
+<!-- Header fragment: parent page owns the document shell and includes partials/head-common.php. Requires $base. -->
 <header class="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 py-2 sm:py-4">
     <div
         class="bg-[#445D84] bg-opacity-95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl border border-white/20 px-3 sm:px-6 py-3 sm:py-4 max-w-7xl mx-auto">
@@ -108,23 +108,23 @@
         <div id="mobileMenu" class="hidden lg:hidden mt-4 pt-4 border-t border-white/20 animate-fade-in-up">
             <ul class="flex flex-col space-y-4">
                 <li><a href="<?php echo $base; ?>#home"
-                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">خانه</a></li>
+                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">خانه</a></li>
                 <li><a href="<?php echo $base; ?>#about"
-                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">درباره
+                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">درباره
                     ما</a></li>
                 <li><a href="<?php echo $base; ?>courses/index.php"
-                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">دوره‌ها</a></li>
+                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">دوره‌ها</a></li>
                 <li><a href="<?php echo $base; ?>team/index.php"
-                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">اساتید</a></li>
+                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">اساتید</a></li>
                 <li><a href="<?php echo $base; ?>blog/index.php"
-                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">وبلاگ</a></li>
+                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">وبلاگ</a></li>
                 <li><a href="<?php echo $base; ?>#services"
-                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">خدمات
+                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">خدمات
                         ویژه</a></li>
                 <li><a href="<?php echo $base; ?>#faq-contact"
-                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-2 hover:bg-white/10 px-3 rounded-lg">سوالات
+                        class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">سوالات
                         و تماس</a></li>
-                <li><a href="<?php echo $base; ?>pages/register.php"
+                <li><a href="<?php echo $base; ?>register.php"
                         class="block bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] text-center py-3 rounded-full font-bold hover:shadow-lg transition duration-300">ثبت
                     نام</a></li>
             </ul>
