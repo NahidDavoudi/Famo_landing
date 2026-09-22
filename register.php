@@ -1,4 +1,4 @@
-<?php $base = '../'; ?>
+<?php $base = ''; ?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -35,6 +35,13 @@
             <!-- Form Container -->
             <div class="form-container relative overflow-hidden">
                 <div id="formErrorSummary" class="hidden mb-4 rounded-xl border-2 border-red-400 bg-red-50 p-4 text-red-700" role="alert" tabindex="-1"></div>
+                <!-- Success / server message (used by assets/js/auth.js showMessage) -->
+                <div id="messageContainer" class="hidden mb-4 rounded-xl border-2 p-4 text-center" style="display:none" role="status">
+                    <div class="message-icon mb-2"></div>
+                    <h3 id="formMessageTitle" class="font-bold text-lg mb-1"></h3>
+                    <p id="formMessage" class="mb-3"></p>
+                    <a id="redirectButton" href="#" class="hidden inline-block px-6 py-2 rounded-xl bg-[#445D84] text-white font-semibold" style="display:none">ادامه</a>
+                </div>
                 <!-- Login Form -->
                 <div id="loginFormContainer">
                     <p class="text-center text-gray-600 mb-6">برای ورود، اطلاعات خود را وارد کنید.</p>
@@ -183,7 +190,7 @@
 
             <!-- Back Link -->
             <div class="text-center mt-3 pt-6">
-                <a href="../index.php" class="text-gray-600 font-medium hover:text-[#445D84] transition duration-300">
+                <a href="index.php" class="text-gray-600 font-medium hover:text-[#445D84] transition duration-300">
                     <svg class="icon icon--sm inline-block ml-2" aria-hidden="true">
                         <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
                     </svg> بازگشت به صفحه اصلی
@@ -195,7 +202,7 @@
         <div
             class="hidden lg:flex flex-1 bg-gradient-to-br from-[#11223C] to-[#05387e] text-white justify-center items-center text-center p-10">
             <div class="branding-content">
-                <a href="../index.php" class="inline-block mb-3">
+                <a href="index.php" class="inline-block mb-3">
                     <img src="<?php echo $base; ?>assets/images/logo.png" alt="لوگوی آموزشگاه فامو" class="h-16 mx-auto">
                 </a>
                 <h2 class="text-3xl font-bold mb-5 text-white">آینده تحصیلی خود را با فامو بسازید</h2>
@@ -209,14 +216,15 @@
         function togglePasswordVisibility(inputId, button) {
             const input = document.getElementById(inputId);
             const icon = button.querySelector('.password-toggle-icon');
-            if (!icon) return;
+            if (!icon || !input) return;
+            const base = '<?php echo $base; ?>';
             if (input.type === 'password') {
                 input.type = 'text';
-                icon.src = '../assets/svg/eye-open.svg';
+                icon.src = base + 'assets/svg/eye-open.svg';
                 icon.title = 'مخفی کردن رمز عبور';
             } else {
                 input.type = 'password';
-                icon.src = '../assets/svg/eye-closed.svg';
+                icon.src = base + 'assets/svg/eye-closed.svg';
                 icon.title = 'نمایش رمز عبور';
             }
         }
@@ -358,6 +366,6 @@
             }
         });
     </script>
-    <script src="<?php echo $base; ?>assets/pages/register/js/auth.js"></script>
+    <script src="<?php echo $base; ?>assets/js/auth.js"></script>
 </body>
 </html>

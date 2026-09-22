@@ -1,7 +1,7 @@
 <?php
-require_once  '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 use App\Env;
-Env::load();
+Env::load(__DIR__ . '/.env');
 // --- Environment Variables (DB credentials) ---
 define('DB_HOST', Env::get('DB_HOST'));
 define('DB_NAME', Env::get('DB_NAME'));

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fieldSelect = document.querySelector('#formRegister select[name="field"]');
 
     // Handle grade change - hide field for grades 7-9
-    if (gradeSelect) {
+    if (gradeSelect && fieldContainer && fieldSelect) {
         gradeSelect.addEventListener('change', () => {
             const grade = parseInt(gradeSelect.value);
             if (grade <= 9) {
@@ -35,34 +35,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 fieldSelect.setAttribute('required', '');
             }
         });
+        // Apply initial state if a grade is pre-selected
+        if (gradeSelect.value && parseInt(gradeSelect.value) <= 9) {
+            fieldContainer.style.display = 'none';
+            fieldSelect.value = '';
+        }
     }
 
-    // Tab switching
-    loginTab.addEventListener('click', () => switchTab('login'));
-    registerTab.addEventListener('click', () => switchTab('register'));
+    // Tab switching (guarded: register.php has no bot/message containers)
+    if (loginTab) loginTab.addEventListener('click', () => switchTab('login'));
+    if (registerTab) registerTab.addEventListener('click', () => switchTab('register'));
 
     function switchTab(tabName) {
         const isLogin = tabName === 'login';
-        loginTab.classList.toggle('active', isLogin);
-        registerTab.classList.toggle('active', !isLogin);
-        loginFormContainer.style.display = isLogin ? 'block' : 'none';
-        registerFormContainer.style.display = !isLogin ? 'block' : 'none';
-        botLinkContainer.style.display = 'none';
-        messageContainer.style.display = 'none';
+        if (loginTab) loginTab.classList.toggle('active', isLogin);
+        if (registerTab) registerTab.classList.toggle('active', !isLogin);
+        if (loginFormContainer) loginFormContainer.style.display = isLogin ? 'block' : 'none';
+        if (registerFormContainer) registerFormContainer.style.display = !isLogin ? 'block' : 'none';
+        if (botLinkContainer) botLinkContainer.style.display = 'none';
+        if (messageContainer) messageContainer.style.display = 'none';
     }
 
     // Show bot link form
-    if (showBotLinkBtn) {
+    if (showBotLinkBtn && registerFormContainer && botLinkContainer) {
         showBotLinkBtn.addEventListener('click', () => {
             registerFormContainer.style.display = 'none';
             botLinkContainer.style.display = 'block';
-            botLinkStep1.style.display = 'block';
-            botLinkStep2.style.display = 'none';
+            if (botLinkStep1) botLinkStep1.style.display = 'block';
+            if (botLinkStep2) botLinkStep2.style.display = 'none';
         });
     }
 
     // Back to register
-    if (backToRegisterBtn) {
+    if (backToRegisterBtn && botLinkContainer && registerFormContainer) {
         backToRegisterBtn.addEventListener('click', () => {
             botLinkContainer.style.display = 'none';
             registerFormContainer.style.display = 'block';
@@ -70,46 +75,85 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showMessage(type, title, message, redirectUrl = null) {
+        // Fallback to inline summary / alert when messageContainer is absent (register.php)
+        if (!messageContainer) {
+            const summary = document.getElementById('formErrorSummary');
+            if (summary) {
+                summary.classList.remove('hidden');
+                summary.textContent = (title ? title + ': ' : '') + message;
+                summary.focus();
+            } else {
+                alert(message);
+            }
+            if (redirectUrl) {
+                setTimeout(() => window.location.href = redirectUrl, 1500);
+            }
+            return;
+        }
         messageContainer.className = type;
-        formMessageTitle.textContent = title;
-        formMessage.textContent = message;
+        if (formMessageTitle) formMessageTitle.textContent = title;
+        if (formMessage) formMessage.textContent = message;
 
-        if (redirectUrl) {
-            redirectButton.style.display = 'inline-block';
-            redirectButton.href = redirectUrl;
-        } else {
-            redirectButton.style.display = 'none';
+        if (redirectButton) {
+            if (redirectUrl) {
+                redirectButton.style.display = 'inline-block';
+                redirectButton.href = redirectUrl;
+            } else {
+                redirectButton.style.display = 'none';
+            }
         }
 
-        loginFormContainer.style.display = 'none';
-        registerFormContainer.style.display = 'none';
-        botLinkContainer.style.display = 'none';
+        if (loginFormContainer) loginFormContainer.style.display = 'none';
+        if (registerFormContainer) registerFormContainer.style.display = 'none';
+        if (botLinkContainer) botLinkContainer.style.display = 'none';
         messageContainer.style.display = 'block';
     }
 
     function showError(message, container = null) {
+        // If no messageContainer, show inline via formErrorSummary
+        if (!messageContainer) {
+            const summary = document.getElementById('formErrorSummary');
+            if (summary) {
+                summary.classList.remove('hidden');
+                summary.textContent = message;
+                summary.focus();
+                setTimeout(() => {
+                    summary.classList.add('hidden');
+                    summary.textContent = '';
+                }, 4000);
+            } else {
+                alert(message);
+            }
+            return;
+        }
         showMessage('error', 'خطا', message);
         setTimeout(() => {
             messageContainer.style.display = 'none';
             if (container) {
                 container.style.display = 'block';
-            } else if (loginTab.classList.contains('active')) {
-                loginFormContainer.style.display = 'block';
+            } else if (loginTab && loginTab.classList.contains('active')) {
+                if (loginFormContainer) loginFormContainer.style.display = 'block';
             } else {
-                registerFormContainer.style.display = 'block';
+                if (registerFormContainer) registerFormContainer.style.display = 'block';
             }
         }, 3000);
     }
 
     async function handleSubmit(form, successCallback = null) {
         const button = form.querySelector('button[type="submit"]');
-        const originalText = button.innerHTML;
-        button.disabled = true;
-        button.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i> صبر کنید...';
+        const originalText = button ? button.innerHTML : '';
+        if (button) {
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i> صبر کنید...';
+        }
 
         try {
+            // Respect inline validateForm() from register.php if present
+            if (typeof validateForm === 'function') {
+                if (!validateForm(form)) return;
+            }
             const formData = new FormData(form);
-            const response = await fetch('../api/auth.php', {
+            const response = await fetch('api/auth.php', {
                 method: 'POST',
                 body: formData
             });
@@ -130,27 +174,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } else {
                 // Check if user has bot account
-                if (data.has_bot_account) {
+                if (data.has_bot_account && showBotLinkBtn) {
                     showBotLinkBtn.click(); // Show bot link form
                 }
                 throw new Error(data.message || 'خطایی رخ داد');
             }
         } catch (error) {
-            const currentContainer = botLinkContainer.style.display === 'block' ? botLinkContainer : null;
+            const currentContainer = (botLinkContainer && botLinkContainer.style.display === 'block') ? botLinkContainer : null;
             showError(error.message, currentContainer);
         } finally {
-            button.disabled = false;
-            button.innerHTML = originalText;
+            if (button) {
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }
         }
     }
 
     // Form submissions
-    document.getElementById('formLogin').addEventListener('submit', (e) => {
+    const formLogin = document.getElementById('formLogin');
+    if (formLogin) formLogin.addEventListener('submit', (e) => {
         e.preventDefault();
         handleSubmit(e.target);
     });
 
-    document.getElementById('formRegister').addEventListener('submit', (e) => {
+    const formRegister = document.getElementById('formRegister');
+    if (formRegister) formRegister.addEventListener('submit', (e) => {
         e.preventDefault();
         handleSubmit(e.target);
     });
@@ -169,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const formData = new FormData(e.target);
                 formData.append('action', 'send_verify_code');
 
-                const response = await fetch('../api/auth.php', {
+                const response = await fetch('api/auth.php', {
                     method: 'POST',
                     body: formData
                 });
@@ -178,8 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (data.status === 'success') {
                     // Show step 2
-                    botLinkStep1.style.display = 'none';
-                    botLinkStep2.style.display = 'block';
+                    if (botLinkStep1) botLinkStep1.style.display = 'none';
+                    if (botLinkStep2) botLinkStep2.style.display = 'block';
                 } else {
                     throw new Error(data.message || 'خطا در ارسال کد');
                 }
@@ -206,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const formData = new FormData(e.target);
                 formData.append('action', 'verify_code');
 
-                const response = await fetch('../api/auth.php', {
+                const response = await fetch('api/auth.php', {
                     method: 'POST',
                     body: formData
                 });

@@ -4,7 +4,8 @@ class Env
 {
     public static function load($path = null)
     {
-        $path = '.env'; // ریشه پروژه
+        // Use absolute path so it works regardless of CWD (Apache CWD != api/)
+        $path = $path ?? __DIR__ . '/.env';
 
         if (!file_exists($path)) {
             throw new \RuntimeException(".env فایل یافت نشد: {$path}");
