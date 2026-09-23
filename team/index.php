@@ -55,6 +55,6 @@
 <!-- footer -->
     <?php include '../partials/footer.php'?>
 
-<script src="<?php echo $base; ?>assets/js/team.js"></script>
+<script type="module" src="<?php echo $base; ?>assets/js/team.js"></script>
 </body>
 </html>

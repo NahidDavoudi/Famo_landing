@@ -39,12 +39,17 @@
 }
 </script>
 
+<script src="<?php echo $base; ?>../shared/js/libs/gsap.min.js"></script>
+<script src="<?php echo $base; ?>../shared/js/libs/ScrollTrigger.min.js"></script>
+<script src="<?php echo $base; ?>../shared/js/libs/ScrollToPlugin.min.js"></script>
+<script src="<?php echo $base; ?>../shared/js/libs/swiper-bundle.min.js"></script>
+<script src="<?php echo $base; ?>../shared/js/libs/lucide.min.js"></script>
+<script src="<?php echo $base; ?>../shared/js/lucide-adapter.js"></script>
 <script src="<?php echo $base; ?>assets/js/animation.js"></script>
 
 <!-- Font Vazir -->
-<link rel="stylesheet" href="<?php echo $base; ?>assets/css/output.css">
+<link rel="stylesheet" href="<?php echo $base; ?>../shared/css/output.css">
 <link rel="stylesheet" href="<?php echo $base; ?>assets/css/icons.css">
-<link rel="stylesheet" href="<?php echo $base; ?>assets/css/swiper.min.css">
-<link rel="stylesheet" href="<?php echo $base; ?>assets/css/swiper-bundle.min.css">
+<link rel="stylesheet" href="<?php echo $base; ?>../shared/css/libs/swiper-bundle.min.css">
 <link rel="stylesheet" href="<?php echo $base; ?>assets/css/style.css">
-<link rel="stylesheet" href="<?php echo $base; ?>assets/css/font.css">
+<link rel="stylesheet" href="<?php echo $base; ?>../shared/css/fonts.css">

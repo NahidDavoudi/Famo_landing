@@ -1,5 +1,4 @@
-// Public API URL (this page lives in /pages/, API lives in /api/)
-const PUBLIC_API_URL = '../api/public.php';
+import API from '../../../shared/js/api.js';
 const SPRITE_PATH = '../assets/icons/sprite.svg';
 
 
@@ -69,7 +68,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 function svgIcon(name, cls = '') {
     const c = cls ? ` ${cls}` : '';
-    return `<svg class="icon${c}" aria-hidden="true"><use href="${SPRITE_PATH}#${name}"/></svg>`;
+    const icon = window.famoLucideName ? window.famoLucideName(name) : name.replace(/^icon-/, '');
+    return `<i class="icon${c}" data-lucide="${icon}" aria-hidden="true"></i>`;
 }
 
 // Maps a social_links.platform value to a sprite icon.
@@ -140,21 +140,15 @@ async function loadInstructors() {
     if (!container) return;
 
     try {
-        const response = await fetch(`${PUBLIC_API_URL}?action=get_instructors`);
-        const result = await response.json();
+        const result = await API.get('/public/instructors');
 
-        if (!result.success || !result.data) {
-            console.error('Error loading instructors:', result.error);
-            container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">خطا در بارگذاری اساتید</p>';
-            return;
-        }
-
-        if (result.data.length === 0) {
+        if (!result.data || result.data.length === 0) {
             container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">استادی ثبت نشده است</p>';
             return;
         }
 
         container.innerHTML = result.data.map(renderInstructorCard).join('');
+        if (window.refreshLucideIcons) window.refreshLucideIcons(container);
     } catch (error) {
         console.error('Error loading instructors:', error);
         container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">خطا در بارگذاری اساتید</p>';
@@ -166,21 +160,15 @@ async function loadSupporters() {
     if (!container) return;
 
     try {
-        const response = await fetch(`${PUBLIC_API_URL}?action=get_supporters`);
-        const result = await response.json();
+        const result = await API.get('/public/supporters');
 
-        if (!result.success || !result.data) {
-            console.error('Error loading supporters:', result.error);
-            container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">خطا در بارگذاری پشتیبانان</p>';
-            return;
-        }
-
-        if (result.data.length === 0) {
+        if (!result.data || result.data.length === 0) {
             container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">پشتیبانی ثبت نشده است</p>';
             return;
         }
 
         container.innerHTML = result.data.map(renderSupporterCard).join('');
+        if (window.refreshLucideIcons) window.refreshLucideIcons(container);
     } catch (error) {
         console.error('Error loading supporters:', error);
         container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">خطا در بارگذاری پشتیبانان</p>';

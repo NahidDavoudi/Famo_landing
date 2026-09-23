@@ -485,7 +485,7 @@
     display: none !important;
 }
 
-/* Blog article content (rendered HTML from api/blog.php) */
+/* Blog article content rendered from the unified public API */
 .blog-content {
     font-size: 1.0625rem;
     line-height: 2;

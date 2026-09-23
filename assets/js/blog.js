@@ -1,7 +1,7 @@
 // blog.js - Blog module (blog/index.php, blog/category.php, blog/post.php)
 import { formatJalaliLong } from './jalali.js';
+import API from '../../../shared/js/api.js';
 
-const PUBLIC_API_URL = '../api/blog.php';
 const SPRITE_PATH = '../assets/icons/sprite.svg';
 const SITE_URL = 'https://famoacademy.ir';
 
@@ -13,7 +13,8 @@ console.log('[blog.js] Module loaded');
 // ---------- Helpers ----------
 function svgIcon(name, cls = '') {
     const c = cls ? ` ${cls}` : '';
-    return `<svg class="icon${c}" aria-hidden="true"><use href="${SPRITE_PATH}#${name}"/></svg>`;
+    const icon = window.famoLucideName ? window.famoLucideName(name) : name.replace(/^icon-/, '');
+    return `<i class="icon${c}" data-lucide="${icon}" aria-hidden="true"></i>`;
 }
 
 function categoryIcon(name) {
@@ -42,9 +43,8 @@ function catPath(category) {
 // ---------- Load Categories ----------
 async function loadCategories() {
     try {
-        const response = await fetch(`${PUBLIC_API_URL}?action=get_categories`);
-        const result = await response.json();
-        if (result.success && result.data) {
+        const result = await API.get('/public/blog/categories');
+        if (result.data) {
             BLOG_CATEGORIES = result.data.map(c => ({
                 id: c.id,
                 name: c.name,
@@ -188,24 +188,26 @@ async function loadPostList(action, params, baseUrl) {
 
     showSkeletons();
     try {
-        const query = new URLSearchParams({ action, ...params }).toString();
-        const response = await fetch(`${PUBLIC_API_URL}?${query}`);
-        const result = await response.json();
+        let result;
+        if (action === 'get_posts') {
+            result = await API.get(`/public/blog/posts?page=${params.page || 1}`);
+        } else if (action === 'get_posts_by_category') {
+            result = await API.get(`/public/blog/categories/${encodeURIComponent(params.category)}/posts?page=${params.page || 1}`);
+        }
         hideSkeletons();
 
-        if (!result.success || !result.data) {
-            container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-12">خطا در بارگذاری پست‌ها</p>';
-            return;
-        }
+        const posts = result.data?.posts || [];
+        const paginationData = result.pagination;
 
-        if (result.data.length === 0) {
+        if (posts.length === 0) {
             container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-12">در حال حاضر پستی در این دسته منتشر نشده است.</p>';
             renderPagination({ page: 1, total_pages: 1 }, baseUrl);
             return;
         }
 
-        container.innerHTML = result.data.map(renderPostCard).join('');
-        renderPagination(result.pagination, baseUrl);
+        container.innerHTML = posts.map(renderPostCard).join('');
+        if (window.refreshLucideIcons) window.refreshLucideIcons(container);
+        renderPagination(paginationData, baseUrl);
         container.classList.add('posts-loaded');
     } catch (error) {
         console.error('Error loading posts:', error);
@@ -274,12 +276,13 @@ function initBlogPost() {
         return;
     }
 
-    fetch(`${PUBLIC_API_URL}?action=get_post&slug=${encodeURIComponent(slug)}`)
-        .then(res => res.json())
+    API.get(`/public/blog/posts/${encodeURIComponent(slug)}`)
         .then(result => {
             hideSkeletons();
 
-            if (!result.success || !result.data) {
+            const post = result.data?.post;
+
+            if (!post) {
                 container.innerHTML = `
                     <div class="text-center py-16">
                         <p class="text-6xl mb-4 font-bold text-[#E2D9C6]">۴۰۴</p>
@@ -292,7 +295,7 @@ function initBlogPost() {
                 return;
             }
 
-            renderPost(result.data);
+            renderPost(post);
         })
         .catch(err => {
             console.error('Error loading post:', err);
@@ -354,6 +357,7 @@ function renderPost(post) {
             </div>
         </article>
     `;
+    if (window.refreshLucideIcons) window.refreshLucideIcons(container);
 
     // content (HTML body from DB)
     const contentEl = document.getElementById('postContent');

@@ -6,7 +6,7 @@
             <div>
                 <div class="flex items-center gap-4 mb-6">
                     <div class="bg-[#445D84] w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                        <img src="<?php echo $base; ?>assets/images/logo.png" alt="logo" class="w-10 h-10 object-contain">
+                        <img src="<?php echo $base; ?>../shared/images/logo.png" alt="logo" class="w-10 h-10 object-contain">
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold">آموزشگاه <span class="text-[#E2D9C6]">فامو</span></h3>

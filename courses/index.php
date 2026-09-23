@@ -13,7 +13,7 @@
     <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="دوره‌های تخصصی کنکور و تیزهوشان | آموزشگاه فامو بابل">
     <meta property="og:description" content="برنامه‌ریزی، آموزش مفهومی و آزمون‌های تخصصی کنکور و تیزهوشان در بابل.">
-    <meta property="og:image" content="<?php echo $base; ?>assets/images/logo.png">
+    <meta property="og:image" content="<?php echo $base; ?>../shared/images/logo.png">
 
     <!-- Course Schema Markup -->
     <script type="application/ld+json" id="courseSchema">
@@ -75,6 +75,6 @@
     <?php include '../partials/footer.php'?>
 
 
-<script src="<?php echo $base; ?>assets/js/courses.js"></script>
+<script type="module" src="<?php echo $base; ?>assets/js/courses.js"></script>
 </body>
 </html>

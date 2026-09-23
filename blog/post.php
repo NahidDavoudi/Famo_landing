@@ -12,7 +12,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="مقالات وبلاگ | آموزشگاه فامو">
     <meta property="og:description" content="مطالب آموزشی وبلاگ آموزشگاه فامو بابل">
-    <meta property="og:image" content="../assets/images/logo.png">
+    <meta property="og:image" content="../../shared/images/logo.png">
 
     <!-- Structured Data - updated dynamically per post by blog.js -->
     <script type="application/ld+json" id="blogPostingSchema"></script>

@@ -525,12 +525,7 @@
     <?php include 'partials/footer.php'?>
 
     <!-- Scripts -->
-    <script src="assets/js/gsap.min.js"></script>
-    <script src="assets/js/ScrollTrigger.min.js"></script>
-    <script src="assets/js/ScrollToPlugin.js"></script>
-    <script src="assets/js/swiper.min.js"></script>
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
 </body>
 
 </html>

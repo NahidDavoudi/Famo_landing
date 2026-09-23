@@ -1,5 +1,4 @@
-// Public API URL
-const PUBLIC_API_URL = 'api/public.php';
+import API from '../../../shared/js/api.js';
 
 // SVG Sprite path
 const SPRITE_PATH = 'assets/icons/sprite.svg';
@@ -7,7 +6,8 @@ const SPRITE_PATH = 'assets/icons/sprite.svg';
 // Helper: create SVG icon HTML from sprite
 function svgIcon(name, cls = '') {
     const c = cls ? ` ${cls}` : '';
-    return `<svg class="icon${c}" aria-hidden="true"><use href="${SPRITE_PATH}#${name}"/></svg>`;
+    const icon = window.famoLucideName ? window.famoLucideName(name) : name.replace(/^icon-/, '');
+    return `<i class="icon${c}" data-lucide="${icon}" aria-hidden="true"></i>`;
 }
 
 // FontAwesome → SVG sprite mapping for dynamic course icons
@@ -135,26 +135,17 @@ function hideSkeletons(containerId, skeletonClass) {
 
 // Load courses from API
 async function loadCoursesFromAPI() {
-    // Show skeletons before loading
     showSkeletons('coursesContainer', 'skeleton-course-wrapper');
 
     try {
-        const response = await fetch(`${PUBLIC_API_URL}?action=get_courses`);
-        const result = await response.json();
+        const result = await API.get('/public/courses');
 
         const container = document.getElementById('coursesContainer');
         if (!container) return;
 
-        // Hide skeletons
         hideSkeletons('coursesContainer', 'skeleton-course-wrapper');
 
-        if (!result.success || !result.data) {
-            console.error('Error loading courses:', result.error);
-            container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500">خطا در بارگذاری دوره‌ها</p></div>';
-            return;
-        }
-
-        if (result.data.length === 0) {
+        if (!result.data || result.data.length === 0) {
             container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">دوره‌ای یافت نشد</p></div>';
             return;
         }
@@ -203,6 +194,7 @@ async function loadCoursesFromAPI() {
                 </div>
             </div>
         `).join('');
+        if (window.refreshLucideIcons) window.refreshLucideIcons(container);
 
         // Attach click event listeners to course cards
         attachCourseCardListeners();
@@ -246,26 +238,17 @@ async function loadCoursesFromAPI() {
 
 // Load instructors from API
 async function loadInstructorsFromAPI() {
-    // Show skeletons before loading
     showSkeletons('instructorsContainer', 'skeleton-instructor-wrapper');
 
     try {
-        const response = await fetch(`${PUBLIC_API_URL}?action=get_instructors`);
-        const result = await response.json();
+        const result = await API.get('/public/instructors');
 
         const container = document.getElementById('instructorsContainer');
         if (!container) return;
 
-        // Hide skeletons
         hideSkeletons('instructorsContainer', 'skeleton-instructor-wrapper');
 
-        if (!result.success || !result.data) {
-            console.error('Error loading instructors:', result.error);
-            container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">خطا در بارگذاری اساتید</p></div>';
-            return;
-        }
-
-        if (result.data.length === 0) {
+        if (!result.data || result.data.length === 0) {
             container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">استادی یافت نشد</p></div>';
             return;
         }
@@ -356,26 +339,17 @@ async function loadInstructorsFromAPI() {
 
 // Load supporters from API
 async function loadSupportersFromAPI() {
-    // Show skeletons before loading
     showSkeletons('supportersContainer', 'skeleton-supporter-wrapper');
 
     try {
-        const response = await fetch(`${PUBLIC_API_URL}?action=get_supporters`);
-        const result = await response.json();
+        const result = await API.get('/public/supporters');
 
         const container = document.getElementById('supportersContainer');
         if (!container) return;
 
-        // Hide skeletons
         hideSkeletons('supportersContainer', 'skeleton-supporter-wrapper');
 
-        if (!result.success || !result.data) {
-            console.error('Error loading supporters:', result.error);
-            container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">خطا در بارگذاری پشتیبانان</p></div>';
-            return;
-        }
-
-        if (result.data.length === 0) {
+        if (!result.data || result.data.length === 0) {
             container.innerHTML = '<div class="swiper-slide"><p class="text-center text-gray-500 py-8">پشتیبانی یافت نشد</p></div>';
             return;
         }
