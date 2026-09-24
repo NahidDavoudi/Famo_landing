@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $page_title; ?></title>
     <meta name="description" content="<?php echo $meta_description; ?>">
-    <?php include 'partials/head-common.php'; ?>
+    <?php include 'layouts/head-common.php'; ?>
 </head>
 <body class="font-family text-gray-800">
     <!-- Header -->
-   <?php include 'partials/header.php' ?>
+   <?php include 'layouts/header.php' ?>
     <!-- Hero Section -->
     <section id="home" class="pt-32 sm:pt-32 pb-12 sm:pb-20 px-4 gradient-bg text-white">
         <div class="container mx-auto max-w-6xl">
@@ -25,18 +25,14 @@
                         است.
                     </p>
                     <div class="flex flex-row justify-center items-center gap-3 sm:gap-5">
-                        <a href="register.php"
+                        <a href="../login/index.php"
                             class="bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center min-h-[44px]">
-                            <svg class="icon ml-2" aria-hidden="true">
-                                <use href="assets/icons/sprite.svg#icon-school" />
-                            </svg>
+                            <i class="icon ml-2" data-lucide="school" aria-hidden="true"></i>
                             رزرو نوبت
                         </a>
                         <a href="#courses"
                             class="bg-transparent border-2 border-[#E2D9C6] text-[#E2D9C6] px-4 py-3 rounded-full font-bold hover:bg-[#E2D9C6] hover:text-[#445D84] transition-all duration-300 inline-flex items-center min-h-[44px]">
-                            <svg class="icon ml-2" aria-hidden="true">
-                                <use href="assets/icons/sprite.svg#icon-book" />
-                            </svg>
+                            <i class="icon ml-2" data-lucide="book-open" aria-hidden="true"></i>
                             مشاهده دوره‌ها
                         </a>
                     </div>
@@ -49,9 +45,7 @@
                             class="glass-effect rounded-2xl p-6 border border-white/20 lg:absolute lg:-bottom-16 lg:-right-6 lg:max-w-sm w-full mt-10 lg:mt-0 shadow-2xl backdrop-blur-md z-20">
                             <h3
                                 class="text-lg font-bold mb-4 text-center text-[#E2D9C6] flex items-center justify-center">
-                                <svg class="icon icon--md ml-2" aria-hidden="true">
-                                    <use href="assets/icons/sprite.svg#icon-chart-bar" />
-                                </svg>
+                                <i class="icon icon--md ml-2" data-lucide="chart-column" aria-hidden="true"></i>
                                 آمار فامو در یک نگاه
                             </h3>
                             <div class="grid grid-cols-3 gap-3 text-center divide-x divide-x-reverse divide-white/10">
@@ -151,12 +145,10 @@
             </div>
 
             <div class="text-center mt-10">
-                <a href="courses/index.php"
+                <a href="pages/course.php"
                     class="inline-flex items-center bg-[#445D84] text-white px-6 py-3 rounded-full font-bold hover:bg-[#344868] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#445D84] focus-visible:ring-offset-2">
                     مشاهده همه دوره‌ها و جزئیات کامل
-                    <svg class="icon icon--sm mr-2" aria-hidden="true">
-                        <use href="assets/icons/sprite.svg#icon-chevron-left" />
-                    </svg>
+                    <i class="icon icon--sm mr-2" data-lucide="chevron-left" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -236,12 +228,10 @@
             </div>
 
             <div class="text-center mt-10">
-                <a href="team/index.php"
+                <a href="pages/team.php"
                     class="inline-flex items-center bg-[#445D84] text-white px-6 py-3 rounded-full font-bold hover:bg-[#344868] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#445D84] focus-visible:ring-offset-2">
                     مشاهده کادر آموزشگاه فامو
-                    <svg class="icon icon--sm mr-2" aria-hidden="true">
-                        <use href="assets/icons/sprite.svg#icon-chevron-left" />
-                    </svg>
+                    <i class="icon icon--sm mr-2" data-lucide="chevron-left" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -282,9 +272,7 @@
                     class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-[#E2D9C6] hover-lift transition-all duration-300">
                     <div
                         class="w-20 h-20 bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <svg class="icon icon--xl text-[#445D84]" aria-hidden="true">
-                            <use href="assets/icons/sprite.svg#icon-headset" />
-                        </svg>
+                        <i class="icon icon--xl text-[#445D84]" data-lucide="headset" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[#445D84] mb-4 text-center">پشتیبانی ۲۴ ساعته</h3>
                     <p class="text-gray-600 text-center leading-relaxed">پاسخگویی به سوالات درسی دانش‌آموزان در تمامی
@@ -296,9 +284,7 @@
                     style="animation-delay: 0.2s">
                     <div
                         class="w-20 h-20 bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <svg class="icon icon--xl text-[#445D84]" aria-hidden="true">
-                            <use href="assets/icons/sprite.svg#icon-chart-bar" />
-                        </svg>
+                        <i class="icon icon--xl text-[#445D84]" data-lucide="chart-column" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[#445D84] mb-4 text-center">آزمون‌های هفتگی</h3>
                     <p class="text-gray-600 text-center leading-relaxed">برگزاری آزمون‌های استاندارد با تحلیل پیشرفت
@@ -310,9 +296,7 @@
                     style="animation-delay: 0.3s">
                     <div
                         class="w-20 h-20 bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <svg class="icon icon--xl text-[#445D84]" aria-hidden="true">
-                            <use href="assets/icons/sprite.svg#icon-users" />
-                        </svg>
+                        <i class="icon icon--xl text-[#445D84]" data-lucide="users" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[#445D84] mb-4 text-center">کلاس‌های خصوصی</h3>
                     <p class="text-gray-600 text-center leading-relaxed">برگزاری جلسات خصوصی برای رفع اشکال تک‌تک دروس
@@ -324,9 +308,7 @@
                     style="animation-delay: 0.4s">
                     <div
                         class="w-20 h-20 bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <svg class="icon icon--xl text-[#445D84]" aria-hidden="true">
-                            <use href="assets/icons/sprite.svg#icon-book" />
-                        </svg>
+                        <i class="icon icon--xl text-[#445D84]" data-lucide="book-open" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[#445D84] mb-4 text-center">مشاوره تخصصی</h3>
                     <p class="text-gray-600 text-center leading-relaxed">برنامه‌ریزی تحصیلی شخصی‌سازی شده توسط مشاوران
@@ -341,9 +323,7 @@
                     باشید.</p>
                 <a href="#faq-contact"
                     class="bg-white text-[#445D84] px-8 py-3 rounded-full font-bold hover:shadow-lg transition-all duration-300 hover:scale-105 inline-flex items-center">
-                    <svg class="icon ml-2" aria-hidden="true">
-                        <use href="assets/icons/sprite.svg#icon-phone" />
-                    </svg>
+                    <i class="icon ml-2" data-lucide="phone" aria-hidden="true"></i>
                     تماس با ما
                 </a>
             </div>
@@ -357,9 +337,7 @@
                 <!-- FAQ Section -->
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-bold text-[#445D84] mb-6 sm:mb-8 flex items-center">
-                        <svg class="icon icon--lg ml-3 text-[#8B786D]" aria-hidden="true">
-                            <use href="assets/icons/sprite.svg#icon-help-circle" />
-                        </svg>
+                        <i class="icon icon--lg ml-3 text-[#8B786D]" data-lucide="circle-help" aria-hidden="true"></i>
                         سوالات متداول
                     </h2>
 
@@ -371,9 +349,7 @@
                                 <h3 class="text-lg font-bold text-[#445D84]">آیا دوره‌ها به صورت حضوری برگزار می‌شوند؟
                                 </h3>
                                 <span class="faq-icon text-[#8B786D] transform transition-transform duration-300">
-                                    <svg class="icon icon--sm" aria-hidden="true">
-                                        <use href="assets/icons/sprite.svg#icon-chevron-down" />
-                                    </svg>
+                                    <i class="icon icon--sm" data-lucide="chevron-down" aria-hidden="true"></i>
                                 </span>
                             </div>
                             <div class="faq-answer px-5">
@@ -390,9 +366,7 @@
                                 <h3 class="text-lg font-bold text-[#445D84]">هزینه دوره‌ها چقدر است و آیا امکان پرداخت
                                     اقساطی وجود دارد؟</h3>
                                 <span class="faq-icon text-[#8B786D] transform transition-transform duration-300">
-                                    <svg class="icon icon--sm" aria-hidden="true">
-                                        <use href="assets/icons/sprite.svg#icon-chevron-down" />
-                                    </svg>
+                                    <i class="icon icon--sm" data-lucide="chevron-down" aria-hidden="true"></i>
                                 </span>
                             </div>
                             <div class="faq-answer px-5">
@@ -408,9 +382,7 @@
                             <div class="faq-question cursor-pointer p-5 flex justify-between items-center" tabindex="0" role="button" aria-expanded="false">
                                 <h3 class="text-lg font-bold text-[#445D84]">پشتیبانی درسی به چه صورت است؟</h3>
                                 <span class="faq-icon text-[#8B786D] transform transition-transform duration-300">
-                                    <svg class="icon icon--sm" aria-hidden="true">
-                                        <use href="assets/icons/sprite.svg#icon-chevron-down" />
-                                    </svg>
+                                    <i class="icon icon--sm" data-lucide="chevron-down" aria-hidden="true"></i>
                                 </span>
                             </div>
                             <div class="faq-answer px-5">
@@ -427,9 +399,7 @@
                                 <h3 class="text-lg font-bold text-[#445D84]">چگونه می‌توانم برای مشاوره رایگان ثبت‌نام
                                     کنم؟</h3>
                                 <span class="faq-icon text-[#8B786D] transform transition-transform duration-300">
-                                    <svg class="icon icon--sm" aria-hidden="true">
-                                        <use href="assets/icons/sprite.svg#icon-chevron-down" />
-                                    </svg>
+                                    <i class="icon icon--sm" data-lucide="chevron-down" aria-hidden="true"></i>
                                 </span>
                             </div>
                             <div class="faq-answer px-5">
@@ -444,9 +414,7 @@
                 <!-- Contact Section -->
                 <div>
                     <h2 class="text-2xl sm:text-3xl font-bold text-[#445D84] mb-6 sm:mb-8 flex items-center">
-                        <svg class="icon icon--lg ml-3 text-[#8B786D]" aria-hidden="true">
-                            <use href="assets/icons/sprite.svg#icon-id-card" />
-                        </svg>
+                        <i class="icon icon--lg ml-3 text-[#8B786D]" data-lucide="id-card" aria-hidden="true"></i>
                         با ما در ارتباط باشید
                     </h2>
 
@@ -458,9 +426,7 @@
                                 class="flex items-start space-x-4 space-x-reverse hover:bg-white/50 p-3 rounded-lg transition duration-300 gap-4">
                                 <div
                                     class="bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <svg class="icon" aria-hidden="true">
-                                        <use href="assets/icons/sprite.svg#icon-map-pin" />
-                                    </svg>
+                                    <i class="icon" data-lucide="map-pin" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-[#445D84] mb-1">آدرس آموزشگاه</h4>
@@ -473,9 +439,7 @@
                                 class="flex items-start space-x-4 space-x-reverse hover:bg-white/50 p-3 rounded-lg transition duration-300 gap-4">
                                 <div
                                     class="bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <svg class="icon" aria-hidden="true">
-                                        <use href="assets/icons/sprite.svg#icon-phone" />
-                                    </svg>
+                                    <i class="icon" data-lucide="phone" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-[#445D84] mb-1">شماره تماس</h4>
@@ -490,9 +454,7 @@
                                 class="flex items-start space-x-4 space-x-reverse hover:bg-white/50 p-3 rounded-lg transition duration-300 gap-4">
                                 <div
                                     class="bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <svg class="icon" aria-hidden="true">
-                                        <use href="assets/icons/sprite.svg#icon-mail" />
-                                    </svg>
+                                    <i class="icon" data-lucide="mail" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-[#445D84] mb-1">ایمیل</h4>
@@ -505,9 +467,7 @@
                                 class="flex items-start space-x-4 space-x-reverse hover:bg-white/50 p-3 rounded-lg transition duration-300 gap-4">
                                 <div
                                     class="bg-gradient-to-br from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <svg class="icon" aria-hidden="true">
-                                        <use href="assets/icons/sprite.svg#icon-telegram" />
-                                    </svg>
+                                    <i class="icon" data-lucide="send" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg text-[#445D84] mb-1">تلگرام</h4>
@@ -522,7 +482,7 @@
     </section>
 
     <!-- Footer -->
-    <?php include 'partials/footer.php'?>
+    <?php include 'layouts/footer.php'?>
 
     <!-- Scripts -->
     <script type="module" src="assets/js/main.js"></script>

@@ -1,9 +1,6 @@
 import API from '../../../shared/js/api.js';
 
-// SVG Sprite path
-const SPRITE_PATH = 'assets/icons/sprite.svg';
-
-// Helper: create SVG icon HTML from sprite
+// Helper: create a Lucide icon element.
 function svgIcon(name, cls = '') {
     const c = cls ? ` ${cls}` : '';
     const icon = window.famoLucideName ? window.famoLucideName(name) : name.replace(/^icon-/, '');

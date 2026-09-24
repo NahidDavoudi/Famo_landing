@@ -1,7 +1,5 @@
 import API from '../../../shared/js/api.js';
 
-const SPRITE_PATH = '../assets/icons/sprite.svg';
-
 let mobileMenuBtn = null;
 let mobileMenu = null;
 

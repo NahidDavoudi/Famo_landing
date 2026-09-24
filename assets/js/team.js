@@ -1,6 +1,4 @@
 import API from '../../../shared/js/api.js';
-const SPRITE_PATH = '../assets/icons/sprite.svg';
-
 
 // Mobile Menu Toggle - Global variables for menu elements
 let mobileMenuBtn = null;

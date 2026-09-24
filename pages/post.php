@@ -17,13 +17,13 @@
     <!-- Structured Data - updated dynamically per post by blog.js -->
     <script type="application/ld+json" id="blogPostingSchema"></script>
 
-    <?php include '../partials/head-common.php'; ?>
+    <?php include '../layouts/head-common.php'; ?>
 </head>
 
 <body class="font-family text-gray-800 bg-[#f9f7f3] min-h-screen flex flex-col" data-page="blog-post">
 
     <!-- Header -->
-<?php include '../partials/header.php' ?>
+<?php include '../layouts/header.php' ?>
 
     <!-- Article Container -->
     <section class="pt-28 sm:pt-32 pb-16 px-4">
@@ -48,7 +48,7 @@
     </section>
 
 <!-- Footer -->
-    <?php include '../partials/footer.php' ?>
+    <?php include '../layouts/footer.php' ?>
 
 
     <script type="module" src="../assets/js/blog.js"></script>

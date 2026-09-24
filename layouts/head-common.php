@@ -17,8 +17,8 @@
     "alternateName": "Famo Academy",
     "description": "آموزشگاه فامو نهاد آموزشی پیشرو در بابل با هفت سال سابقه در مشاوره تخصصی، آموزش مفهومی و آمادگی کنکور و تیزهوشان برای مقاطع راهنمایی و دبیرستان.",
     "url": "https://famoacademy.ir",
-    "logo": "<?php echo $base; ?>assets/images/logo.png",
-    "image": "<?php echo $base; ?>assets/images/logo.png",
+    "logo": "<?php echo $base; ?>../shared/images/logo.png",
+    "image": "<?php echo $base; ?>../shared/images/logo.png",
     "email": "info@famoacademy.ir",
     "telephone": "+98-11-32221234",
     "address": {

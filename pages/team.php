@@ -7,13 +7,13 @@
     <title>اساتید | آموزشگاه فامو بابل</title>
     <meta name="description"
         content="معرفی اساتید برجسته کنکور، رتبه‌های برتر المپیاد و تخصص مشاوران و پشتیبانان آموزشی موسسه فامو در بابل.">
-    <?php include '../partials/head-common.php'; ?>
+    <?php include '../layouts/head-common.php'; ?>
 </head>
 
 <body class="font-family text-gray-800 bg-[#f9f7f3]">
 
 <!-- Header -->
-    <?php include '../partials/header.php' ?>
+    <?php include '../layouts/header.php' ?>
 
 <section class="pt-28 sm:pt-32 pb-12 gradient-bg text-white text-center">
     <div class="container mx-auto px-4">
@@ -53,7 +53,7 @@
     </div>
 </section>
 <!-- footer -->
-    <?php include '../partials/footer.php'?>
+    <?php include '../layouts/footer.php'?>
 
 <script type="module" src="<?php echo $base; ?>assets/js/team.js"></script>
 </body>

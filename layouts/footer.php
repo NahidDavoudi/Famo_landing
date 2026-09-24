@@ -21,23 +21,17 @@
                     <a href="https://t.me/famoacademy"
                         class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110 shrink-0"
                         aria-label="فامو در تلگرام">
-                        <svg class="icon" aria-hidden="true">
-                            <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-telegram" />
-                        </svg>
+                        <i class="icon" data-lucide="send" aria-hidden="true"></i>
                     </a>
                     <a href="#"
                         class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110 shrink-0"
                         aria-label="فامو در اینستاگرام">
-                        <svg class="icon" aria-hidden="true">
-                            <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-brand-instagram" />
-                        </svg>
+                        <i class="icon" data-lucide="instagram" aria-hidden="true"></i>
                     </a>
                     <a href="https://wa.me/989014402300"
                         class="bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition duration-300 hover:scale-110 shrink-0"
                         aria-label="فامو در واتساپ">
-                        <svg class="icon" aria-hidden="true">
-                            <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-brand-whatsapp" />
-                        </svg>
+                        <i class="icon" data-lucide="message-circle" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
@@ -48,37 +42,27 @@
                 <ul class="space-y-3">
                     <li><a href="#home"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
-                        <svg class="icon icon--sm ml-2" aria-hidden="true">
-                            <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
-                        </svg>
+                        <i class="icon icon--sm ml-2" data-lucide="chevron-left" aria-hidden="true"></i>
                         خانه
                     </a></li>
-                    <li><a href="<?php echo $base; ?>courses/index.php"
+                    <li><a href="<?php echo $base; ?>pages/course.php"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
-                        <svg class="icon icon--sm ml-2" aria-hidden="true">
-                            <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
-                        </svg>
+                        <i class="icon icon--sm ml-2" data-lucide="chevron-left" aria-hidden="true"></i>
                         دوره‌ها
                     </a></li>
-                    <li><a href="<?php echo $base; ?>team/index.php"
+                    <li><a href="<?php echo $base; ?>pages/team.php"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
-                        <svg class="icon icon--sm ml-2" aria-hidden="true">
-                            <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
-                        </svg>
+                        <i class="icon icon--sm ml-2" data-lucide="chevron-left" aria-hidden="true"></i>
                         اساتید
                     </a></li>
                     <li><a href="#services"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
-                        <svg class="icon icon--sm ml-2" aria-hidden="true">
-                            <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
-                        </svg>
+                        <i class="icon icon--sm ml-2" data-lucide="chevron-left" aria-hidden="true"></i>
                         خدمات ویژه
                     </a></li>
                     <li><a href="#faq-contact"
                             class="text-white/80 hover:text-white transition duration-300 hover:pr-2 flex items-center">
-                        <svg class="icon icon--sm ml-2" aria-hidden="true">
-                            <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-chevron-left" />
-                        </svg>
+                        <i class="icon icon--sm ml-2" data-lucide="chevron-left" aria-hidden="true"></i>
                         سوالات و تماس
                     </a></li>
                 </ul>
@@ -89,17 +73,13 @@
                 <h4 class="text-xl font-bold mb-6 text-[#E2D9C6]">موقعیت آموزشگاه</h4>
                 <div class="bg-white/10 rounded-xl overflow-hidden border border-white/20 p-4">
                     <div class="h-48 bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] rounded-lg flex flex-col items-center justify-center text-[#445D84]">
-                        <svg class="icon icon--3xl mb-3" aria-hidden="true">
-                            <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-map-pin" />
-                        </svg>
+                        <i class="icon icon--3xl mb-3" data-lucide="map-pin" aria-hidden="true"></i>
                         <p class="font-bold text-center">بابل، میدان باغ فردوس</p>
                     </div>
                     <div class="mt-4 text-center">
                         <a href="https://maps.google.com/?q=بابل، میدان باغ فردوس" target="_blank"
                             class="inline-flex items-center bg-white/20 text-white px-4 py-2 rounded-lg hover:bg-white/30 transition duration-300">
-                            <svg class="icon icon--sm ml-2" aria-hidden="true">
-                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-external-link" />
-                            </svg>
+                            <i class="icon icon--sm ml-2" data-lucide="external-link" aria-hidden="true"></i>
                             مشاهده در نقشه
                         </a>
                     </div>

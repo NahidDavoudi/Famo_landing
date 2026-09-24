@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>وبلاگ | آموزشگاه فامو بابل</title>
     <meta name="description" content="مطالب آموزشی وبلاگ آموزشگاه فامو بابل">
-    <?php include '../partials/head-common.php'; ?>
+    <?php include '../layouts/head-common.php'; ?>
 </head>
 <body class="font-family text-gray-800" data-page="blog-index">
 
 <!-- Header -->
-<?php include '../partials/header.php' ?>
+<?php include '../layouts/header.php' ?>
 <!-- Blog Index -->
 <section class="pt-28 sm:pt-32 pb-12 gradient-bg text-white text-center">
     <h1 class="text-3xl sm:text-4xl font-bold mb-4 text-white">وبلاگ ها و مقالات آموزشگاه فامو</h1>
@@ -55,7 +55,7 @@
 </section>
 
 <!-- Footer -->
-<?php include '../partials/footer.php' ?>
+<?php include '../layouts/footer.php' ?>
 
 <script type="module" src="<?php echo $base; ?>assets/js/blog.js"></script>
 </body>

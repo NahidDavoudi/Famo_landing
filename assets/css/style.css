@@ -1,4 +1,4 @@
-/* Home page: custom styles only. Layout/colors via Tailwind (output.css). */
+/* Home page: custom styles only. Layout/colors via shared Tailwind CSS. */
 .root {
     font-family: 'Vazirmatn';
 }

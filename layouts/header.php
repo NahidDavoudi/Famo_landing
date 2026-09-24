@@ -1,4 +1,4 @@
-<!-- Header fragment: parent page owns the document shell and includes partials/head-common.php. Requires $base. -->
+<!-- Header fragment: parent page owns the document shell and includes layouts/head-common.php. Requires $base. -->
 <header class="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 py-2 sm:py-4">
     <div
         class="bg-[#445D84] bg-opacity-95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl border border-white/20 px-3 sm:px-6 py-3 sm:py-4 max-w-7xl mx-auto">
@@ -22,72 +22,56 @@
                     <li>
                         <a href="<?php echo $base?>#home"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
-                            <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
-                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-home" />
-                            </svg>
+                            <i class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" data-lucide="house" aria-hidden="true"></i>
                             خانه
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo $base; ?>#about"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
-                            <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
-                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-help-circle" />
-                            </svg>
+                            <i class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" data-lucide="circle-help" aria-hidden="true"></i>
                             درباره ما
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo $base; ?>courses/index.php"
+                        <a href="<?php echo $base; ?>pages/course.php"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
-                            <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
-                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-book" />
-                            </svg>
+                            <i class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" data-lucide="book-open" aria-hidden="true"></i>
                             دوره‌ها
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo $base; ?>team/index.php"
+                        <a href="<?php echo $base; ?>pages/team.php"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
-                            <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
-                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-school" />
-                            </svg>
+                            <i class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" data-lucide="school" aria-hidden="true"></i>
                             اساتید
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo $base; ?>blog/index.php"
+                        <a href="<?php echo $base; ?>pages/blog.php"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
-                            <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
-                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-clipboard" />
-                            </svg>
+                            <i class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" data-lucide="clipboard-list" aria-hidden="true"></i>
                             وبلاگ
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo $base; ?>#services"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
-                            <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
-                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-star" />
-                            </svg>
+                            <i class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" data-lucide="star" aria-hidden="true"></i>
                             خدمات ویژه
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo $base; ?>#faq-contact"
                             class="relative text-white hover:text-[#E2D9C6] transition-all duration-300 font-medium text-sm xl:text-base py-2 px-3 rounded-lg hover:bg-white/10 group flex items-center">
-                            <svg class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" aria-hidden="true">
-                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-help-circle" />
-                            </svg>
+                            <i class="icon icon--sm ml-1 opacity-70 group-hover:opacity-100" data-lucide="circle-help" aria-hidden="true"></i>
                             سوالات و تماس
                         </a>
                     </li>
                     <li>
                         <a href="http://dashboard.famoacademy.ir/"
                             class="bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] px-5 xl:px-6 py-2.5 rounded-full font-bold hover:shadow-lg hover:shadow-[#E2D9C6]/30 transition-all duration-300 text-sm xl:text-base hover:scale-105 flex items-center gap-2">
-                            <svg class="icon icon--sm" aria-hidden="true">
-                                <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-user-plus" />
-                            </svg>
+                            <i class="icon icon--sm" data-lucide="user-plus" aria-hidden="true"></i>
                             ثبت نام
                         </a>
                     </li>
@@ -98,9 +82,7 @@
             <button id="mobileMenuBtn"
                 class="lg:hidden text-white text-2xl hover:text-[#E2D9C6] hover:cursor-pointer transition duration-300"
                 aria-label="باز کردن منوی موبایل" aria-expanded="false">
-                <svg class="icon icon--lg" aria-hidden="true">
-                    <use href="<?php echo $base; ?>assets/icons/sprite.svg#icon-menu" />
-                </svg>
+                <i class="icon icon--lg" data-lucide="menu" aria-hidden="true"></i>
             </button>
         </div>
 
@@ -112,11 +94,11 @@
                 <li><a href="<?php echo $base; ?>#about"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">درباره
                     ما</a></li>
-                <li><a href="<?php echo $base; ?>courses/index.php"
+                <li><a href="<?php echo $base; ?>pages/course.php"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">دوره‌ها</a></li>
-                <li><a href="<?php echo $base; ?>team/index.php"
+                <li><a href="<?php echo $base; ?>pages/team.php"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">اساتید</a></li>
-                <li><a href="<?php echo $base; ?>blog/index.php"
+                <li><a href="<?php echo $base; ?>pages/blog.php"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">وبلاگ</a></li>
                 <li><a href="<?php echo $base; ?>#services"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">خدمات
@@ -124,7 +106,7 @@
                 <li><a href="<?php echo $base; ?>#faq-contact"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">سوالات
                         و تماس</a></li>
-                <li><a href="<?php echo $base; ?>register.php"
+                <li><a href="<?php echo $base; ?>../login/index.php"
                         class="block bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] text-center py-3 rounded-full font-bold hover:shadow-lg transition duration-300">ثبت
                     نام</a></li>
             </ul>

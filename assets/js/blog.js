@@ -1,8 +1,7 @@
-// blog.js - Blog module (blog/index.php, blog/category.php, blog/post.php)
+// blog.js - Blog module (pages/blog.php, pages/post.php)
 import { formatJalaliLong } from './jalali.js';
 import API from '../../../shared/js/api.js';
 
-const SPRITE_PATH = '../assets/icons/sprite.svg';
 const SITE_URL = 'https://famoacademy.ir';
 
 // Categories loaded from API
@@ -37,7 +36,7 @@ function getParam(name) {
 }
 
 function catPath(category) {
-    return `category.php?category=${encodeURIComponent(category)}`;
+    return `blog.php?category=${encodeURIComponent(category)}`;
 }
 
 // ---------- Load Categories ----------
@@ -164,7 +163,7 @@ function renderCategoryBadges(activeCategory = null) {
 
     const all = isIndexPage
         ? `<button type="button" data-category="" class="${base} ${activeCategory ? off : on}">همه</button>`
-        : `<a href="index.php" class="${base} ${activeCategory ? off : on}">همه</a>`;
+        : `<a href="blog.php" class="${base} ${activeCategory ? off : on}">همه</a>`;
 
     holder.innerHTML = all + BLOG_CATEGORIES.map(cat => {
         const active = cat.slug === activeCategory || cat.name === activeCategory;
@@ -222,7 +221,7 @@ async function initBlogIndex() {
     const page = Math.max(1, parseInt(getParam('page') || '1', 10));
     const category = getParam('category') || '';
     renderCategoryBadges(category);
-    loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page } : { page }, 'index.php');
+    loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page } : { page }, 'blog.php');
 }
 
 // Filter posts by category on blog index (AJAX)
@@ -231,7 +230,7 @@ function filterPostsByCategory(category) {
     if (!container) return;
 
     // Update URL without reload
-    const url = category ? `index.php?category=${encodeURIComponent(category)}` : 'index.php';
+    const url = category ? `blog.php?category=${encodeURIComponent(category)}` : 'blog.php';
     history.pushState({ category }, '', url);
 
     // Update active badge
@@ -239,28 +238,7 @@ function filterPostsByCategory(category) {
 
     // Load posts
     const page = 1;
-    loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page } : { page }, 'index.php');
-}
-
-async function initBlogCategory() {
-    await loadCategories();
-    const category = getParam('category') || '';
-
-    // Update page title + description for the active category
-    const catTitle = document.getElementById('categoryTitle');
-    if (catTitle) catTitle.textContent = category || 'دسته‌بندی';
-    document.title = `${category || 'دسته‌بندی'} | وبلاگ آموزشی فامو`;
-
-    renderCategoryBadges(category);
-
-    if (!category) {
-        const container = document.getElementById('postsContainer');
-        if (container) container.innerHTML = '<p class="col-span-full text-center text-gray-500 py-12">دسته‌بندی نامعتبر است.</p>';
-        return;
-    }
-
-    const page = Math.max(1, parseInt(getParam('page') || '1', 10));
-    loadPostList('get_posts_by_category', { category, page }, catPath(category));
+    loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page } : { page }, 'blog.php');
 }
 
 function initBlogPost() {
@@ -288,7 +266,7 @@ function initBlogPost() {
                         <p class="text-6xl mb-4 font-bold text-[#E2D9C6]">۴۰۴</p>
                         <h1 class="text-2xl font-bold text-[#445D84] mb-3">پست یافت نشد</h1>
                         <p class="text-gray-600 mb-6">ممکن است این پست منتشر نشده یا آدرس آن تغییر کرده باشد.</p>
-                        <a href="index.php" class="inline-flex items-center gap-2 bg-[#445D84] text-white px-6 py-3 rounded-full font-bold hover:bg-[#344868] transition">
+                        <a href="blog.php" class="inline-flex items-center gap-2 bg-[#445D84] text-white px-6 py-3 rounded-full font-bold hover:bg-[#344868] transition">
                             ${svgIcon('icon-arrow-right', 'icon--sm')} بازگشت به وبلاگ
                         </a>
                     </div>`;
@@ -317,7 +295,7 @@ function renderPost(post) {
         <nav class="text-sm text-gray-500 mb-6 flex flex-wrap items-center gap-2">
             <a href="../index.php" class="hover:text-[#445D84] transition flex items-center gap-1">${svgIcon('icon-home', 'icon--sm')} خانه</a>
             <span class="text-[#E2D9C6]">/</span>
-            <a href="index.php" class="hover:text-[#445D84] transition">وبلاگ</a>
+            <a href="blog.php" class="hover:text-[#445D84] transition">وبلاگ</a>
             <span class="text-[#E2D9C6]">/</span>
             <a href="${catPath(post.category)}" class="hover:text-[#445D84] transition">${post.category}</a>
             <span class="text-[#E2D9C6]">/</span>
@@ -343,12 +321,12 @@ function renderPost(post) {
                      id="postContent"></div>
 
                 <div class="mt-10 pt-6 border-t border-[#E2D9C6] flex items-center justify-between flex-wrap gap-3">
-                    <a href="index.php" class="inline-flex items-center gap-2 bg-[#445D84] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#344868] transition">
+                    <a href="blog.php" class="inline-flex items-center gap-2 bg-[#445D84] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#344868] transition">
                         ${svgIcon('icon-arrow-right', 'icon--sm')} همه مطالب
                     </a>
                     <div class="flex items-center gap-2 text-sm text-gray-500">
                         <span>اشتراک‌گذاری:</span>
-                        <a href="${SITE_URL}/blog/${postPath(post.slug)}"
+                        <a href="${SITE_URL}/pages/${postPath(post.slug)}"
                             class="bg-[#E2D9C6] text-[#445D84] w-9 h-9 rounded-full flex items-center justify-center hover:scale-110 transition" aria-label="تلگرام">
                             ${svgIcon('icon-telegram', 'icon--sm')}
                         </a>
@@ -369,8 +347,8 @@ function renderPost(post) {
 function updatePostSEO(post) {
     const title = `${post.title} | وبلاگ آموزشگاه فامو`;
     const desc = post.meta_description || post.excerpt || '';
-    const ogImage = post.cover_image || `${SITE_URL}/assets/images/logo.png`;
-    const canonical = `${SITE_URL}/blog/${postPath(post.slug)}`;
+    const ogImage = post.cover_image || `${SITE_URL}/shared/images/logo.png`;
+    const canonical = `${SITE_URL}/pages/${postPath(post.slug)}`;
 
     document.title = title;
 
@@ -396,7 +374,7 @@ function updatePostSEO(post) {
         publisher: {
             '@type': 'Organization',
             name: 'آموزشگاه فامو',
-            logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/images/logo.png` },
+            logo: { '@type': 'ImageObject', url: `${SITE_URL}/shared/images/logo.png` },
         },
         mainEntityOfPage: canonical,
     };
@@ -416,9 +394,6 @@ const pageType = document.body.dataset.page;
 if (pageType === 'blog-index') {
     console.log('[blog.js] Initializing blog-index');
     initBlogIndex();
-} else if (pageType === 'blog-category') {
-    console.log('[blog.js] Initializing blog-category');
-    initBlogCategory();
 } else if (pageType === 'blog-post') {
     console.log('[blog.js] Initializing blog-post');
     initBlogPost();
@@ -431,7 +406,7 @@ window.addEventListener('popstate', (event) => {
     if (document.body.dataset.page === 'blog-index' && event.state && event.state.category !== undefined) {
         const category = event.state.category || '';
         renderCategoryBadges(category);
-        loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page: 1 } : { page: 1 }, 'index.php');
+        loadPostList(category ? 'get_posts_by_category' : 'get_posts', category ? { category, page: 1 } : { page: 1 }, 'blog.php');
     }
 });
 
