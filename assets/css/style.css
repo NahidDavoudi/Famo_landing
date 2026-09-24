@@ -1,0 +1,627 @@
+/* Home page: custom styles only. Layout/colors via shared Tailwind CSS. */
+.root {
+    font-family: 'Vazirmatn';
+}
+
+/* Modern Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #445D84;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3a5170;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Courses Swiper */
+.coursesSwiper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.coursesSwiper .swiper-wrapper {
+    width: 100%;
+}
+
+.coursesSwiper .swiper-slide {
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.coursesSwiper .swiper-slide>div {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.coursesSwiper .swiper-button-prev,
+.coursesSwiper .swiper-button-next {
+    width: 40px;
+    height: 40px;
+}
+
+.coursesSwiper .swiper-button-prev {
+    right: 10px !important;
+    left: auto !important;
+}
+
+.coursesSwiper .swiper-button-next {
+    left: 10px !important;
+    right: auto !important;
+}
+
+@media (max-width: 768px) {
+    .coursesSwiper {
+        padding: 0 10px;
+    }
+
+    .coursesSwiper .swiper-button-prev,
+    .coursesSwiper .swiper-button-next {
+        width: 35px;
+        height: 35px;
+    }
+
+    .coursesSwiper .swiper-button-prev {
+        right: 5px !important;
+    }
+
+    .coursesSwiper .swiper-button-next {
+        left: 5px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .coursesSwiper {
+        padding: 0 5px;
+    }
+
+    .coursesSwiper .swiper-button-prev,
+    .coursesSwiper .swiper-button-next {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+}
+
+.swiper.instructorsSwiper,
+.swiper.supportSwiper,
+.swiper.coursesSwiper {
+    padding-bottom: 3rem;
+    /* 48px */
+}
+
+/* Swiper pagination & nav (RTL) */
+.swiper-pagination-bullet {
+    background-color: #445D84 !important;
+    width: 12px !important;
+    height: 12px !important;
+    opacity: 0.5 !important;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1 !important;
+    background-color: #445D84 !important;
+    transform: scale(1.2);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #445D84 !important;
+    background-color: rgba(226, 217, 198, 0.9);
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10 !important;
+    cursor: pointer !important;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+@media (max-width: 640px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 44px !important;
+        height: 44px !important;
+    }
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: #E2D9C6;
+    transform: scale(1.1);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 22px !important;
+    font-weight: bold;
+    transform: rotate(180deg);
+}
+
+.swiper-button-prev {
+    right: 22px !important;
+    left: auto !important;
+}
+
+.swiper-button-next {
+    left: 22px !important;
+    right: auto !important;
+}
+
+.instructorsSwiper .swiper-button-prev {
+    position: absolute !important;
+    top: 50% !important;
+    right: 22px !important;
+    left: auto !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+}
+
+.instructorsSwiper .swiper-button-next {
+    position: absolute !important;
+    top: 50% !important;
+    left: 22px !important;
+    right: auto !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+}
+
+.instructorsSwiper .swiper-button-prev:hover {
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+.instructorsSwiper .swiper-button-next:hover {
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+.supportSwiper .swiper-button-prev {
+    position: absolute !important;
+    top: 50% !important;
+    right: 22px !important;
+    left: auto !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+}
+
+.supportSwiper .swiper-button-next {
+    position: absolute !important;
+    top: 50% !important;
+    left: 22px !important;
+    right: auto !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+}
+
+.supportSwiper .swiper-button-prev:hover {
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+.supportSwiper .swiper-button-next:hover {
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+.swiper-button-disabled {
+    opacity: 0.35 !important;
+    cursor: not-allowed !important;
+}
+
+/* FAQ accordion */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    display: block !important;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    transition: max-height 1s ease-in-out;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-question:focus-visible {
+    outline: 2px solid #445D84;
+    outline-offset: 2px;
+    border-radius: 0.75rem;
+}
+
+.course-card:focus-visible {
+    outline: 2px solid #E2D9C6;
+    outline-offset: 3px;
+}
+
+/* Gradient / glass / hover (home-specific) */
+.gradient-bg {
+    background: linear-gradient(135deg, #445D84 0%, #3a5170 100%);
+}
+
+.gradient-bg-light {
+    background: linear-gradient(135deg, #E2D9C6 0%, #f0e8d8 100%);
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* The .swiper container has overflow:hidden by default (Swiper's own CSS).
+   With zero top padding, a .hover-lift card translating upward on hover
+   gets its top edge (and shadow) clipped by that boundary. Padding sits
+   inside the clipping box, so adding top padding here gives the lifted
+   card room without touching Swiper's horizontal-slide clipping at all. */
+.instructorsSwiper,
+.supportSwiper {
+    padding-top: 1.5rem;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #445D84, #6D8B9E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Course cards (expand/collapse) */
+.course-card {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.course-background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.course-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 20;
+}
+
+.course-content-default {
+    position: relative;
+    z-index: 10;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+.course-content-expanded {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+
+.course-hint {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+@media (min-width: 640px) {
+    .course-hint {
+        font-size: 0.875rem;
+    }
+}
+
+.course-card.expanded .course-overlay {
+    opacity: 1;
+}
+
+.course-card.expanded .course-content-default {
+    opacity: 0;
+}
+
+.course-card.expanded .course-content-expanded {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.course-card.expanded .course-hint {
+    opacity: 0;
+}
+
+.course-card * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Skeleton loader */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.skeleton {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.skeleton-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.skeleton-course-card {
+    position: relative;
+}
+
+/* Lock aspect ratios so API content replacing skeletons causes no layout shift */
+.skeleton-course-card,
+.course-card {
+    aspect-ratio: 16/9;
+    min-height: 200px;
+}
+
+@media (min-width: 768px) {
+    .skeleton-course-card,
+    .course-card {
+        aspect-ratio: 21/9;
+    }
+}
+
+.skeleton-instructor-card,
+.instructor-card {
+    min-height: 400px;
+}
+
+.skeleton-course-wrapper {
+    display: block;
+}
+
+.skeleton-instructor-card {
+    min-height: 400px;
+}
+
+.skeleton-instructor-wrapper {
+    display: block;
+}
+
+.skeleton-supporter-card {
+    min-height: 300px;
+}
+
+.skeleton-supporter-wrapper {
+    display: block;
+}
+
+.skeleton-course-wrapper.hide,
+.skeleton-instructor-wrapper.hide,
+.skeleton-supporter-wrapper.hide {
+    display: none !important;
+}
+
+/* Blog article content rendered from the unified public API */
+.blog-content {
+    font-size: 1.0625rem;
+    line-height: 2;
+    color: #374151;
+    text-align: justify;
+}
+
+.blog-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #445D84;
+    margin: 2rem 0 1rem;
+    padding-right: 1rem;
+    border-right: 4px solid #E2D9C6;
+}
+
+.blog-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #445D84;
+    margin: 1.75rem 0 0.75rem;
+}
+
+.blog-content h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #445D84;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.blog-content p {
+    margin: 1rem 0;
+}
+
+.blog-content ul,
+.blog-content ol {
+    margin: 1rem 0;
+    padding-right: 1.5rem;
+}
+
+.blog-content ul {
+    list-style: disc;
+}
+
+.blog-content ol {
+    list-style: decimal;
+}
+
+.blog-content li {
+    margin: 0.5rem 0;
+}
+
+.blog-content a {
+    color: #445D84;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.blog-content a:hover {
+    color: #8B786D;
+}
+
+.blog-content img {
+    border-radius: 1rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.blog-content blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    background: #f0eae0;
+    border-right: 4px solid #8B786D;
+    border-radius: 0.75rem;
+    font-style: italic;
+    color: #8B786D;
+}
+
+.blog-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.9375rem;
+}
+
+.blog-content th,
+.blog-content td {
+    border: 1px solid #E2D9C6;
+    padding: 0.75rem 1rem;
+    text-align: right;
+}
+
+.blog-content th {
+    background: #f0eae0;
+    font-weight: 700;
+    color: #445D84;
+}
+
+.blog-content hr {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px dashed #E2D9C6;
+}
+
+.blog-content code {
+    background: #f0f2f5;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.875em;
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
+#nahid {
+    text-decoration: underline;
+}
+
+#nahid :hover {
+    color: #f1f1f1;
+}
+
+#mobileMenuBtn {
+    cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+    .animate-float, .animate-shimmer {
+        animation: none !important;
+    }
+}
+
+/* #mobileMenuBtn button:hover {
+    cursor: pointer;
+} */
