@@ -4,6 +4,10 @@ import API from '../../../shared/js/api.js';
 
 const SITE_URL = 'https://famoacademy.ir';
 
+// Asset base: prefer the configured ASSET_URL (from api/.env via APP_CONFIG).
+const ASSET_BASE = (window.APP_CONFIG && window.APP_CONFIG.assetUrl) || `${SITE_URL}/shared`;
+const asset = (path) => `${ASSET_BASE.replace(/\/$/, '')}/${String(path).replace(/^\//, '')}`;
+
 // Categories loaded from API
 let BLOG_CATEGORIES = [];
 
@@ -347,7 +351,7 @@ function renderPost(post) {
 function updatePostSEO(post) {
     const title = `${post.title} | وبلاگ آموزشگاه فامو`;
     const desc = post.meta_description || post.excerpt || '';
-    const ogImage = post.cover_image || `${SITE_URL}/shared/images/logo.png`;
+    const ogImage = post.cover_image || asset('images/logo.png');
     const canonical = `${SITE_URL}/pages/${postPath(post.slug)}`;
 
     document.title = title;
@@ -374,7 +378,7 @@ function updatePostSEO(post) {
         publisher: {
             '@type': 'Organization',
             name: 'آموزشگاه فامو',
-            logo: { '@type': 'ImageObject', url: `${SITE_URL}/shared/images/logo.png` },
+            logo: { '@type': 'ImageObject', url: asset('images/logo.png') },
         },
         mainEntityOfPage: canonical,
     };

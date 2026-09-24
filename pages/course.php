@@ -1,4 +1,4 @@
-<?php $base = '../'; ?>
+<?php $base = '../'; require_once __DIR__ . '/../../shared/php/config.php'; ?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -13,7 +13,7 @@
     <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="دوره‌های تخصصی کنکور و تیزهوشان | آموزشگاه فامو بابل">
     <meta property="og:description" content="برنامه‌ریزی، آموزش مفهومی و آزمون‌های تخصصی کنکور و تیزهوشان در بابل.">
-    <meta property="og:image" content="<?php echo $base; ?>../shared/images/logo.png">
+    <meta property="og:image" content="<?php echo famo_asset('images/logo.png', $base . '../shared/images/logo.png'); ?>">
 
     <!-- Course Schema Markup -->
     <script type="application/ld+json" id="courseSchema">

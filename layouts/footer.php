@@ -1,4 +1,5 @@
 <!-- Footer -->
+<?php require_once __DIR__ . '/../../shared/php/config.php'; ?>
 <footer class="gradient-bg text-white pt-12 pb-6 px-4">
     <div class="container mx-auto max-w-6xl">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10">
@@ -6,7 +7,7 @@
             <div>
                 <div class="flex items-center gap-4 mb-6">
                     <div class="bg-[#445D84] w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                        <img src="<?php echo $base; ?>../shared/images/logo.png" alt="logo" class="w-10 h-10 object-contain">
+                        <img src="<?php echo famo_asset('images/logo.png', $base . '../shared/images/logo.png'); ?>" alt="logo" class="w-10 h-10 object-contain">
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold">آموزشگاه <span class="text-[#E2D9C6]">فامو</span></h3>
