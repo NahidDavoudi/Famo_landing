@@ -1,5 +1,5 @@
 <!-- Header fragment: parent page owns the document shell and includes layouts/head-common.php. Requires $base. -->
-<?php require_once __DIR__ . '/../../shared/php/config.php'; ?>
+<?php require_once __DIR__ . '/../config.php'; ?>
 <header class="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 py-2 sm:py-4">
     <div
         class="bg-[#445D84] bg-opacity-95 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl border border-white/20 px-3 sm:px-6 py-3 sm:py-4 max-w-7xl mx-auto">
@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://dashboard.famoacademy.ir/"
+                        <a href="http://auth.famoacademy.ir/"
                             class="bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] px-5 xl:px-6 py-2.5 rounded-full font-bold hover:shadow-lg hover:shadow-[#E2D9C6]/30 transition-all duration-300 text-sm xl:text-base hover:scale-105 flex items-center gap-2">
                             <i class="icon icon--sm" data-lucide="user-plus" aria-hidden="true"></i>
                             ثبت نام

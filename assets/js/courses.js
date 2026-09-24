@@ -1,4 +1,4 @@
-import API from '../../../shared/js/api.js';
+import API from './api.js';
 
 let mobileMenuBtn = null;
 let mobileMenu = null;

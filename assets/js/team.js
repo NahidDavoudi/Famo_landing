@@ -1,4 +1,4 @@
-import API from '../../../shared/js/api.js';
+import API from './api.js';
 
 // Mobile Menu Toggle - Global variables for menu elements
 let mobileMenuBtn = null;

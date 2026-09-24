@@ -1,5 +1,5 @@
 <!-- Footer -->
-<?php require_once __DIR__ . '/../../shared/php/config.php'; ?>
+<?php require_once __DIR__ . '/../config.php'; ?>
 <footer class="gradient-bg text-white pt-12 pb-6 px-4">
     <div class="container mx-auto max-w-6xl">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10">

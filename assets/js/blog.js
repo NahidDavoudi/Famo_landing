@@ -1,6 +1,6 @@
 // blog.js - Blog module (pages/blog.php, pages/post.php)
 import { formatJalaliLong } from './jalali.js';
-import API from '../../../shared/js/api.js';
+import API from './api.js';
 
 const SITE_URL = 'https://famoacademy.ir';
 

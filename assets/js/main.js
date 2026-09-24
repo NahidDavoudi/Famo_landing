@@ -1,4 +1,4 @@
-import API from '../../../shared/js/api.js';
+import API from './api.js';
 
 // Helper: create a Lucide icon element.
 function svgIcon(name, cls = '') {

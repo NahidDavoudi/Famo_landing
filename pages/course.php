@@ -1,4 +1,4 @@
-<?php $base = '../'; require_once __DIR__ . '/../../shared/php/config.php'; ?>
+<?php $base = '../'; require_once __DIR__ . '/../config.php'; ?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>

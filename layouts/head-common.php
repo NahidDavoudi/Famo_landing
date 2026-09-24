@@ -1,5 +1,5 @@
 <!-- Shared head: included by every page inside its own <head>. Requires $base. -->
-<?php require_once __DIR__ . '/../../shared/php/config.php'; ?>
+<?php require_once __DIR__ . '/../config.php'; ?>
 <?php
 $famoAssetBase = famo_asset_base() ?? ($base . '../shared');
 $famoApiUrl = famo_api_url();
@@ -8,12 +8,13 @@ if ($famoApiUrl === null) {
 }
 ?>
 <script>
-    // Inject the server-configured asset/API URLs (from api/.env) before any module.
+    // Inject the server-configured asset/API URLs before any module.
     window.APP_CONFIG = Object.assign(window.APP_CONFIG || {}, {
         assetUrl: <?php echo json_encode($famoAssetBase, JSON_UNESCAPED_SLASHES); ?>,
         apiUrl: <?php echo json_encode($famoApiUrl, JSON_UNESCAPED_SLASHES); ?>
-    });
-</script>
+ });
+ </script>
+ <script src="../config.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NHPK2145Z"></script>
 <script>
