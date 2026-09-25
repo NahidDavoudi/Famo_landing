@@ -1,4 +1,4 @@
-const { default: API } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
+const { default: API, onReady } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
 
 const DASHBOARD_URL = (window.APP_CONFIG && window.APP_CONFIG.dashboardUrl) || '';
 
@@ -105,12 +105,7 @@ async function loadCourses() {
     }
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        initMobileMenu();
-        loadCourses();
-    });
-} else {
+onReady(() => {
     initMobileMenu();
     loadCourses();
-}
+});

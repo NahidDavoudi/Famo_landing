@@ -1,4 +1,4 @@
-const { default: API } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
+const { default: API, onReady } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
 
 // Helper: create a Lucide icon element.
 function svgIcon(name, cls = '') {
@@ -78,11 +78,7 @@ function initMobileMenu() {
 }
 
 // Initialize mobile menu when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileMenu);
-} else {
-    initMobileMenu();
-}
+onReady(initMobileMenu);
 
 // Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -484,7 +480,7 @@ function attachCourseCardListeners() {
 }
 
 // Load all data on page load
-document.addEventListener('DOMContentLoaded', () => {
+onReady(() => {
     loadCoursesFromAPI();
     loadInstructorsFromAPI();
     loadSupportersFromAPI();
@@ -655,13 +651,9 @@ const FAQ = {
     }
 };
 // Initialize FAQ when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(initFAQ, 100);
-    });
-} else {
+onReady(() => {
     setTimeout(initFAQ, 100);
-}
+});
 
 // Function to attach instructor modal listeners
 function attachInstructorModalListeners() {
@@ -861,24 +853,10 @@ function initScrollAnimations() {
 }
 
 // Initialize scroll animations when GSAP is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        // Wait for GSAP to load
-        const checkGSAP = setInterval(() => {
-            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-                clearInterval(checkGSAP);
-                initScrollAnimations();
-            }
-        }, 100);
-        // Timeout after 5 seconds
-        setTimeout(() => clearInterval(checkGSAP), 5000);
-    });
-} else {
-    // DOM already loaded, check GSAP immediately
+onReady(() => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         initScrollAnimations();
     } else {
-        // Wait for GSAP to load
         const checkGSAP = setInterval(() => {
             if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                 clearInterval(checkGSAP);
@@ -887,4 +865,4 @@ if (document.readyState === 'loading') {
         }, 100);
         setTimeout(() => clearInterval(checkGSAP), 5000);
     }
-}
+});

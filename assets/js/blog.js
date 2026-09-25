@@ -1,6 +1,6 @@
 // blog.js - Blog module (pages/blog.php, pages/post.php)
 import { formatJalaliLong } from './jalali.js';
-const { default: API } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
+const { default: API, onReady } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
 
 const SITE_URL = window.APP_CONFIG && window.APP_CONFIG.publicUrl;
 
@@ -444,11 +444,7 @@ function initMobileMenu() {
 }
 
 // Initialize mobile menu when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileMenu);
-} else {
-    initMobileMenu();
-}
+onReady(initMobileMenu);
 
 // Set current Persian year in footer
 const copyrightYear = document.getElementById('copyright-year');

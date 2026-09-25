@@ -1,4 +1,4 @@
-const { default: API } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
+const { default: API, onReady } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
 
 // Mobile Menu Toggle - Global variables for menu elements
 let mobileMenuBtn = null;
@@ -33,11 +33,7 @@ function initMobileMenu() {
 }
 
 // Initialize mobile menu when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileMenu);
-} else {
-    initMobileMenu();
-}
+onReady(initMobileMenu);
 
 // Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -173,7 +169,7 @@ async function loadSupporters() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+onReady(() => {
     loadInstructors();
     loadSupporters();
 });

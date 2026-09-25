@@ -36,6 +36,7 @@ public/
 
 ## API usage
 - All page data comes from the unified API via `shared/js/api.js`.
+- To run code after the DOM is ready, use `onReady()` from `api.js`, not `document.addEventListener('DOMContentLoaded', ...)` directly.
 - Public endpoints: `/public/courses`, `/public/instructors`, `/public/supporters`, `/public/blog/*`.
 - Response envelope: `{ success, data, pagination, error }`.
 - Authentication is out of scope for this public site.
