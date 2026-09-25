@@ -41,17 +41,35 @@
 }
 </script>
 
-<script src="<?php echo famo_asset('js/libs/gsap.min.js', $base . '../shared/js/libs/gsap.min.js'); ?>" defer></script>
-<script src="<?php echo famo_asset('js/libs/ScrollTrigger.min.js', $base . '../shared/js/libs/ScrollTrigger.min.js'); ?>" defer></script>
-<script src="<?php echo famo_asset('js/libs/ScrollToPlugin.min.js', $base . '../shared/js/libs/ScrollToPlugin.min.js'); ?>" defer></script>
-<script src="<?php echo famo_asset('js/libs/swiper-bundle.min.js', $base . '../shared/js/libs/swiper-bundle.min.js'); ?>" defer></script>
-<script src="<?php echo famo_asset('js/libs/lucide.min.js', $base . '../shared/js/libs/lucide.min.js'); ?>" defer></script>
+<!-- Google Fonts: Vazirmatn (CDN in dev, local in prod) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="<?php echo famo_google_fonts(); ?>">
+
+<!-- Tailwind CSS (CDN in dev, built in prod) -->
+<?php if (famo_is_dev()): ?>
+    <script src="<?php echo famo_cdn_tailwind(); ?>"></script>
+<?php else: ?>
+    <link rel="stylesheet" href="<?php echo famo_cdn_tailwind(); ?>">
+<?php endif; ?>
+
+<!-- Libraries (CDN in dev, local in prod) -->
+<script src="<?php echo famo_cdn_lib('gsap'); ?>" defer></script>
+<script src="<?php echo famo_cdn_lib('scrolltrigger'); ?>" defer></script>
+<script src="<?php echo famo_cdn_lib('scrolltoplugin'); ?>" defer></script>
+<script src="<?php echo famo_cdn_lib('swiper'); ?>" defer></script>
+<!-- Lucide from unpkg in dev -->
+<?php if (famo_is_dev()): ?>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+<?php else: ?>
+    <script src="<?php echo famo_cdn_lib('lucide'); ?>" defer></script>
+<?php endif; ?>
 <script src="<?php echo famo_asset('js/lucide-adapter.js', $base . '../shared/js/lucide-adapter.js'); ?>" defer></script>
 <script src="<?php echo $base; ?>assets/js/animation.js" defer></script>
 
-<!-- Font Vazir -->
-<link rel="stylesheet" href="<?php echo famo_asset('css/output.css', $base . '../shared/css/output.css'); ?>">
+<!-- Swiper CSS (CDN in dev, local in prod) -->
+<link rel="stylesheet" href="<?php echo famo_cdn_css('swiper'); ?>">
+
+<!-- Local styles -->
 <link rel="stylesheet" href="<?php echo $base; ?>assets/css/icons.css">
-<link rel="stylesheet" href="<?php echo famo_asset('css/libs/swiper-bundle.min.css', $base . '../shared/css/libs/swiper-bundle.min.css'); ?>">
 <link rel="stylesheet" href="<?php echo $base; ?>assets/css/style.css">
-<link rel="stylesheet" href="<?php echo famo_asset('css/fonts.css', $base . '../shared/css/fonts.css'); ?>">
