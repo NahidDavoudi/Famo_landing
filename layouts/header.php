@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://auth.famoacademy.ir/"
+                        <a href="<?= htmlspecialchars(famo_login_url() . '/', ENT_QUOTES, 'UTF-8') ?>"
                             class="bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] px-5 xl:px-6 py-2.5 rounded-full font-bold hover:shadow-lg hover:shadow-[#E2D9C6]/30 transition-all duration-300 text-sm xl:text-base hover:scale-105 flex items-center gap-2">
                             <i class="icon icon--sm" data-lucide="user-plus" aria-hidden="true"></i>
                             ثبت نام
@@ -107,7 +107,7 @@
                 <li><a href="<?php echo $base; ?>#faq-contact"
                         class="block text-white hover:text-[#E2D9C6] transition duration-300 font-medium py-3 hover:bg-white/10 px-3 rounded-lg">سوالات
                         و تماس</a></li>
-                <li><a href="<?php echo $base; ?>../login/index.php"
+                <li><a href="<?= htmlspecialchars(famo_login_url() . '/', ENT_QUOTES, 'UTF-8') ?>"
                         class="block bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] text-center py-3 rounded-full font-bold hover:shadow-lg transition duration-300">ثبت
                     نام</a></li>
             </ul>

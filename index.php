@@ -25,7 +25,7 @@
                         است.
                     </p>
                     <div class="flex flex-row justify-center items-center gap-3 sm:gap-5">
-                        <a href="../login/index.php"
+                        <a href="<?= htmlspecialchars(famo_login_url() . '/', ENT_QUOTES, 'UTF-8') ?>"
                             class="bg-gradient-to-r from-[#E2D9C6] to-[#d4c9b2] text-[#445D84] px-8 py-3 rounded-full font-bold hover:shadow-xl transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center min-h-[44px]">
                             <i class="icon ml-2" data-lucide="school" aria-hidden="true"></i>
                             رزرو نوبت

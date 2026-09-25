@@ -22,8 +22,8 @@ public/
 - Only page-specific code/assets live under `public/`; shared runtime assets come from `shared/`.
 
 ## Shared assets
-- Backend (separate project): `api/` served at `http://localhost:8080/api/v1`.
-- API client: `shared/js/api.js` (imported as `../../../shared/js/api.js` from `public/assets/js/`).
+- Backend (separate project): `api/` served at the `API_URL` configured in `.env`.
+- API client: `shared/js/api.js` (loaded from the `ASSET_URL` configured in `.env`).
 - Libraries: `shared/js/libs/` (GSAP, ScrollTrigger, ScrollToPlugin, Swiper, Lucide).
 - Styles: `shared/css/output.css`, `shared/css/fonts.css`, `shared/css/libs/swiper-bundle.min.css`.
 - Icons: Lucide. Static markup uses `data-lucide="..."`; dynamic markup uses `data-lucide` via `svgIcon()`.

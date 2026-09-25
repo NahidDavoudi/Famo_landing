@@ -1,4 +1,6 @@
-import API from '../shared/js/api.js';
+const { default: API } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
+
+const DASHBOARD_URL = (window.APP_CONFIG && window.APP_CONFIG.dashboardUrl) || '';
 
 let mobileMenuBtn = null;
 let mobileMenu = null;
@@ -65,7 +67,7 @@ function renderCourseCard(course) {
             ${course.target_grades ? `<div class="text-[#445D84] font-bold text-lg">${course.target_grades}</div>` : ''}
             ${course.format ? `<p class="text-xs text-gray-500">${course.format}</p>` : ''}
             ${priceBlock}
-            <a href="http://dashboard.famoacademy.ir/" class="block bg-[#445D84] text-white py-3 rounded-xl font-bold hover:bg-[#344868] transition">مشاوره و ثبت‌نام</a>
+            <a href="${DASHBOARD_URL}/" class="block bg-[#445D84] text-white py-3 rounded-xl font-bold hover:bg-[#344868] transition">مشاوره و ثبت‌نام</a>
         </div>
     </article>`;
 }

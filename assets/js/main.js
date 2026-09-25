@@ -1,4 +1,4 @@
-import API from '../shared/js/api.js';
+const { default: API } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
 
 // Helper: create a Lucide icon element.
 function svgIcon(name, cls = '') {

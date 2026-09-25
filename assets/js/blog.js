@@ -1,11 +1,11 @@
 // blog.js - Blog module (pages/blog.php, pages/post.php)
 import { formatJalaliLong } from './jalali.js';
-import API from '../shared/js/api.js';
+const { default: API } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
 
-const SITE_URL = 'https://famoacademy.ir';
+const SITE_URL = window.APP_CONFIG && window.APP_CONFIG.publicUrl;
 
-// Asset base: prefer the configured ASSET_URL (from api/.env via APP_CONFIG).
-const ASSET_BASE = (window.APP_CONFIG && window.APP_CONFIG.assetUrl) || `${SITE_URL}/shared`;
+// Asset base is injected from this panel's ASSET_URL.
+const ASSET_BASE = window.APP_CONFIG && window.APP_CONFIG.assetUrl;
 const asset = (path) => `${ASSET_BASE.replace(/\/$/, '')}/${String(path).replace(/^\//, '')}`;
 
 // Categories loaded from API

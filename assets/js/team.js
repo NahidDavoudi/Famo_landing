@@ -1,4 +1,4 @@
-import API from '../shared/js/api.js';
+const { default: API } = await import(`${window.APP_CONFIG.assetUrl}/js/api.js`);
 
 // Mobile Menu Toggle - Global variables for menu elements
 let mobileMenuBtn = null;
