@@ -41,13 +41,13 @@
 }
 </script>
 
-<script src="<?php echo famo_asset('js/libs/gsap.min.js', $base . '../shared/js/libs/gsap.min.js'); ?>"></script>
-<script src="<?php echo famo_asset('js/libs/ScrollTrigger.min.js', $base . '../shared/js/libs/ScrollTrigger.min.js'); ?>"></script>
-<script src="<?php echo famo_asset('js/libs/ScrollToPlugin.min.js', $base . '../shared/js/libs/ScrollToPlugin.min.js'); ?>"></script>
-<script src="<?php echo famo_asset('js/libs/swiper-bundle.min.js', $base . '../shared/js/libs/swiper-bundle.min.js'); ?>"></script>
-<script src="<?php echo famo_asset('js/libs/lucide.min.js', $base . '../shared/js/libs/lucide.min.js'); ?>"></script>
-<script src="<?php echo famo_asset('js/lucide-adapter.js', $base . '../shared/js/lucide-adapter.js'); ?>"></script>
-<script src="<?php echo $base; ?>assets/js/animation.js"></script>
+<script src="<?php echo famo_asset('js/libs/gsap.min.js', $base . '../shared/js/libs/gsap.min.js'); ?>" defer></script>
+<script src="<?php echo famo_asset('js/libs/ScrollTrigger.min.js', $base . '../shared/js/libs/ScrollTrigger.min.js'); ?>" defer></script>
+<script src="<?php echo famo_asset('js/libs/ScrollToPlugin.min.js', $base . '../shared/js/libs/ScrollToPlugin.min.js'); ?>" defer></script>
+<script src="<?php echo famo_asset('js/libs/swiper-bundle.min.js', $base . '../shared/js/libs/swiper-bundle.min.js'); ?>" defer></script>
+<script src="<?php echo famo_asset('js/libs/lucide.min.js', $base . '../shared/js/libs/lucide.min.js'); ?>" defer></script>
+<script src="<?php echo famo_asset('js/lucide-adapter.js', $base . '../shared/js/lucide-adapter.js'); ?>" defer></script>
+<script src="<?php echo $base; ?>assets/js/animation.js" defer></script>
 
 <!-- Font Vazir -->
 <link rel="stylesheet" href="<?php echo famo_asset('css/output.css', $base . '../shared/css/output.css'); ?>">

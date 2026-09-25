@@ -479,11 +479,13 @@ function attachCourseCardListeners() {
     });
 }
 
-// Load all data on page load
-onReady(() => {
-    loadCoursesFromAPI();
-    loadInstructorsFromAPI();
-    loadSupportersFromAPI();
+// Load all data on page load (parallel)
+onReady(async () => {
+    await Promise.all([
+        loadCoursesFromAPI(),
+        loadInstructorsFromAPI(),
+        loadSupportersFromAPI()
+    ]);
     // Re-initialize FAQ after content loads
     setTimeout(() => {
     }, 500);
